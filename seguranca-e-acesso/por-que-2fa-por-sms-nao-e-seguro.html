@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticação de Dois Fatores (2FA) via SMS não é mais segura | TechPurger</title>
+    <meta name="description" content="Entenda por que depender apenas de mensagens SMS para a segurança das suas contas críticas expõe você a ataques como SIM Swapping.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['monospace'] },
+                    colors: { brand: '#0056b3', surface: '#f8f9fa', 'border-subtle': '#e9ecef', 'text-main': '#1a1a1a', 'text-muted': '#4a5568', 'code-bg': '#1a202c' },
+                    maxWidth: { 'container-max': '1200px' }
+                }
+            }
+        }
+    </script>
+    <style> body { color: #1a1a1a; line-height: 1.6; } </style>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body class="bg-white text-text-main font-sans antialiased flex flex-col min-h-screen">
+
+    <header class="bg-brand text-white border-b border-border-subtle">
+        <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
+                <a href="index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Segurança e Acesso</a>
+                <a href="../desenvolvimento-e-ti/index.html" class="text-white hover:opacity-80 transition font-medium">Desenvolvimento e TI</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="max-w-container-max mx-auto px-6 mt-8 flex justify-center">
+        <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 728px; height: 90px; max-width: 100%;">
+            [ANÚNCIO: 728x90]
+        </div>
+    </div>
+
+    <div class="max-w-container-max mx-auto px-6 py-8 flex flex-col lg:flex-row gap-6 flex-grow">
+        
+        <main class="w-full lg:w-3/4">
+            <article class="bg-white rounded-lg border border-border-subtle p-6 lg:p-8">
+                
+                <nav class="text-sm font-medium text-text-muted mb-6">
+                    <a href="../index.html" class="hover:text-brand transition">Home</a> <span class="mx-2 text-border-subtle">/</span>
+                    <a href="index.html" class="hover:text-brand transition">Segurança e Acesso</a> <span class="mx-2 text-border-subtle">/</span>
+                    <span class="text-text-main">Riscos do 2FA SMS</span>
+                </nav>
+
+                <h1 class="text-3xl lg:text-4xl font-bold text-text-main mb-6 tracking-tight leading-tight">Por que Autenticação de Dois Fatores (2FA) via SMS não é mais segura?</h1>
+                
+                <div class="flex items-center text-text-muted text-sm font-medium mb-8 border-b border-border-subtle pb-4">
+                    <span>Publicado em: 24 de Maio de 2026</span>
+                    <span class="mx-3 text-border-subtle">•</span>
+                    <span>Por: TechPurger</span>
+                </div>
+
+                <div class="prose max-w-none text-text-main text-lg space-y-6">
+                    <p>Ativar a "Autenticação em Duas Etapas" (ou 2FA) deixou de ser apenas paranoia e tornou-se o básico da segurança moderna. Se sua senha for vazada, a camada extra garante que o atacante não consiga acessar sua conta no banco, e-mail ou redes sociais.</p>
+                    <p>No entanto, a forma como a maioria dos sites implementou isso inicialmente foi enviando um código de 6 dígitos via mensagem de SMS para o seu celular. Embora seja muito melhor do que não ter 2FA nenhum, o protocolo SMS provou ser fundamentalmente vulnerável.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">O perigo do SIM Swapping</h2>
+                    <p>O ataque mais devastador contra o 2FA via SMS é o <strong>SIM Swap</strong> (Clonagem de Chip). O atacante liga para o suporte técnico da sua operadora de telefonia fingindo ser você, com dados pessoais encontrados na internet. Utilizando engenharia social (ou até propina para um funcionário corrupto internamente), eles solicitam a transferência do seu número de telefone para um novo cartão SIM virgem sob a posse deles.</p>
+                    
+                    <div class="flex justify-center my-10 lg:float-left lg:mr-8 lg:mb-6">
+                        <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 300px; height: 250px;">
+                            [ANÚNCIO: 300x250]
+                        </div>
+                    </div>
+
+                    <p class="clear-both mt-4">De repente, seu celular fica sem serviço. O atacante acessa a página de "Esqueci a Senha" do seu e-mail, envia a redefinição e intercepta alegremente o código enviado por SMS pelo novo chip que agora está no aparelho dele. O dano é completo em minutos.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">A falha estrutural do protocolo SS7</h2>
+                    <p>A arquitetura global que roteia as mensagens SMS entre as diferentes redes de telecomunicações baseia-se em um protocolo legado chamado SS7 (Signaling System No. 7), criado na década de 1970. Esse sistema opera numa base de "confiança extrema": se uma operadora disser que o seu telefone está registrado temporariamente na rede de outro país, o SMS será roteado até lá. Hackers exploram o SS7 para interceptar mensagens no tráfego sem a necessidade física de um SIM Swap.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">Qual é a alternativa correta?</h2>
+                    <p>Para se proteger plenamente, evite depender das operadoras de telefonia e migre toda a sua autenticação de duplo fator para sistemas criptografados localmente. Temos duas frentes altamente seguras:</p>
+
+                    <h3 class="text-xl font-bold text-brand mt-6 mb-2">1. Aplicativos Autenticadores (TOTP)</h3>
+                    <p>Softwares como <strong>Google Authenticator</strong>, <strong>Microsoft Authenticator</strong>, <strong>Authy</strong> ou até gerenciadores de senha como <strong>Bitwarden</strong> geram senhas baseadas em tempo (TOTP). Eles são gerados offline por um algoritmo matemático diretamente no seu dispositivo, tornando a interceptação pela rede impossível.</p>
+
+                    <h3 class="text-xl font-bold text-brand mt-6 mb-2">2. Chaves Físicas (FIDO2 / WebAuthn)</h3>
+                    <p>O padrão ouro de segurança atual. Dispositivos como as chaves <strong>YubiKey</strong>. Você precisa inserir a pequena chave no USB do computador (ou usar NFC no celular) e encostar o dedo nela para provar presença física. Nem mesmo ataques de Phishing perfeitos funcionam contra chaves de hardware.</p>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Passo a Passo Prático</h4>
+                        <p class="text-text-muted text-base">Abra as configurações de segurança das suas contas mais cruciais (Gmail, banco, iCloud). Procure a seção 2FA e adicione o método de "Aplicativo de Autenticação". Escaneie o QR Code. Uma vez ativado, encontre e <strong>remova</strong> especificamente a opção de recuperação e código via SMS das suas configurações de segurança.</p>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <aside class="w-full lg:w-1/4 flex flex-col gap-6">
+            <div class="flex justify-center">
+                <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 300px; height: 250px;">
+                    [ANÚNCIO: 300x250]
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-border-subtle">
+                <h3 class="text-lg font-bold text-text-main mb-4 border-b border-border-subtle pb-2">Artigos Relacionados</h3>
+                <ul class="space-y-3">
+                    <li><a href="como-a-cloudflare-mitiga-ataques-ddos.html" class="text-brand hover:underline text-sm font-medium leading-snug line-clamp-2">Ataques DDoS e CDNs</a></li>
+                    <li><a href="como-resolver-erro-de-p2p-no-dvr-fora-de-casa.html" class="text-brand hover:underline text-sm font-medium leading-snug line-clamp-2">Erro de P2P no DVR</a></li>
+                </ul>
+            </div>
+
+            <div class="flex justify-center flex-1">
+                <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded sticky top-6" style="width: 160px; height: 600px;">
+                    [ANÚNCIO: 160x600]
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="bg-surface border-t border-border-subtle py-8 mt-12">
+        <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+            <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="../quem-somos.html" class="hover:text-brand transition font-medium">Quem Somos</a>
+                <a href="../politica-de-privacidade.html" class="hover:text-brand transition font-medium">Política de Privacidade</a>
+                <a href="../contato.html" class="hover:text-brand transition font-medium">Contato</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

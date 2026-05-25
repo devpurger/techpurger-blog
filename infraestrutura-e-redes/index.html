@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infraestrutura e Redes | TechPurger</title>
+    <meta name="description" content="Tudo sobre redes de computadores, servidores, infraestrutura on-premise e cloud.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['monospace'] },
+                    colors: { brand: '#0056b3', surface: '#f8f9fa', 'border-subtle': '#e9ecef', 'text-main': '#1a1a1a', 'text-muted': '#4a5568' },
+                    maxWidth: { 'container-max': '1200px' }
+                }
+            }
+        }
+    </script>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body class="bg-white text-text-main font-sans antialiased flex flex-col min-h-screen">
+
+    <header class="bg-brand text-white border-b border-border-subtle">
+        <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Infraestrutura e Redes</a>
+                <a href="../seguranca-e-acesso/index.html" class="text-white hover:opacity-80 transition font-medium">Segurança e Acesso</a>
+                <a href="../desenvolvimento-e-ti/index.html" class="text-white hover:opacity-80 transition font-medium">Desenvolvimento e TI</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-container-max mx-auto px-6 py-12 w-full">
+        <div class="mb-8 border-b border-border-subtle pb-6">
+            <h1 class="text-3xl md:text-4xl font-bold text-text-main tracking-tight">Infraestrutura e Redes</h1>
+            <p class="text-lg text-text-muted mt-2">Redes de computadores, servidores físicos, IPs e a base sólida que mantém a internet funcionando.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Article Card -->
+            <article class="bg-white rounded-lg border border-border-subtle overflow-hidden hover:shadow-ambient transition duration-300 flex flex-col">
+                <div class="p-6 flex-grow">
+                    <span class="inline-block bg-surface text-text-muted rounded px-2 py-1 text-xs font-semibold mb-3 border border-border-subtle">Infraestrutura e Redes</span>
+                    <h4 class="text-xl font-bold text-text-main mb-3 leading-snug">
+                        <a href="como-montar-um-servidor-nas-caseiro.html" class="hover:text-brand transition">Passo a Passo: Como montar um servidor NAS caseiro com um PC antigo</a>
+                    </h4>
+                    <p class="text-text-muted text-base mb-5 line-clamp-3">Aprenda a transformar aquele seu computador antigo em um servidor de arquivos poderoso e seguro.</p>
+                </div>
+                <div class="p-6 pt-0 mt-auto">
+                    <a href="como-montar-um-servidor-nas-caseiro.html" class="text-brand font-semibold text-sm hover:underline">Leia mais →</a>
+                </div>
+            </article>
+
+            <!-- Article Card -->
+            <article class="bg-white rounded-lg border border-border-subtle overflow-hidden hover:shadow-ambient transition duration-300 flex flex-col">
+                <div class="p-6 flex-grow">
+                    <span class="inline-block bg-surface text-text-muted rounded px-2 py-1 text-xs font-semibold mb-3 border border-border-subtle">Infraestrutura e Redes</span>
+                    <h4 class="text-xl font-bold text-text-main mb-3 leading-snug">
+                        <a href="entenda-a-diferenca-entre-ip-fixo-dinamico-e-cgnat.html" class="hover:text-brand transition">Entenda a diferença entre IP Fixo, Dinâmico e o temido CGNAT</a>
+                    </h4>
+                    <p class="text-text-muted text-base mb-5 line-clamp-3">Aprenda definitivamente os tipos de IP fornecidos pelos provedores e como o CGNAT atrapalha conectividade direta.</p>
+                </div>
+                <div class="p-6 pt-0 mt-auto">
+                    <a href="entenda-a-diferenca-entre-ip-fixo-dinamico-e-cgnat.html" class="text-brand font-semibold text-sm hover:underline">Leia mais →</a>
+                </div>
+            </article>
+
+            <!-- Article Card -->
+            <article class="bg-white rounded-lg border border-border-subtle overflow-hidden hover:shadow-ambient transition duration-300 flex flex-col">
+                <div class="p-6 flex-grow">
+                    <span class="inline-block bg-surface text-text-muted rounded px-2 py-1 text-xs font-semibold mb-3 border border-border-subtle">Infraestrutura e Redes</span>
+                    <h4 class="text-xl font-bold text-text-main mb-3 leading-snug">
+                        <a href="o-que-e-servidor-dns-e-como-mudar.html" class="hover:text-brand transition">O que é um servidor DNS e por que mudar o seu deixa a internet mais rápida</a>
+                    </h4>
+                    <p class="text-text-muted text-base mb-5 line-clamp-3">Entenda como o Sistema de Nomes de Domínio funciona e por que alterar o DNS do seu provedor para Google ou Cloudflare melhora sua navegação.</p>
+                </div>
+                <div class="p-6 pt-0 mt-auto">
+                    <a href="o-que-e-servidor-dns-e-como-mudar.html" class="text-brand font-semibold text-sm hover:underline">Leia mais →</a>
+                </div>
+            </article>
+
+            <!-- Article Card -->
+            <article class="bg-white rounded-lg border border-border-subtle overflow-hidden hover:shadow-ambient transition duration-300 flex flex-col">
+                <div class="p-6 flex-grow">
+                    <span class="inline-block bg-surface text-text-muted rounded px-2 py-1 text-xs font-semibold mb-3 border border-border-subtle">Infraestrutura e Redes</span>
+                    <h4 class="text-xl font-bold text-text-main mb-3 leading-snug">
+                        <a href="diferencas-entre-categorias-de-cabos-de-rede.html" class="hover:text-brand transition">Entenda as diferenças entre as categorias de cabos de rede (Cat5e, Cat6, Cat7 e Cat8)</a>
+                    </h4>
+                    <p class="text-text-muted text-base mb-5 line-clamp-3">Entenda as diferenças técnicas entre as categorias de cabo Ethernet e saiba qual escolher para não criar gargalos na sua rede.</p>
+                </div>
+                <div class="p-6 pt-0 mt-auto">
+                    <a href="diferencas-entre-categorias-de-cabos-de-rede.html" class="text-brand font-semibold text-sm hover:underline">Leia mais →</a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer class="bg-surface border-t border-border-subtle py-8 mt-auto">
+        <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+            <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="../quem-somos.html" class="hover:text-brand transition font-medium">Quem Somos</a>
+                <a href="../politica-de-privacidade.html" class="hover:text-brand transition font-medium">Política de Privacidade</a>
+                <a href="../contato.html" class="hover:text-brand transition font-medium">Contato</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

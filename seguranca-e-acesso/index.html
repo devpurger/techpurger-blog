@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança e Acesso | TechPurger</title>
+    <meta name="description" content="Artigos e guias práticos sobre segurança da informação, redes CFTV e acessos em TI.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['monospace'] },
+                    colors: { brand: '#0056b3', surface: '#f8f9fa', 'border-subtle': '#e9ecef', 'text-main': '#1a1a1a', 'text-muted': '#4a5568' },
+                    maxWidth: { 'container-max': '1200px' },
+                    boxShadow: { ambient: '0 4px 12px rgba(0, 0, 0, 0.05)' }
+                }
+            }
+        }
+    </script>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body class="bg-white text-text-main font-sans antialiased flex flex-col min-h-screen">
+
+    <header class="bg-brand text-white border-b border-border-subtle">
+        <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
+                <a href="index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Segurança e Acesso</a>
+                <a href="../desenvolvimento-e-ti/index.html" class="text-white hover:opacity-80 transition font-medium">Desenvolvimento e TI</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="max-w-container-max mx-auto px-6 mt-8 flex justify-center">
+        <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 728px; height: 90px; max-width: 100%;">
+            [ANÚNCIO: 728x90]
+        </div>
+    </div>
+
+    <main class="flex-grow max-w-container-max mx-auto px-6 py-12 w-full">
+        <div class="mb-8 border-b border-border-subtle pb-6">
+            <h1 class="text-3xl md:text-4xl font-bold text-text-main tracking-tight">Segurança e Acesso</h1>
+            <p class="text-lg text-text-muted mt-2">Dicas e soluções para problemas de permissões, sistemas CFTV, firewall e proteção de dados.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Article Card 1 -->
+            <article class="bg-white rounded-lg border border-border-subtle overflow-hidden hover:shadow-ambient transition duration-300 flex flex-col">
+                <div class="p-6 flex-grow">
+                    <span class="inline-block bg-surface text-text-muted rounded px-2 py-1 text-xs font-semibold mb-3 border border-border-subtle">Segurança e Acesso</span>
+                    <h4 class="text-xl font-bold text-text-main mb-3 leading-snug">
+                        <a href="como-resolver-erro-de-p2p-no-dvr-fora-de-casa.html" class="hover:text-brand transition">Como resolver erro de P2P no DVR e ver as câmeras fora de casa</a>
+                    </h4>
+                    <p class="text-text-muted text-base mb-5 line-clamp-3">Muitos usuários enfrentam problemas para acessar as câmeras de segurança remotamente. Veja como corrigir problemas de DNS e DHCP no seu DVR.</p>
+                </div>
+                <div class="p-6 pt-0 mt-auto">
+                    <a href="como-resolver-erro-de-p2p-no-dvr-fora-de-casa.html" class="text-brand font-semibold text-sm hover:underline">Leia mais →</a>
+                </div>
+            </article>
+
+            <!-- Article Card 2 -->
+            <article class="bg-white rounded-lg border border-border-subtle overflow-hidden hover:shadow-ambient transition duration-300 flex flex-col">
+                <div class="p-6 flex-grow">
+                    <span class="inline-block bg-surface text-text-muted rounded px-2 py-1 text-xs font-semibold mb-3 border border-border-subtle">Segurança e Acesso</span>
+                    <h4 class="text-xl font-bold text-text-main mb-3 leading-snug">
+                        <a href="como-a-cloudflare-mitiga-ataques-ddos.html" class="hover:text-brand transition">O que é um ataque DDoS e como a Cloudflare bloqueia</a>
+                    </h4>
+                    <p class="text-text-muted text-base mb-5 line-clamp-3">Ataques de negação de serviço derrubam sites gigantes todos os dias. Entenda como essa ameaça funciona e como uma CDN consegue bloquear.</p>
+                </div>
+                <div class="p-6 pt-0 mt-auto">
+                    <a href="como-a-cloudflare-mitiga-ataques-ddos.html" class="text-brand font-semibold text-sm hover:underline">Leia mais →</a>
+                </div>
+            </article>
+
+            <!-- Article Card 3 -->
+            <article class="bg-white rounded-lg border border-border-subtle overflow-hidden hover:shadow-ambient transition duration-300 flex flex-col">
+                <div class="p-6 flex-grow">
+                    <span class="inline-block bg-surface text-text-muted rounded px-2 py-1 text-xs font-semibold mb-3 border border-border-subtle">Segurança e Acesso</span>
+                    <h4 class="text-xl font-bold text-text-main mb-3 leading-snug">
+                        <a href="por-que-2fa-por-sms-nao-e-seguro.html" class="hover:text-brand transition">Por que Autenticação de Dois Fatores (2FA) via SMS não é mais segura?</a>
+                    </h4>
+                    <p class="text-text-muted text-base mb-5 line-clamp-3">Entenda por que depender apenas de mensagens SMS para a segurança das suas contas críticas expõe você a ataques como SIM Swapping.</p>
+                </div>
+                <div class="p-6 pt-0 mt-auto">
+                    <a href="por-que-2fa-por-sms-nao-e-seguro.html" class="text-brand font-semibold text-sm hover:underline">Leia mais →</a>
+                </div>
+            </article>
+
+            <!-- Article Card 4 -->
+            <article class="bg-white rounded-lg border border-border-subtle overflow-hidden hover:shadow-ambient transition duration-300 flex flex-col">
+                <div class="p-6 flex-grow">
+                    <span class="inline-block bg-surface text-text-muted rounded px-2 py-1 text-xs font-semibold mb-3 border border-border-subtle">Segurança e Acesso</span>
+                    <h4 class="text-xl font-bold text-text-main mb-3 leading-snug">
+                        <a href="o-que-e-phishing-como-identificar.html" class="hover:text-brand transition">O que é Phishing? Como identificar e se proteger de e-mails falsos</a>
+                    </h4>
+                    <p class="text-text-muted text-base mb-5 line-clamp-3">Aprenda o que é Phishing, a tática de engenharia social mais comum na internet, e saiba identificar links maliciosos antes de clicar.</p>
+                </div>
+                <div class="p-6 pt-0 mt-auto">
+                    <a href="o-que-e-phishing-como-identificar.html" class="text-brand font-semibold text-sm hover:underline">Leia mais →</a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer class="bg-surface border-t border-border-subtle py-8 mt-12">
+        <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+            <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="../quem-somos.html" class="hover:text-brand transition font-medium">Quem Somos</a>
+                <a href="../politica-de-privacidade.html" class="hover:text-brand transition font-medium">Política de Privacidade</a>
+                <a href="../contato.html" class="hover:text-brand transition font-medium">Contato</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

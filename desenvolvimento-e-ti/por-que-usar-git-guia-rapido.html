@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Por que o Git é obrigatório? Um guia rápido | TechPurger</title>
+    <meta name="description" content="Aprenda por que o controle de versão com Git e plataformas como GitHub se tornou a principal exigência básica para qualquer desenvolvedor moderno.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['monospace'] },
+                    colors: { brand: '#0056b3', surface: '#f8f9fa', 'border-subtle': '#e9ecef', 'text-main': '#1a1a1a', 'text-muted': '#4a5568', 'code-bg': '#1a202c' },
+                    maxWidth: { 'container-max': '1200px' }
+                }
+            }
+        }
+    </script>
+    <style> body { color: #1a1a1a; line-height: 1.6; } </style>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body class="bg-white text-text-main font-sans antialiased flex flex-col min-h-screen">
+
+    <header class="bg-brand text-white border-b border-border-subtle">
+        <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
+                <a href="../seguranca-e-acesso/index.html" class="text-white hover:opacity-80 transition font-medium">Segurança e Acesso</a>
+                <a href="index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Desenvolvimento e TI</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="max-w-container-max mx-auto px-6 mt-8 flex justify-center">
+        <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 728px; height: 90px; max-width: 100%;">
+            [ANÚNCIO: 728x90]
+        </div>
+    </div>
+
+    <div class="max-w-container-max mx-auto px-6 py-8 flex flex-col lg:flex-row gap-6 flex-grow">
+        
+        <main class="w-full lg:w-3/4">
+            <article class="bg-white rounded-lg border border-border-subtle p-6 lg:p-8">
+                
+                <nav class="text-sm font-medium text-text-muted mb-6">
+                    <a href="../index.html" class="hover:text-brand transition">Home</a> <span class="mx-2 text-border-subtle">/</span>
+                    <a href="index.html" class="hover:text-brand transition">Desenvolvimento e TI</a> <span class="mx-2 text-border-subtle">/</span>
+                    <span class="text-text-main">Guia de Git</span>
+                </nav>
+
+                <h1 class="text-3xl lg:text-4xl font-bold text-text-main mb-6 tracking-tight leading-tight">Por que o Git é obrigatório? Um guia rápido de versionamento</h1>
+                
+                <div class="flex items-center text-text-muted text-sm font-medium mb-8 border-b border-border-subtle pb-4">
+                    <span>Publicado em: 24 de Maio de 2026</span>
+                    <span class="mx-3 text-border-subtle">•</span>
+                    <span>Por: TechPurger</span>
+                </div>
+
+                <div class="prose max-w-none text-text-main text-lg space-y-6">
+                    <p>Salvar pastas como <code>projeto_final</code>, <code>projeto_final_revisado</code> e <code>projeto_final_agora_vai</code> é uma prática clássica para quem inicia na programação. Mas o que acontece quando duas pessoas precisam mexer no código simultaneamente, e alguém apaga acidentalmente o trabalho do outro numa pasta na rede?</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">O que é o Git?</h2>
+                    <p>Criado por Linus Torvalds (o mesmo criador do Linux), o <strong>Git</strong> é um Sistema de Controle de Versões Distribuído. Ele funciona de forma similar ao mecanismo de "Viagem no Tempo" em jogos eletrônicos. Toda vez que você termina um bloco de código, você cria um ponto de salvamento oficial, chamado <em>Commit</em>. Se tudo der errado no futuro, você consegue reverter o seu projeto imediatamente para qualquer "Commit" anterior no tempo com 100% de precisão, linha por linha.</p>
+
+                    <div class="flex justify-center my-10 lg:float-right lg:ml-8 lg:mb-6">
+                        <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 300px; height: 250px;">
+                            [ANÚNCIO: 300x250]
+                        </div>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight clear-both">Git e GitHub não são a mesma coisa</h2>
+                    <p>O maior erro dos novatos é confundir os dois:</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>O Git:</strong> É a ferramenta pura de linha de comando que roda <em>localmente</em> no seu computador, fazendo o acompanhamento dos arquivos invisivelmente.</li>
+                        <li><strong>O GitHub:</strong> É uma plataforma web de hospedagem nas nuvens que permite você fazer o upload da sua linha do tempo do Git. O GitHub provê a interface visual elegante, mas a mágica do versionamento acontece no motor oculto do Git, independente de onde esteja armazenado.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">O poder das Branches (Ramificações)</h2>
+                    <p>O maior poder do Git não é seu histórico linear, mas sim seu suporte impecável a <strong>Branches</strong>. Imagine que o código oficial e principal em produção resida na linha principal (chamada <code>main</code>). Você quer desenvolver um carrinho de compras novo. Com um comando, você cria um "universo paralelo" isolado onde pode quebrar seu código à vontade (a branch "carrinho").</p>
+                    <p>Enquanto você passa 3 dias quebrando as coisas na branch do carrinho, a branch <code>main</code> continua estável. Quando você terminar e o código for testado, as duas linhas temporais se fundem (através de um comando de Merge), sem causar dor de cabeça.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">Os 4 comandos mágicos para o iniciante</h2>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4 space-y-2">
+                        <p><span class="text-blue-400">git clone</span> url-do-projeto <span class="text-gray-500">// Baixa um repositório existente</span></p>
+                        <p><span class="text-blue-400">git add</span> . <span class="text-gray-500">// Diz ao Git para prestar atenção em todas as modificações</span></p>
+                        <p><span class="text-blue-400">git commit -m</span> "Criou novo menu" <span class="text-gray-500">// Cria o ponto de salvamento local oficial</span></p>
+                        <p><span class="text-blue-400">git push</span> <span class="text-gray-500">// Envia as alterações da sua máquina para o servidor do GitHub</span></p>
+                    </div>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Conclusão</h4>
+                        <p class="text-text-muted text-base">Não espere ser contratado para aprender Git. Comece criando um repositório local nos seus projetos simples da faculdade. Um desenvolvedor moderno que não sabe as operações básicas do Git costuma ser duramente eliminado já na triagem técnica de currículos.</p>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <aside class="w-full lg:w-1/4 flex flex-col gap-6">
+            <div class="flex justify-center">
+                <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 300px; height: 250px;">
+                    [ANÚNCIO: 300x250]
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 border border-border-subtle">
+                <h3 class="text-lg font-bold text-text-main mb-4 border-b border-border-subtle pb-2">Artigos Relacionados</h3>
+                <ul class="space-y-3">
+                    <li><a href="clean-code-5-boas-praticas-essenciais.html" class="text-brand hover:underline text-sm font-medium leading-snug line-clamp-2">Clean Code: 5 boas práticas</a></li>
+                </ul>
+            </div>
+
+            <div class="flex justify-center flex-1">
+                <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded sticky top-6" style="width: 160px; height: 600px;">
+                    [ANÚNCIO: 160x600]
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="bg-surface border-t border-border-subtle py-8 mt-12">
+        <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+            <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="../quem-somos.html" class="hover:text-brand transition font-medium">Quem Somos</a>
+                <a href="../politica-de-privacidade.html" class="hover:text-brand transition font-medium">Política de Privacidade</a>
+                <a href="../contato.html" class="hover:text-brand transition font-medium">Contato</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

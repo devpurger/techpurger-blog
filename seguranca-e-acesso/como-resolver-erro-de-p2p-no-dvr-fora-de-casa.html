@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como resolver erro de P2P no DVR e voltar a ver as câmeras fora de casa | TechPurger</title>
+    <meta name="description" content="Aprenda a resolver o problema de acesso P2P no seu DVR para voltar a visualizar suas câmeras de segurança remotamente.">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['monospace'],
+                    },
+                    colors: {
+                        brand: '#0056b3',
+                        surface: '#f8f9fa',
+                        'border-subtle': '#e9ecef',
+                        'text-main': '#1a1a1a',
+                        'text-muted': '#4a5568',
+                        'code-bg': '#1a202c',
+                    },
+                    boxShadow: {
+                        ambient: '0 4px 12px rgba(0, 0, 0, 0.05)',
+                    },
+                    maxWidth: {
+                        'container-max': '1200px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { color: #1a1a1a; line-height: 1.6; }
+    </style>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body class="bg-white text-text-main font-sans antialiased">
+
+    <!-- Header -->
+    <header class="bg-brand text-white border-b border-border-subtle">
+        <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
+                <a href="index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Segurança e Acesso</a>
+                <a href="../desenvolvimento-e-ti/index.html" class="text-white hover:opacity-80 transition font-medium">Desenvolvimento e TI</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Top Ad -->
+    <div class="max-w-container-max mx-auto px-6 mt-8 flex justify-center">
+        <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 728px; height: 90px; max-width: 100%;">
+            [ANÚNCIO: 728x90]
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-container-max mx-auto px-6 py-8 flex flex-col lg:flex-row gap-6">
+        
+        <!-- Left Column: Article -->
+        <main class="w-full lg:w-3/4">
+            <article class="bg-white rounded-lg border border-border-subtle p-6 lg:p-8">
+                
+                <!-- Breadcrumbs -->
+                <nav class="text-sm font-medium text-text-muted mb-6">
+                    <a href="../index.html" class="hover:text-brand transition">Home</a> <span class="mx-2 text-border-subtle">/</span>
+                    <a href="index.html" class="hover:text-brand transition">Segurança e Acesso</a> <span class="mx-2 text-border-subtle">/</span>
+                    <span class="text-text-main">Erro de P2P no DVR</span>
+                </nav>
+
+                <h1 class="text-3xl lg:text-4xl font-bold text-text-main mb-6 tracking-tight leading-tight">Como resolver erro de P2P no DVR e voltar a ver as câmeras fora de casa</h1>
+                
+                <div class="flex items-center text-text-muted text-sm font-medium mb-8 border-b border-border-subtle pb-4">
+                    <span>Publicado em: 24 de Maio de 2026</span>
+                    <span class="mx-3 text-border-subtle">•</span>
+                    <span>Por: Rinaldo Purger</span>
+                </div>
+
+                <div class="prose max-w-none text-text-main text-lg space-y-6">
+                    <p>Um dos problemas mais comuns enfrentados por quem possui sistemas de CFTV (câmeras de segurança) é perder o acesso remoto. Você está fora de casa, abre o aplicativo no celular e se depara com uma mensagem de que o DVR está offline ou com "Erro de P2P".</p>
+                    
+                    <p>O recurso P2P (Peer-to-Peer) é a tecnologia que permite ao seu DVR se comunicar com os servidores do fabricante e, consequentemente, com o seu smartphone, sem a necessidade de configurações avançadas de redirecionamento de portas no roteador. Quando isso falha, geralmente o problema está na comunicação de rede local.</p>
+                    
+                    <!-- In-article Ad -->
+                    <div class="flex justify-center my-10">
+                        <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 728px; height: 90px; max-width: 100%;">
+                            [ANÚNCIO: 728x90]
+                        </div>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">Por que o erro acontece?</h2>
+                    <p>Na grande maioria das vezes, o DVR perdeu a comunicação com a internet devido a uma falha na obtenção de um endereço IP válido via DHCP ou por uma resolução de DNS incorreta. Quedas de energia ou reinicializações do roteador da operadora frequentemente causam esse tipo de inconsistência.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">Passo a Passo para a Resolução</h2>
+                    
+                    <h3 class="text-xl font-bold text-text-main mt-8 mb-3">1. Verifique a conexão física</h3>
+                    <p>Antes de qualquer configuração, certifique-se de que o cabo de rede está firmemente conectado ao DVR e ao seu roteador. Verifique se os LEDs da porta de rede do DVR estão piscando.</p>
+
+                    <h3 class="text-xl font-bold text-text-main mt-8 mb-3">2. Acesse as configurações de Rede do DVR</h3>
+                    <p>Utilizando um monitor conectado ao DVR e o mouse, acesse o <strong>Menu Principal</strong>. Vá até a seção de <strong>Rede</strong> ou <strong>Network</strong>.</p>
+
+                    <h3 class="text-xl font-bold text-text-main mt-8 mb-3">3. Ative ou renove o DHCP</h3>
+                    <p>Verifique se a opção <strong>DHCP</strong> está marcada. O DHCP permite que o roteador atribua as configurações de rede automaticamente. Se estiver marcada e mesmo assim não funcionar, desmarque a opção, salve as configurações, marque novamente e salve. Isso forçará uma nova requisição de IP.</p>
+
+                    <h3 class="text-xl font-bold text-text-main mt-8 mb-3">4. Configure os servidores DNS manualmente</h3>
+                    <p>Esta é a solução definitiva na maioria dos casos. Em vez de depender do DNS fornecido pelo provedor de internet, configure os DNS do Google, que são mais estáveis. Nas configurações de rede do DVR, localize os campos de DNS e insira:</p>
+                    
+                    <div class="relative mt-4 mb-6">
+                        <div class="absolute right-0 top-0 text-xs text-gray-400 p-2 font-mono uppercase">Rede</div>
+                        <pre class="bg-code-bg text-gray-200 rounded-lg p-6 font-mono text-sm overflow-x-auto shadow-inner leading-relaxed">DNS Preferencial (Primário): 8.8.8.8
+DNS Alternativo (Secundário): 8.8.4.4</pre>
+                    </div>
+
+                    <p>Salve as configurações.</p>
+
+                    <h3 class="text-xl font-bold text-text-main mt-8 mb-3">5. Reinicie o equipamento</h3>
+                    <p>Após realizar as alterações, é altamente recomendável reiniciar tanto o DVR quanto o roteador de internet. Aguarde cerca de 5 minutos para que os equipamentos inicializem completamente e estabeleçam conexão.</p>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Conclusão</h4>
+                        <p class="text-text-muted text-base">Ao realizar estes passos, acesse o menu do P2P (geralmente em Rede > P2P ou Intelbras Cloud) e verifique se o status mudou de "Offline" ou "Desconectado" para "Online" ou "Conectado". Agora, basta abrir o seu aplicativo e acessar as câmeras de onde estiver.</p>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="w-full lg:w-1/4 flex flex-col gap-6">
+            <!-- Flow Ad -->
+            <div class="flex justify-center">
+                <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 300px; height: 250px;">
+                    [ANÚNCIO: 300x250]
+                </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="bg-white rounded-lg p-6 border border-border-subtle">
+                <h3 class="text-lg font-bold text-text-main mb-4 border-b border-border-subtle pb-2">Veja também</h3>
+                <ul class="space-y-3">
+                    <li><a href="../desenvolvimento-e-ti/como-resolver-uso-de-100-de-disco-no-windows-sem-formatar.html" class="text-brand hover:underline text-sm font-medium leading-snug line-clamp-2">Como resolver o uso de 100% de disco no Windows sem formatar o PC</a></li>
+                </ul>
+            </div>
+
+            <!-- Vertical Sidebar Ad -->
+            <div class="flex justify-center flex-1">
+                <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded sticky top-6" style="width: 160px; height: 600px;">
+                    [ANÚNCIO: 160x600]
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-border-subtle py-8 mt-12">
+        <div class="max-w-container-max mx-auto px-6 text-center text-text-muted">
+            <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../src/js/main.js"></script>
+</body>
+</html>
+

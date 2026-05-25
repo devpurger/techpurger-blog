@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como resolver o uso de 100% de disco no Windows sem formatar o PC | TechPurger</title>
+    <meta name="description" content="Guia definitivo com os 5 passos técnicos para resolver o problema crônico de 100% de uso de disco no Windows.">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['monospace'],
+                    },
+                    colors: {
+                        brand: '#0056b3',
+                        surface: '#f8f9fa',
+                        'border-subtle': '#e9ecef',
+                        'text-main': '#1a1a1a',
+                        'text-muted': '#4a5568',
+                        'code-bg': '#1a202c',
+                    },
+                    boxShadow: {
+                        ambient: '0 4px 12px rgba(0, 0, 0, 0.05)',
+                    },
+                    maxWidth: {
+                        'container-max': '1200px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { color: #1a1a1a; line-height: 1.6; }
+    </style>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body class="bg-white text-text-main font-sans antialiased">
+
+    <!-- Header -->
+    <header class="bg-brand text-white border-b border-border-subtle">
+        <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
+                <a href="../seguranca-e-acesso/index.html" class="text-white hover:opacity-80 transition font-medium">Segurança e Acesso</a>
+                <a href="index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Desenvolvimento e TI</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Top Ad -->
+    <div class="max-w-container-max mx-auto px-6 mt-8 flex justify-center">
+        <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 728px; height: 90px; max-width: 100%;">
+            [ANÚNCIO: 728x90]
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-container-max mx-auto px-6 py-8 flex flex-col lg:flex-row gap-6">
+        
+        <!-- Left Column: Article -->
+        <main class="w-full lg:w-3/4">
+            <article class="bg-white rounded-lg border border-border-subtle p-6 lg:p-8">
+                
+                <!-- Breadcrumbs -->
+                <nav class="text-sm font-medium text-text-muted mb-6">
+                    <a href="../index.html" class="hover:text-brand transition">Home</a> <span class="mx-2 text-border-subtle">/</span>
+                    <a href="index.html" class="hover:text-brand transition">Desenvolvimento e TI</a> <span class="mx-2 text-border-subtle">/</span>
+                    <span class="text-text-main">100% de Disco no Windows</span>
+                </nav>
+
+                <h1 class="text-3xl lg:text-4xl font-bold text-text-main mb-6 tracking-tight leading-tight">Como resolver o uso de 100% de disco no Windows sem formatar o PC</h1>
+                
+                <div class="flex items-center text-text-muted text-sm font-medium mb-8 border-b border-border-subtle pb-4">
+                    <span>Publicado em: 24 de Maio de 2026</span>
+                    <span class="mx-3 text-border-subtle">•</span>
+                    <span>Por: Rinaldo Purger</span>
+                </div>
+
+                <div class="prose max-w-none text-text-main text-lg space-y-6">
+                    <p>Ligar o computador e perceber que ele está extremamente lento, travando em tarefas simples como abrir o navegador ou o explorador de arquivos é frustrante. Ao abrir o Gerenciador de Tarefas, você descobre o culpado: o uso do disco está cravado em 100%.</p>
+                    
+                    <p>Este é um dos bugs mais notórios das versões recentes do Windows. Antes de pensar em formatar sua máquina ou comprar hardware novo (embora um SSD sempre seja recomendado), siga estes 5 passos técnicos que resolvem o problema na imensa maioria das vezes.</p>
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">1. Desativar o serviço SysMain (antigo SuperFetch)</h2>
+                    <p>O SysMain tem a função de pré-carregar os aplicativos que você mais usa na memória RAM para que abram mais rápido. No entanto, em HDs convencionais, ele costuma sobrecarregar a leitura do disco.</p>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Pressione <kbd class="bg-surface border border-border-subtle text-text-main rounded px-2 py-0.5 text-sm font-mono font-medium">Windows + R</kbd></li>
+                        <li>Digite <code class="text-brand font-mono text-sm bg-blue-50 px-1 py-0.5 rounded">services.msc</code> e dê Enter</li>
+                        <li>Localize na lista o serviço <strong>SysMain</strong></li>
+                        <li>Clique duas vezes sobre ele, mude o <em>Tipo de inicialização</em> para <strong>Desativado</strong></li>
+                        <li>Clique em <strong>Parar</strong> e depois em OK.</li>
+                    </ol>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">2. Executar uma verificação de disco (CHKDSK)</h2>
+                    <p>Erros lógicos no sistema de arquivos ou setores defeituosos no disco rígido causam leituras infinitas e travamentos.</p>
+                    
+                    <!-- Mid-article Ad: 300x250 as requested to be interwoven -->
+                    <div class="flex justify-center my-8 lg:float-right lg:ml-8 lg:mb-6">
+                        <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 300px; height: 250px;">
+                            [ANÚNCIO: 300x250]
+                        </div>
+                    </div>
+                    
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Abra o menu Iniciar, digite <strong>cmd</strong></li>
+                        <li>Clique com o botão direito em <em>Prompt de Comando</em> e selecione <strong>Executar como administrador</strong></li>
+                        <li class="mt-4">Digite o comando abaixo e pressione Enter:
+                            <div class="relative mt-2 mb-4 clear-both">
+                                <div class="absolute right-0 top-0 text-xs text-gray-400 p-2 font-mono uppercase">Cmd</div>
+                                <pre class="bg-code-bg text-gray-200 rounded-lg p-6 font-mono text-sm overflow-x-auto shadow-inner leading-relaxed">chkdsk /f /r</pre>
+                            </div>
+                        </li>
+                        <li>O sistema pedirá para agendar a verificação para o próximo reinício. Pressione <strong>S</strong> e reinicie o PC. O processo pode demorar bastante.</li>
+                    </ol>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight clear-both">3. Ajustar o tamanho da Memória Virtual (Arquivo de Paginação)</h2>
+                    <p>Quando o Windows fica sem memória RAM livre, ele usa uma parte do disco rígido como memória virtual (pagefile.sys). Se esse processo estiver dinâmico, pode causar oscilações em 100%.</p>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Abra as <strong>Configurações Avançadas do Sistema</strong> (pode buscar por isso no Iniciar)</li>
+                        <li>Na aba <em>Avançado</em>, em Desempenho, clique em <strong>Configurações</strong></li>
+                        <li>Vá para a aba <em>Avançado</em> e em Memória Virtual, clique em <strong>Alterar</strong></li>
+                        <li>Desmarque a caixa "Gerenciar automaticamente..."</li>
+                        <li>Selecione a unidade C: e escolha <strong>Tamanho personalizado</strong>. Defina o tamanho inicial e máximo iguais (recomenda-se 1,5x o valor da sua RAM instalada em MB). Clique em <strong>Definir</strong> e depois OK.</li>
+                    </ol>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">4. Desativar dicas, truques e sugestões do Windows</h2>
+                    <p>Por mais estranho que pareça, o sistema de notificações do Windows costuma rodar em segundo plano e sobrecarregar o disco.</p>
+                    <div class="bg-surface px-6 py-4 rounded my-4 text-text-main text-base">
+                        <strong class="text-brand font-semibold block mb-1">Nota da equipe técnica:</strong>
+                        Isso é especialmente notável em máquinas com HDs mecânicos (5400rpm) e pouca memória RAM instalada.
+                    </div>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Vá em <strong>Configurações</strong> > <strong>Sistema</strong> > <strong>Notificações e ações</strong></li>
+                        <li>Desmarque a opção <em>Obter dicas, truques e sugestões de como usar o Windows</em>.</li>
+                    </ol>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">5. Reparar arquivos do sistema com SFC</h2>
+                    <p>Arquivos corrompidos do próprio Windows podem gerar loops de leitura.</p>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Abra novamente o <strong>Prompt de Comando como administrador</strong></li>
+                        <li class="mt-4">Digite e execute:
+                            <div class="relative mt-2 mb-4">
+                                <div class="absolute right-0 top-0 text-xs text-gray-400 p-2 font-mono uppercase">Cmd</div>
+                                <pre class="bg-code-bg text-gray-200 rounded-lg p-6 font-mono text-sm overflow-x-auto shadow-inner leading-relaxed">sfc /scannow</pre>
+                            </div>
+                        </li>
+                        <li>Aguarde a finalização a 100% e reinicie o computador.</li>
+                    </ol>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Conclusão</h4>
+                        <p class="text-text-muted text-base">Ao realizar essas 5 etapas com atenção, o uso do disco do seu computador deve normalizar. Monitore pelo Gerenciador de Tarefas. Caso o problema persista com frequência em um HD mecânico, a solução definitiva será o upgrade para um SSD (Solid State Drive).</p>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="w-full lg:w-1/4 flex flex-col gap-6">
+            <!-- Flow Ad -->
+            <div class="flex justify-center">
+                <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 300px; height: 250px;">
+                    [ANÚNCIO: 300x250]
+                </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="bg-white rounded-lg p-6 border border-border-subtle">
+                <h3 class="text-lg font-bold text-text-main mb-4 border-b border-border-subtle pb-2">Veja também</h3>
+                <ul class="space-y-3">
+                    <li><a href="../seguranca-e-acesso/como-resolver-erro-de-p2p-no-dvr-fora-de-casa.html" class="text-brand hover:underline text-sm font-medium leading-snug line-clamp-2">Como resolver erro de P2P no DVR e voltar a ver as câmeras fora de casa</a></li>
+                </ul>
+            </div>
+
+            <!-- Vertical Sidebar Ad -->
+            <div class="flex justify-center flex-1">
+                <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded sticky top-6" style="width: 160px; height: 600px;">
+                    [ANÚNCIO: 160x600]
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-border-subtle py-8 mt-12">
+        <div class="max-w-container-max mx-auto px-6 text-center text-text-muted">
+            <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../src/js/main.js"></script>
+</body>
+</html>
+
