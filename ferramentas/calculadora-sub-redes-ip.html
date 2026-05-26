@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Sub-redes IP (IPv4) | TechPurger</title>
+    <meta name="description" content="Calcule sub-redes IPv4. Obtenha IP de Rede, Broadcast, Máscara e número de Hosts usáveis a partir de um IP e CIDR.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['monospace'] },
+                    colors: { brand: '#0056b3', surface: '#f8f9fa', 'border-subtle': '#e9ecef', 'text-main': '#1a1a1a', 'text-muted': '#4a5568' },
+                    maxWidth: { 'container-max': '1200px', 'article-max': '800px' }
+                }
+            }
+        }
+    </script>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754805344258519" crossorigin="anonymous"></script>
+</head>
+<body class="bg-white text-text-main font-sans antialiased flex flex-col min-h-screen">
+
+    <header class="bg-brand text-white border-b border-border-subtle">
+        <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
+                <a href="../seguranca-e-acesso/index.html" class="text-white hover:opacity-80 transition font-medium">Segurança e Acesso</a>
+                <a href="../desenvolvimento-e-ti/index.html" class="text-white hover:opacity-80 transition font-medium">Desenvolvimento e TI</a>
+                <a href="index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Ferramentas</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-article-max mx-auto px-6 py-12 w-full">
+        <!-- AdSense Top -->
+        <div class="mb-8 border-2 border-dashed border-border-subtle bg-surface flex items-center justify-center text-text-muted font-mono text-sm" style="width: 100%; height: 90px; max-width: 728px; margin: 0 auto;">
+            [ANÚNCIO: 728x90]
+        </div>
+
+        <article>
+            <h1 class="text-3xl md:text-4xl font-bold text-text-main mb-6 leading-tight tracking-tight">Calculadora de Sub-redes IP (IPv4)</h1>
+            <p class="text-lg text-text-muted mb-8 leading-relaxed">
+                Digite um endereço IP e selecione a máscara de sub-rede (CIDR) para calcular os dados cruciais da sua rede instantaneamente.
+            </p>
+
+            <div class="bg-surface border border-border-subtle p-6 rounded-lg mb-8 shadow-sm">
+                
+                <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                    <div class="flex-grow">
+                        <label for="input-ip" class="block text-sm font-semibold text-text-main mb-2">Endereço IP</label>
+                        <input type="text" id="input-ip" placeholder="Ex: 192.168.1.10" value="192.168.0.1" class="w-full px-4 py-3 border border-border-subtle rounded-md focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-mono text-lg transition-colors">
+                    </div>
+                    <div class="w-full sm:w-1/3">
+                        <label for="input-cidr" class="block text-sm font-semibold text-text-main mb-2">Máscara CIDR</label>
+                        <select id="input-cidr" class="w-full px-4 py-3 border border-border-subtle rounded-md focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-mono text-lg transition-colors">
+                            <option value="8">/8 (255.0.0.0)</option>
+                            <option value="16">/16 (255.255.0.0)</option>
+                            <option value="24" selected>/24 (255.255.255.0)</option>
+                            <!-- Script will populate others -->
+                        </select>
+                    </div>
+                </div>
+
+                <div id="error-msg" class="text-red-600 text-sm font-semibold mb-4 hidden bg-red-50 p-3 rounded border border-red-200">IP inválido. Verifique o formato (ex: 192.168.0.1).</div>
+
+                <div class="border border-border-subtle rounded-md overflow-hidden bg-white">
+                    <table class="w-full text-left text-sm font-mono">
+                        <tbody class="divide-y divide-border-subtle">
+                            <tr><th class="px-4 py-3 bg-gray-50 text-text-main w-1/2">Endereço de Rede (Network)</th><td id="res-network" class="px-4 py-3 text-text-muted">-</td></tr>
+                            <tr><th class="px-4 py-3 bg-gray-50 text-text-main">Máscara (Subnet Mask)</th><td id="res-mask" class="px-4 py-3 text-text-muted">-</td></tr>
+                            <tr><th class="px-4 py-3 bg-gray-50 text-text-main">Endereço de Broadcast</th><td id="res-broadcast" class="px-4 py-3 text-text-muted">-</td></tr>
+                            <tr><th class="px-4 py-3 bg-gray-50 text-text-main">Primeiro IP Usável</th><td id="res-first" class="px-4 py-3 text-text-muted">-</td></tr>
+                            <tr><th class="px-4 py-3 bg-gray-50 text-text-main">Último IP Usável</th><td id="res-last" class="px-4 py-3 text-text-muted">-</td></tr>
+                            <tr><th class="px-4 py-3 bg-gray-50 text-text-main">Total de Hosts Usáveis</th><td id="res-hosts" class="px-4 py-3 font-semibold text-brand">-</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- AdSense Inline -->
+            <div class="my-8 border-2 border-dashed border-border-subtle bg-surface flex items-center justify-center text-text-muted font-mono text-sm mx-auto" style="width: 300px; height: 250px;">
+                [ANÚNCIO: 300x250]
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="bg-surface border-t border-border-subtle py-8 mt-auto">
+        <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+            <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="../quem-somos.html" class="hover:text-brand transition font-medium">Quem Somos</a>
+                <a href="../politica-de-privacidade.html" class="hover:text-brand transition font-medium">Política de Privacidade</a>
+                <a href="../contato.html" class="hover:text-brand transition font-medium">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const inputIp = document.getElementById('input-ip');
+        const inputCidr = document.getElementById('input-cidr');
+        const errorMsg = document.getElementById('error-msg');
+
+        // Populate CIDR dropdown
+        inputCidr.innerHTML = '';
+        for(let i=8; i<=32; i++) {
+            const mask = cidrToMask(i);
+            const opt = document.createElement('option');
+            opt.value = i;
+            opt.text = `/${i} (${mask.join('.')})`;
+            if(i === 24) opt.selected = true;
+            inputCidr.appendChild(opt);
+        }
+
+        function cidrToMask(cidr) {
+            let mask = [];
+            for (let i = 0; i < 4; i++) {
+                let n = Math.min(cidr, 8);
+                mask.push(256 - Math.pow(2, 8 - n));
+                cidr -= n;
+            }
+            return mask;
+        }
+
+        function ipToInt(ip) {
+            return ip.split('.').reduce((acc, octet) => (acc << 8) + parseInt(octet, 10), 0) >>> 0;
+        }
+
+        function intToIp(int) {
+            return [ (int >>> 24) & 255, (int >>> 16) & 255, (int >>> 8) & 255, int & 255 ].join('.');
+        }
+
+        function calculate() {
+            const ipVal = inputIp.value.trim();
+            const cidr = parseInt(inputCidr.value, 10);
+            
+            const ipRegex = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+            
+            if(!ipRegex.test(ipVal)) {
+                errorMsg.style.display = 'block';
+                return;
+            }
+            errorMsg.style.display = 'none';
+
+            const ipInt = ipToInt(ipVal);
+            const maskInt = ipToInt(cidrToMask(cidr).join('.'));
+            
+            const networkInt = (ipInt & maskInt) >>> 0;
+            const invertedMaskInt = (~maskInt) >>> 0;
+            const broadcastInt = (networkInt | invertedMaskInt) >>> 0;
+
+            const firstUsable = cidr < 31 ? networkInt + 1 : networkInt;
+            const lastUsable = cidr < 31 ? broadcastInt - 1 : broadcastInt;
+            const totalHosts = cidr < 31 ? broadcastInt - networkInt - 1 : (cidr === 31 ? 2 : 1);
+
+            document.getElementById('res-network').innerText = intToIp(networkInt);
+            document.getElementById('res-mask').innerText = intToIp(maskInt);
+            document.getElementById('res-broadcast').innerText = intToIp(broadcastInt);
+            document.getElementById('res-first').innerText = intToIp(firstUsable);
+            document.getElementById('res-last').innerText = intToIp(lastUsable);
+            document.getElementById('res-hosts').innerText = totalHosts.toLocaleString('pt-BR');
+        }
+
+        inputIp.addEventListener('input', calculate);
+        inputCidr.addEventListener('change', calculate);
+        
+        // Initial calc
+        calculate();
+    </script>
+</body>
+</html>
