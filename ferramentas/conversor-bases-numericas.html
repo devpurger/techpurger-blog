@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Bases Numéricas | TechPurger</title>
+    <meta name="description" content="Converta números instantaneamente entre base decimal, binária e hexadecimal de forma gratuita.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['monospace'] },
+                    colors: { brand: '#0056b3', surface: '#f8f9fa', 'border-subtle': '#e9ecef', 'text-main': '#1a1a1a', 'text-muted': '#4a5568' },
+                    maxWidth: { 'container-max': '1200px', 'article-max': '800px' }
+                }
+            }
+        }
+    </script>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754805344258519" crossorigin="anonymous"></script>
+</head>
+<body class="bg-white text-text-main font-sans antialiased flex flex-col min-h-screen">
+
+    <header class="bg-brand text-white border-b border-border-subtle">
+        <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
+                <a href="../seguranca-e-acesso/index.html" class="text-white hover:opacity-80 transition font-medium">Segurança e Acesso</a>
+                <a href="../desenvolvimento-e-ti/index.html" class="text-white hover:opacity-80 transition font-medium">Desenvolvimento e TI</a>
+                <a href="index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Ferramentas</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-article-max mx-auto px-6 py-12 w-full">
+        <!-- AdSense Top -->
+        <div class="mb-8 border-2 border-dashed border-border-subtle bg-surface flex items-center justify-center text-text-muted font-mono text-sm" style="width: 100%; height: 90px; max-width: 728px; margin: 0 auto;">
+            [ANÚNCIO: 728x90]
+        </div>
+
+        <article>
+            <h1 class="text-3xl md:text-4xl font-bold text-text-main mb-6 leading-tight tracking-tight">Conversor de Bases Numéricas (Binário, Decimal, Hex)</h1>
+            <p class="text-lg text-text-muted mb-8 leading-relaxed">
+                Digite o valor em qualquer um dos campos abaixo para convertê-lo instantaneamente para as outras bases. Suporta valores altos e converte em tempo real sem precisar recarregar a página.
+            </p>
+
+            <div class="bg-surface border border-border-subtle p-6 rounded-lg mb-8 shadow-sm">
+                
+                <div class="mb-5">
+                    <label for="input-dec" class="block text-sm font-semibold text-text-main mb-2">Decimal (Base 10)</label>
+                    <input type="number" id="input-dec" placeholder="Ex: 255" class="w-full px-4 py-3 border border-border-subtle rounded-md focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-mono text-lg transition-colors">
+                </div>
+
+                <div class="mb-5">
+                    <label for="input-bin" class="block text-sm font-semibold text-text-main mb-2">Binário (Base 2)</label>
+                    <input type="text" id="input-bin" placeholder="Ex: 11111111" class="w-full px-4 py-3 border border-border-subtle rounded-md focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-mono text-lg transition-colors">
+                </div>
+
+                <div class="mb-5">
+                    <label for="input-hex" class="block text-sm font-semibold text-text-main mb-2">Hexadecimal (Base 16)</label>
+                    <input type="text" id="input-hex" placeholder="Ex: FF" class="w-full px-4 py-3 border border-border-subtle rounded-md focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-mono text-lg uppercase transition-colors">
+                </div>
+
+                <button id="btn-clear" class="w-full bg-brand text-white font-semibold py-3 rounded-md hover:bg-blue-800 transition-colors">Limpar Campos</button>
+                <div id="error-msg" class="text-red-600 text-sm font-semibold mt-3 hidden">Valor inválido para esta base numérica.</div>
+            </div>
+
+            <!-- AdSense Inline -->
+            <div class="my-8 border-2 border-dashed border-border-subtle bg-surface flex items-center justify-center text-text-muted font-mono text-sm mx-auto" style="width: 300px; height: 250px;">
+                [ANÚNCIO: 300x250]
+            </div>
+            
+            <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Como funciona a conversão?</h2>
+            <p class="text-lg text-text-muted mb-4 leading-relaxed">
+                As bases numéricas são a forma como representamos quantidades:
+            </p>
+            <ul class="list-disc pl-6 mb-6 text-lg text-text-muted space-y-2">
+                <li><strong>Decimal (Base 10):</strong> É o sistema que usamos no dia a dia, com dígitos de 0 a 9.</li>
+                <li><strong>Binário (Base 2):</strong> O idioma nativo dos computadores, usa apenas os dígitos 0 e 1 para representar estados de ligado/desligado.</li>
+                <li><strong>Hexadecimal (Base 16):</strong> Muito usado em programação (como para cores CSS) para encurtar binários gigantes. Usa dígitos de 0 a 9 e as letras de A a F.</li>
+            </ul>
+
+        </article>
+    </main>
+
+    <footer class="bg-surface border-t border-border-subtle py-8 mt-auto">
+        <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+            <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="../quem-somos.html" class="hover:text-brand transition font-medium">Quem Somos</a>
+                <a href="../politica-de-privacidade.html" class="hover:text-brand transition font-medium">Política de Privacidade</a>
+                <a href="../contato.html" class="hover:text-brand transition font-medium">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const inputDec = document.getElementById('input-dec');
+        const inputBin = document.getElementById('input-bin');
+        const inputHex = document.getElementById('input-hex');
+        const errorMsg = document.getElementById('error-msg');
+        const btnClear = document.getElementById('btn-clear');
+
+        function showError(show) {
+            errorMsg.style.display = show ? 'block' : 'none';
+        }
+
+        function isValid(val, base) {
+            if (val === '') return true;
+            if (base === 2) return /^[01]+$/.test(val);
+            if (base === 16) return /^[0-9A-Fa-f]+$/.test(val);
+            return /^\d+$/.test(val);
+        }
+
+        inputDec.addEventListener('input', (e) => {
+            const val = e.target.value;
+            if (!isValid(val, 10)) { showError(true); return; }
+            showError(false);
+            if(val === '') { inputBin.value = ''; inputHex.value = ''; return; }
+            const num = BigInt(val);
+            inputBin.value = num.toString(2);
+            inputHex.value = num.toString(16).toUpperCase();
+        });
+
+        inputBin.addEventListener('input', (e) => {
+            const val = e.target.value;
+            if (!isValid(val, 2)) { showError(true); return; }
+            showError(false);
+            if(val === '') { inputDec.value = ''; inputHex.value = ''; return; }
+            const num = BigInt('0b' + val);
+            inputDec.value = num.toString(10);
+            inputHex.value = num.toString(16).toUpperCase();
+        });
+
+        inputHex.addEventListener('input', (e) => {
+            const val = e.target.value;
+            if (!isValid(val, 16)) { showError(true); return; }
+            showError(false);
+            if(val === '') { inputDec.value = ''; inputBin.value = ''; return; }
+            const num = BigInt('0x' + val);
+            inputDec.value = num.toString(10);
+            inputBin.value = num.toString(2);
+        });
+
+        btnClear.addEventListener('click', () => {
+            inputDec.value = '';
+            inputBin.value = '';
+            inputHex.value = '';
+            showError(false);
+        });
+    </script>
+</body>
+</html>
