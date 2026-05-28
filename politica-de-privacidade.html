@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -34,7 +34,14 @@
                 <a href="index.html" class="text-white hover:opacity-80 transition font-medium">Home</a>
                 <a href="quem-somos.html" class="text-white hover:opacity-80 transition font-medium">Quem Somos</a>
                 <a href="contato.html" class="text-white hover:opacity-80 transition font-medium">Contato</a>
-            </nav>
+                        </nav>
+            <button id="mobile-menu-btn" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white hover:text-blue-200 hover:border-blue-200 focus:outline-none">
+                <svg class="fill-current h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+            </button>
+        </div>
+            <div id="mobile-menu" class="hidden md:hidden bg-brand border-t border-blue-800">
+            <div class="px-6 py-2 flex flex-col" id="mobile-nav-links">
+            </div>
         </div>
     </header>
 
@@ -83,8 +90,23 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const desktopNav = document.querySelector('header nav');
+            const mobileNavLinks = document.getElementById('mobile-nav-links');
+            if (btn && menu && desktopNav && mobileNavLinks) {
+                mobileNavLinks.innerHTML = desktopNav.innerHTML;
+                const links = mobileNavLinks.querySelectorAll('a');
+                links.forEach(l => { l.className = 'block text-white hover:text-blue-200 transition font-medium text-lg py-3 border-b border-blue-800'; });
+                btn.addEventListener('click', function() { menu.classList.toggle('hidden'); });
+            }
+        });
+    </script>
 </body>
 </html>
+
 
 
 
