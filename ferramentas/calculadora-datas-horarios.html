@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Datas e Horários | TechPurger</title>
+    <meta name="description" content="Calcule a diferença exata de tempo entre duas datas e horários. Ideal para calcular tempo de gravação de câmeras, prazos e horas trabalhadas.">
+    <meta name="google-site-verification" content="xZ4uPnJxQZNOPLXOg_l5MkSC-QR-mk5zY8nXJaYKpTQ" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['monospace'] },
+                    colors: { brand: '#0056b3', surface: '#f8f9fa', 'border-subtle': '#e9ecef', 'text-main': '#1a1a1a', 'text-muted': '#4a5568' },
+                    maxWidth: { 'container-max': '1200px', 'article-max': '800px' }
+                }
+            }
+        }
+    </script>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754805344258519" crossorigin="anonymous"></script>
+</head>
+<body class="bg-white text-text-main font-sans antialiased flex flex-col min-h-screen">
+
+    <header class="bg-brand text-white border-b border-border-subtle">
+        <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
+                <a href="../seguranca-e-acesso/index.html" class="text-white hover:opacity-80 transition font-medium">Segurança e Acesso</a>
+                <a href="../desenvolvimento-e-ti/index.html" class="text-white hover:opacity-80 transition font-medium">Desenvolvimento e TI</a>
+                <a href="index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Ferramentas</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-article-max mx-auto px-6 py-12 w-full">
+        <!-- banner de topo -->
+        <div class="mb-8 flex items-center justify-center">
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-4754805344258519"
+                 data-ad-slot="5872920570"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <article>
+            <h1 class="text-3xl md:text-4xl font-bold text-text-main mb-6 leading-tight tracking-tight">Calculadora de Datas e Horários</h1>
+            <p class="text-lg text-text-muted mb-8 leading-relaxed">
+                Descubra a diferença exata entre duas datas. Perfeito para administradores de sistemas calcularem tempo de gravação de CFTV, uptime de servidores ou horas trabalhadas.
+            </p>
+
+            <div class="bg-surface border border-border-subtle p-6 md:p-8 rounded-lg mb-8 shadow-sm">
+                
+                <div class="flex flex-col md:flex-row gap-6 mb-8">
+                    <div class="w-full md:w-1/2">
+                        <label for="date-start" class="block text-sm font-semibold text-text-main mb-2">Data e Hora Inicial</label>
+                        <input type="datetime-local" id="date-start" class="w-full px-4 py-3 border border-border-subtle rounded-md focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-mono text-base transition-colors">
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <label for="date-end" class="block text-sm font-semibold text-text-main mb-2">Data e Hora Final</label>
+                        <input type="datetime-local" id="date-end" class="w-full px-4 py-3 border border-border-subtle rounded-md focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-mono text-base transition-colors">
+                    </div>
+                </div>
+
+                <div id="error-msg" class="text-red-600 text-sm font-semibold mb-4 hidden bg-red-50 p-3 rounded border border-red-200">A data final deve ser maior que a data inicial.</div>
+
+                <div class="border-t border-border-subtle pt-6">
+                    <h3 class="text-lg font-bold text-text-main mb-4">Resultado do Intervalo:</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-white p-4 rounded border border-border-subtle text-center">
+                            <div class="text-xs text-text-muted font-bold uppercase tracking-wider mb-1">Total de Dias</div>
+                            <div id="res-days" class="text-2xl font-bold text-brand">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded border border-border-subtle text-center">
+                            <div class="text-xs text-text-muted font-bold uppercase tracking-wider mb-1">Total em Horas</div>
+                            <div id="res-hours" class="text-2xl font-bold text-brand">0</div>
+                        </div>
+                        <div class="bg-white p-4 rounded border border-border-subtle text-center">
+                            <div class="text-xs text-text-muted font-bold uppercase tracking-wider mb-1">Total em Minutos</div>
+                            <div id="res-mins" class="text-2xl font-bold text-brand">0</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-brand text-white p-4 rounded font-medium text-center">
+                        Tempo Exato: <span id="res-exact" class="font-bold text-lg ml-2">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Banner Quadrado -->
+            <div class="my-8 flex items-center justify-center">
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:250px"
+                     data-ad-client="ca-pub-4754805344258519"
+                     data-ad-slot="7401624661"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="bg-surface border-t border-border-subtle py-8 mt-auto">
+        <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+            <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="../quem-somos.html" class="hover:text-brand transition font-medium">Quem Somos</a>
+                <a href="../politica-de-privacidade.html" class="hover:text-brand transition font-medium">Política de Privacidade</a>
+                <a href="../contato.html" class="hover:text-brand transition font-medium">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const dateStart = document.getElementById('date-start');
+        const dateEnd = document.getElementById('date-end');
+        const errorMsg = document.getElementById('error-msg');
+        
+        // Inicializar com datas de exemplo
+        const now = new Date();
+        const tomorrow = new Date(now);
+        tomorrow.setDate(tomorrow.getDate() + 7);
+        
+        // Ajustar fuso local pro input datetime-local
+        const pad = (n) => n < 10 ? '0' + n : n;
+        const formatForInput = (d) => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+        
+        dateStart.value = formatForInput(now);
+        dateEnd.value = formatForInput(tomorrow);
+
+        function calculate() {
+            if(!dateStart.value || !dateEnd.value) return;
+
+            const start = new Date(dateStart.value);
+            const end = new Date(dateEnd.value);
+            
+            if(end < start) {
+                errorMsg.style.display = 'block';
+                document.getElementById('res-days').innerText = '0';
+                document.getElementById('res-hours').innerText = '0';
+                document.getElementById('res-mins').innerText = '0';
+                document.getElementById('res-exact').innerText = '-';
+                return;
+            }
+            errorMsg.style.display = 'none';
+
+            const diffMs = end - start;
+            
+            // Totais absolutos
+            const totalMins = Math.floor(diffMs / 60000);
+            const totalHours = Math.floor(totalMins / 60);
+            const totalDaysAbs = (diffMs / (1000 * 60 * 60 * 24)).toFixed(2);
+
+            document.getElementById('res-days').innerText = totalDaysAbs.replace('.00', '');
+            document.getElementById('res-hours').innerText = totalHours.toLocaleString('pt-BR');
+            document.getElementById('res-mins').innerText = totalMins.toLocaleString('pt-BR');
+
+            // Tempo quebrado (Dias, Horas, Minutos)
+            const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+            let exactStr = [];
+            if(days > 0) exactStr.push(`${days} dia${days > 1 ? 's' : ''}`);
+            if(hours > 0) exactStr.push(`${hours} hora${hours > 1 ? 's' : ''}`);
+            if(mins > 0) exactStr.push(`${mins} minuto${mins > 1 ? 's' : ''}`);
+
+            document.getElementById('res-exact').innerText = exactStr.length > 0 ? exactStr.join(', ') : '0 minutos';
+        }
+
+        dateStart.addEventListener('change', calculate);
+        dateEnd.addEventListener('change', calculate);
+        
+        calculate();
+    </script>
+</body>
+</html>
