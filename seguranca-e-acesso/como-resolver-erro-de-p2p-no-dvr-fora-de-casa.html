@@ -1,221 +1,177 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Como resolver erro de P2P no DVR e voltar a ver as câmeras fora de casa | TechPurger</title>
-    <meta name="description" content="Aprenda a resolver o problema de acesso P2P no seu DVR para voltar a visualizar suas câmeras de segurança remotamente.">
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['monospace'],
-                    },
-                    colors: {
-                        brand: '#0056b3',
-                        surface: '#f8f9fa',
-                        'border-subtle': '#e9ecef',
-                        'text-main': '#1a1a1a',
-                        'text-muted': '#4a5568',
-                        'code-bg': '#1a202c',
-                    },
-                    boxShadow: {
-                        ambient: '0 4px 12px rgba(0, 0, 0, 0.05)',
-                    },
-                    maxWidth: {
-                        'container-max': '1200px',
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como resolver erro de P2P no DVR e ver as câmeras fora de casa | TechPurger</title>
+  <meta name="description" content="Muitos usuários enfrentam problemas para acessar as câmeras de segurança remotamente. Veja como corrigir problemas de DNS e DHCP no seu DVR.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['monospace'] },
+          colors: { brand: '#0056b3', surface: '#f8f9fa', 'border-subtle': '#e9ecef', 'text-main': '#1a1a1a', 'text-muted': '#4a5568' },
+          boxShadow: { ambient: '0 4px 12px rgba(0, 0, 0, 0.05)' },
+          maxWidth: { 'container-max': '1200px' }
         }
-    </script>
-    <style>
-        body { color: #1a1a1a; line-height: 1.6; }
-    </style>
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754805344258519" crossorigin="anonymous"></script>
-<meta name="google-site-verification" content="xZ4uPnJxQZNOPLXOg_l5MkSC-QR-mk5zY8nXJaYKpTQ" />
+      }
+    }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754805344258519" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="xZ4uPnJxQZNOPLXOg_l5MkSC-QR-mk5zY8nXJaYKpTQ" />
 </head>
 <body class="bg-white text-text-main font-sans antialiased">
 
-    <!-- Header -->
-    <header class="bg-brand text-white border-b border-border-subtle">
-        <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="../infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
-                <a href="index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Segurança e Acesso</a>
-                <a href="../desenvolvimento-e-ti/index.html" class="text-white hover:opacity-80 transition font-medium">Desenvolvimento e TI</a>
-                <a href="../ferramentas/index.html" class="text-white hover:opacity-80 transition font-medium">Ferramentas</a>
-                        </nav>
-            <button id="mobile-menu-btn" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white hover:text-blue-200 hover:border-blue-200 focus:outline-none">
-                <svg class="fill-current h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-            </button>
-        </div>
-            <div id="mobile-menu" class="hidden md:hidden bg-brand border-t border-blue-800">
-            <div class="px-6 py-2 flex flex-col" id="mobile-nav-links">
-            </div>
-        </div>
-    </header>
+<!-- Banner de Cookies -->
+<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1a1a1a; color:#fff; padding:16px 24px; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; font-family:'Inter',sans-serif; font-size:14px; box-shadow:0 -2px 12px rgba(0,0,0,0.3);">
+  <p style="margin:0; flex:1; min-width:240px;">
+    🍪 Utilizamos <strong>cookies</strong> para melhorar sua experiência e exibir anúncios relevantes via Google AdSense. Ao continuar navegando, você concorda com nossa
+    <a href="../politica-de-privacidade.html" style="color:#60a5fa; text-decoration:underline;">Política de Privacidade</a>.
+  </p>
+  <div style="display:flex; gap:10px; flex-shrink:0;">
+    <button onclick="aceitarCookies()" style="background:#0056b3; color:#fff; border:none; padding:10px 20px; border-radius:6px; font-weight:600; cursor:pointer; font-size:14px;">Aceitar</button>
+    <button onclick="recusarCookies()" style="background:transparent; color:#ccc; border:1px solid #555; padding:10px 16px; border-radius:6px; font-weight:600; cursor:pointer; font-size:14px;">Recusar</button>
+  </div>
+</div>
+<script>
+  (function() {
+    var consent = localStorage.getItem('cookieConsent');
+    var banner = document.getElementById('cookie-banner');
+    if (!consent && banner) { banner.style.display = 'flex'; }
+  })();
+  function aceitarCookies() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+  function recusarCookies() {
+    localStorage.setItem('cookieConsent', 'declined');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+</script>
 
-    <!-- Top Ad -->
-    <div class="max-w-container-max mx-auto px-6 mt-8 flex justify-center">
-        <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 728px; height: 90px; max-width: 100%;">
-            <!-- banner de topo -->
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:728px;height:90px"
-                 data-ad-client="ca-pub-4754805344258519"
-                 data-ad-slot="5872920570"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
+<header class="bg-brand text-white border-b border-border-subtle">
+  <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+    <nav class="hidden md:flex space-x-8">
+      <a href="../infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
+      <a href="../seguranca-e-acesso/index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Segurança e Acesso</a>
+      <a href="../desenvolvimento-e-ti/index.html" class="text-white hover:opacity-80 transition font-medium">Desenvolvimento e TI</a>
+      <a href="../ferramentas/index.html" class="text-white hover:opacity-80 transition font-medium">Ferramentas</a>
+    </nav>
+    <button id="mobile-menu-btn" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white hover:text-blue-200 hover:border-blue-200 focus:outline-none">
+      <svg class="fill-current h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-brand border-t border-blue-800">
+    <div class="px-6 py-2 flex flex-col" id="mobile-nav-links"></div>
+  </div>
+</header>
+
+<div class="max-w-container-max mx-auto px-6 py-8 flex flex-col lg:flex-row gap-8">
+  <main class="w-full lg:w-3/4">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-text-muted mb-6 flex items-center gap-2">
+      <a href="../index.html" class="hover:text-brand transition">Home</a>
+      <span>/</span>
+      <a href="../seguranca-e-acesso/index.html" class="hover:text-brand transition">Segurança e Acesso</a>
+      <span>/</span>
+      <span class="text-text-main font-medium truncate">Como resolver erro de P2P no DVR e ver as câmeras fora de casa</span>
+    </nav>
+
+  <div class="flex justify-center my-6">
+    <div class="border border-border-subtle bg-surface rounded" style="width:728px;max-width:100%;min-height:90px;">
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-4754805344258519" data-ad-slot="5872920570"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
+  </div>
 
-    <!-- Main Content -->
-    <div class="max-w-container-max mx-auto px-6 py-8 flex flex-col lg:flex-row gap-6">
-        
-        <!-- Left Column: Article -->
-        <main class="w-full lg:w-3/4">
-            <article class="bg-white rounded-lg border border-border-subtle p-6 lg:p-8">
-                
-                <!-- Breadcrumbs -->
-                <nav class="text-sm font-medium text-text-muted mb-6">
-                    <a href="../index.html" class="hover:text-brand transition">Home</a> <span class="mx-2 text-border-subtle">/</span>
-                    <a href="index.html" class="hover:text-brand transition">Segurança e Acesso</a> <span class="mx-2 text-border-subtle">/</span>
-                    <span class="text-text-main">Erro de P2P no DVR</span>
-                            </nav>
-            <button id="mobile-menu-btn" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white hover:text-blue-200 hover:border-blue-200 focus:outline-none">
-                <svg class="fill-current h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-            </button>
+    <article class="prose max-w-none">
+      <h1 class="text-3xl lg:text-4xl font-bold text-text-main mb-4 leading-tight">Como resolver erro de P2P no DVR e ver as câmeras fora de casa</h1>
+      <p class="text-text-muted text-sm mb-8">Publicado em: 24 de Maio de 2026 &bull; Por: <strong>Rinaldo Purger</strong></p>
 
-                <h1 class="text-3xl lg:text-4xl font-bold text-text-main mb-6 tracking-tight leading-tight">Como resolver erro de P2P no DVR e voltar a ver as câmeras fora de casa</h1>
-                
-                <div class="flex items-center text-text-muted text-sm font-medium mb-8 border-b border-border-subtle pb-4">
-                    <span>Publicado em: 24 de Maio de 2026</span>
-                    <span class="mx-3 text-border-subtle">•</span>
-                    <span>Por: Rinaldo Purger</span>
-                </div>
+      <p>Você está fora de casa e tenta acessar suas câmeras de segurança pelo aplicativo do DVR — e nada. A conexão falha, o app fica carregando infinitamente ou exibe uma mensagem de erro P2P. Esse é um problema muito comum e quase sempre tem solução sem precisar de técnico.</p>
 
-                <div class="prose max-w-none text-text-main text-lg space-y-6">
-                    <p>Um dos problemas mais comuns enfrentados por quem possui sistemas de CFTV (câmeras de segurança) é perder o acesso remoto. Você está fora de casa, abre o aplicativo no celular e se depara com uma mensagem de que o DVR está offline ou com "Erro de P2P".</p>
-                    
-                    <p>O recurso P2P (Peer-to-Peer) é a tecnologia que permite ao seu DVR se comunicar com os servidores do fabricante e, consequentemente, com o seu smartphone, sem a necessidade de configurações avançadas de redirecionamento de portas no roteador. Quando isso falha, geralmente o problema está na comunicação de rede local.</p>
-                    
-                    <!-- In-article Ad -->
-                    <div class="flex justify-center my-10">
-                        <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 728px; height: 90px; max-width: 100%;">
-                            <!-- banner de topo -->
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:728px;height:90px"
-                 data-ad-client="ca-pub-4754805344258519"
-                 data-ad-slot="5872920570"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-                        </div>
-                    </div>
+      <h2 class="text-2xl font-bold mt-8 mb-4">Entendendo o P2P</h2>
+      <p>P2P (Peer-to-Peer) é o protocolo usado pelos DVRs para conectar o aplicativo no celular diretamente ao gravador, sem precisar configurar portas no roteador. Ele usa servidores intermediários para estabelecer a conexão.</p>
 
-                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">Por que o erro acontece?</h2>
-                    <p>Na grande maioria das vezes, o DVR perdeu a comunicação com a internet devido a uma falha na obtenção de um endereço IP válido via DHCP ou por uma resolução de DNS incorreta. Quedas de energia ou reinicializações do roteador da operadora frequentemente causam esse tipo de inconsistência.</p>
+      <h2 class="text-2xl font-bold mt-8 mb-4">1. Verifique se o DVR tem acesso à internet</h2>
+      <p>O primeiro passo é garantir que o DVR consegue se comunicar com os servidores P2P. No menu do DVR vá em <strong>Rede → Informações</strong> e verifique se há um IP válido (diferente de 0.0.0.0). Certifique-se de que o cabo de rede está conectado firmemente.</p>
 
-                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">Passo a Passo para a Resolução</h2>
-                    
-                    <h3 class="text-xl font-bold text-text-main mt-8 mb-3">1. Verifique a conexão física</h3>
-                    <p>Antes de qualquer configuração, certifique-se de que o cabo de rede está firmemente conectado ao DVR e ao seu roteador. Verifique se os LEDs da porta de rede do DVR estão piscando.</p>
+      <h2 class="text-2xl font-bold mt-8 mb-4">2. Configure o DNS manualmente</h2>
+      <p>Um DNS mal configurado impede que o DVR encontre os servidores P2P. Nas configurações de rede do DVR, defina manualmente:</p>
+      <pre class="bg-gray-900 text-green-400 rounded p-4 my-4 overflow-x-auto"><code>DNS Primário:   8.8.8.8
+DNS Secundário: 8.8.4.4</code></pre>
+      <p>Esses são os servidores DNS do Google, confiáveis e rápidos. Reinicie o DVR após alterar.</p>
 
-                    <h3 class="text-xl font-bold text-text-main mt-8 mb-3">2. Acesse as configurações de Rede do DVR</h3>
-                    <p>Utilizando um monitor conectado ao DVR e o mouse, acesse o <strong>Menu Principal</strong>. Vá até a seção de <strong>Rede</strong> ou <strong>Network</strong>.</p>
+      <h2 class="text-2xl font-bold mt-8 mb-4">3. Garanta que o IP do DVR seja fixo (estático)</h2>
+      <p>Se o DVR recebe um IP dinâmico do roteador, ele pode mudar e perder a configuração de rede. Configure um IP fixo compatível com a faixa do seu roteador. Exemplo: se o gateway do seu roteador é <code class="bg-surface px-1 rounded">192.168.1.1</code>, atribua ao DVR o IP <code class="bg-surface px-1 rounded">192.168.1.150</code> com máscara <code class="bg-surface px-1 rounded">255.255.255.0</code>.</p>
 
-                    <h3 class="text-xl font-bold text-text-main mt-8 mb-3">3. Ative ou renove o DHCP</h3>
-                    <p>Verifique se a opção <strong>DHCP</strong> está marcada. O DHCP permite que o roteador atribua as configurações de rede automaticamente. Se estiver marcada e mesmo assim não funcionar, desmarque a opção, salve as configurações, marque novamente e salve. Isso forçará uma nova requisição de IP.</p>
+      <h2 class="text-2xl font-bold mt-8 mb-4">4. Reinicie o DVR e o roteador</h2>
+      <p>Após todas as configurações, reinicie o DVR pelo menu e, em seguida, reinicie o roteador. Aguarde 2 minutos e tente acessar pelo aplicativo novamente.</p>
 
-                    <h3 class="text-xl font-bold text-text-main mt-8 mb-3">4. Configure os servidores DNS manualmente</h3>
-                    <p>Esta é a solução definitiva na maioria dos casos. Em vez de depender do DNS fornecido pelo provedor de internet, configure os DNS do Google, que são mais estáveis. Nas configurações de rede do DVR, localize os campos de DNS e insira:</p>
-                    
-                    <div class="relative mt-4 mb-6">
-                        <div class="absolute right-0 top-0 text-xs text-gray-400 p-2 font-mono uppercase">Rede</div>
-                        <pre class="bg-code-bg text-gray-200 rounded-lg p-6 font-mono text-sm overflow-x-auto shadow-inner leading-relaxed">DNS Preferencial (Primário): 8.8.8.8
-DNS Alternativo (Secundário): 8.8.4.4</pre>
-                    </div>
+      <h2 class="text-2xl font-bold mt-8 mb-4">Conclusão</h2>
+      <p>Na grande maioria dos casos, o erro de P2P é resolvido configurando o DNS manualmente e garantindo um IP fixo para o DVR. Se o problema persistir, verifique se o seu provedor de internet não bloqueia as portas usadas pelo sistema de câmeras.</p>
+    </article>
 
-                    <p>Salve as configurações.</p>
-
-                    <h3 class="text-xl font-bold text-text-main mt-8 mb-3">5. Reinicie o equipamento</h3>
-                    <p>Após realizar as alterações, é altamente recomendável reiniciar tanto o DVR quanto o roteador de internet. Aguarde cerca de 5 minutos para que os equipamentos inicializem completamente e estabeleçam conexão.</p>
-
-                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
-                        <h4 class="font-bold text-text-main mb-2">Conclusão</h4>
-                        <p class="text-text-muted text-base">Ao realizar estes passos, acesse o menu do P2P (geralmente em Rede > P2P ou Intelbras Cloud) e verifique se o status mudou de "Offline" ou "Desconectado" para "Online" ou "Conectado". Agora, basta abrir o seu aplicativo e acessar as câmeras de onde estiver.</p>
-                    </div>
-                </div>
-            </article>
-        </main>
-
-        <!-- Right Sidebar -->
-        <aside class="w-full lg:w-1/4 flex flex-col gap-6">
-            <!-- Flow Ad -->
-            <div class="flex justify-center">
-                <div class="border border-border-subtle bg-surface flex items-center justify-center text-text-muted font-bold rounded" style="width: 300px; height: 250px;">
-                    <!-- Banner Quadrado -->
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:300px;height:250px"
-                 data-ad-client="ca-pub-4754805344258519"
-                 data-ad-slot="7401624661"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-                </div>
-            </div>
-
-            <!-- Categories Widget -->
-            <div class="bg-white rounded-lg p-6 border border-border-subtle">
-                <h3 class="text-lg font-bold text-text-main mb-4 border-b border-border-subtle pb-2">Veja também</h3>
-                <ul class="space-y-3">
-                    <li><a href="../desenvolvimento-e-ti/como-resolver-uso-de-100-de-disco-no-windows-sem-formatar.html" class="text-brand hover:underline text-sm font-medium leading-snug line-clamp-2">Como resolver o uso de 100% de disco no Windows sem formatar o PC</a></li>
-                </ul>
-            </div>
-        </aside>
-
+  <div class="flex justify-center my-6">
+    <div class="border border-border-subtle bg-surface rounded" style="width:728px;max-width:100%;min-height:90px;">
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-4754805344258519" data-ad-slot="5872920570"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
+  </div>
+  </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-border-subtle py-8 mt-12">
-        <div class="max-w-container-max mx-auto px-6 text-center text-text-muted">
-            <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+  <aside class="w-full lg:w-1/4 flex flex-col gap-6">
+    <div class="bg-white rounded-lg p-6 border border-border-subtle">
+      <h3 class="text-lg font-bold text-text-main mb-4 border-b border-border-subtle pb-2">Categorias</h3>
+      <ul class="space-y-3">
+        <li><a href="../infraestrutura-e-redes/index.html" class="text-text-muted hover:text-brand transition flex items-center justify-between font-medium"><span>Infraestrutura e Redes</span><span class="bg-surface text-xs px-2 py-1 rounded font-semibold border border-border-subtle">5</span></a></li>
+        <li><a href="../seguranca-e-acesso/index.html" class="text-text-muted hover:text-brand transition flex items-center justify-between font-medium"><span>Segurança e Acesso</span><span class="bg-surface text-xs px-2 py-1 rounded font-semibold border border-border-subtle">3</span></a></li>
+        <li><a href="../desenvolvimento-e-ti/index.html" class="text-text-muted hover:text-brand transition flex items-center justify-between font-medium"><span>Desenvolvimento e TI</span><span class="bg-surface text-xs px-2 py-1 rounded font-semibold border border-border-subtle">8</span></a></li>
+      </ul>
+    </div>
+  <div class="flex justify-center">
+    <div class="border border-border-subtle bg-surface rounded" style="width:300px;height:250px;">
+      <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px"
+        data-ad-client="ca-pub-4754805344258519" data-ad-slot="7401624661"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+    </div>
+  </div>
+  </aside>
+</div>
 
-    <script src="../src/js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const btn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
-            const desktopNav = document.querySelector('header nav');
-            const mobileNavLinks = document.getElementById('mobile-nav-links');
-            if (btn && menu && desktopNav && mobileNavLinks) {
-                mobileNavLinks.innerHTML = desktopNav.innerHTML;
-                const links = mobileNavLinks.querySelectorAll('a');
-                links.forEach(l => { l.className = 'block text-white hover:text-blue-200 transition font-medium text-lg py-3 border-b border-blue-800'; });
-                btn.addEventListener('click', function() { menu.classList.toggle('hidden'); });
-            }
-        });
-    </script>
+<footer class="bg-surface border-t border-border-subtle py-8 mt-12">
+  <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+    <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+    <div class="flex space-x-6 mt-4 md:mt-0">
+      <a href="../quem-somos.html" class="hover:text-brand transition font-medium">Quem Somos</a>
+      <a href="../politica-de-privacidade.html" class="hover:text-brand transition font-medium">Política de Privacidade</a>
+      <a href="../termos-de-uso.html" class="hover:text-brand transition font-medium">Termos de Uso</a>
+      <a href="../contato.html" class="hover:text-brand transition font-medium">Contato</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const desktopNav = document.querySelector('header nav');
+    const mobileNavLinks = document.getElementById('mobile-nav-links');
+    if (btn && menu && desktopNav && mobileNavLinks) {
+      mobileNavLinks.innerHTML = desktopNav.innerHTML;
+      const links = mobileNavLinks.querySelectorAll('a');
+      links.forEach(l => { l.className = 'block text-white hover:text-blue-200 transition font-medium text-lg py-3 border-b border-blue-800'; });
+      btn.addEventListener('click', function() { menu.classList.toggle('hidden'); });
+    }
+  });
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
