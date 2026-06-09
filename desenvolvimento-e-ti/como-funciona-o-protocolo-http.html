@@ -135,6 +135,35 @@
                     <p><strong>Cache-Control:</strong> instrui como o conteúdo deve ser cacheado</p>
                     <p><strong>Accept:</strong> diz ao servidor quais formatos o cliente aceita</p>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Autenticação com HTTP</h2>
+                    <p>O HTTP em si não tem estado — cada requisição é independente e o servidor não "lembra" de requisições anteriores. Para manter o usuário logado, usam-se estratégias sobre o HTTP:</p>
+                    <ul class="list-disc pl-6 space-y-2 my-4">
+                        <li><strong>Cookies:</strong> o servidor envia um cookie via header <code class="bg-gray-100 px-1 rounded text-sm">Set-Cookie</code>; o navegador o envia automaticamente em toda requisição subsequente</li>
+                        <li><strong>JWT (JSON Web Token):</strong> um token assinado digitalmente enviado no header <code class="bg-gray-100 px-1 rounded text-sm">Authorization: Bearer &lt;token&gt;</code></li>
+                        <li><strong>Session ID:</strong> o servidor armazena a sessão e envia apenas um ID para o cliente via cookie</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Cache no HTTP</h2>
+                    <p>O HTTP tem um sistema robusto de cache controlado por headers. Entender isso é essencial para performance:</p>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                        <span class="text-gray-400"># Cache por 1 hora</span><br>
+                        Cache-Control: max-age=3600<br><br>
+                        <span class="text-gray-400"># Nunca cachear (ex: dados em tempo real)</span><br>
+                        Cache-Control: no-cache, no-store<br><br>
+                        <span class="text-gray-400"># ETag — revalida se o conteúdo mudou</span><br>
+                        ETag: "abc123"<br>
+                        If-None-Match: "abc123"  <span class="text-gray-400">→ servidor responde 304 Not Modified</span>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Ferramentas para inspecionar HTTP</h2>
+                    <p>Para ver as requisições HTTP acontecendo em tempo real, use o <strong>DevTools do navegador</strong> (F12 → aba Network). Você verá cada requisição, os headers enviados e recebidos, o status code, o tempo de resposta e o payload. É a ferramenta mais útil para debugar problemas de API no frontend.</p>
+                    <p>Para testar APIs diretamente, use o <strong>Thunder Client</strong> (extensão do VS Code) ou o <strong>Postman</strong>, que permitem montar requisições HTTP completas com headers, body e autenticação customizados.</p>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Conclusão</h4>
+                        <p class="text-text-muted text-base">O HTTP é a espinha dorsal de toda a web moderna. Dominar seus conceitos — métodos, status codes, headers e cache — transforma você em um desenvolvedor muito mais eficaz na hora de debugar problemas, otimizar performance e projetar APIs bem estruturadas.</p>
+                    </div>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">HTTP/2 e HTTP/3</h4>
                         <p class="text-text-muted text-base">O HTTP/1.1 ainda é amplamente usado, mas o HTTP/2 trouxe multiplexing (múltiplas requisições numa conexão) e compressão de headers, reduzindo latência. O HTTP/3 usa UDP em vez de TCP para maior velocidade. O Firebase Hosting já serve HTTP/2 por padrão.</p>
