@@ -146,6 +146,16 @@ DNS Secundário: 8.8.4.4</code></pre>
   </div>
   </aside>
 </div>
+  <div class="max-w-container-max mx-auto px-6 pb-8">
+    <div class="max-w-3xl">
+      <h2 class="text-2xl font-bold text-text-main mb-4">Como o protocolo P2P funciona</h2>
+      <p class="text-text-muted text-base mb-4">O DVR se registra em servidores do fabricante usando um código serial único (UID/SN). Quando você abre o app e digita o UID, o servidor faz a ponte entre seu celular e o DVR sem precisar configurar portforwarding no roteador. O problema surge quando o DVR não consegue se registrar por DNS incorreto, hora desatualizada, firmware antigo ou bloqueio do provedor.</p>
+      <h2 class="text-2xl font-bold text-text-main mt-8 mb-4">Teste no 4G antes de qualquer coisa</h2>
+      <p class="text-text-muted text-base mb-4">Sempre teste desligando o Wi-Fi do celular e usando somente 4G. Se funcionar no 4G mas não no Wi-Fi, o problema está na rede local (roteador bloqueando a saída do DVR). Se não funcionar em nenhuma rede, o problema é no DVR ou nos servidores do fabricante.</p>
+      <h2 class="text-2xl font-bold text-text-main mt-8 mb-4">Alternativa robusta: Cloudflare Tunnel</h2>
+      <p class="text-text-muted text-base">O Cloudflare Tunnel cria um túnel seguro do seu DVR/NVR para a Cloudflare, funcionando mesmo atrás de CGNAT e sem abrir portas no roteador. Instale o cloudflared em um Raspberry Pi ou computador na mesma rede do DVR e configure o acesso via interface web da Cloudflare — é gratuito e muito mais confiável que o P2P do fabricante.</p>
+    </div>
+  </div>
 
 <footer class="bg-surface border-t border-border-subtle py-8 mt-12">
   <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
