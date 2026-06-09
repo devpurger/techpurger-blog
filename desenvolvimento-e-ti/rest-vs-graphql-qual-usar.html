@@ -150,6 +150,9 @@
                     <p>Imagine que você tem uma tela de perfil no app mobile que precisa apenas do nome e foto do usuário. Com REST, a chamada <code class="bg-gray-100 px-1 rounded text-sm">GET /usuarios/42</code> retorna todos os campos — CPF, endereço, histórico de compras, configurações. Isso é <strong>over-fetching</strong>: você recebe muito mais do que precisa, desperdiçando banda (crítico em mobile) e aumentando o tempo de parsing.</p>
                     <p>Com GraphQL, você pede exatamente <code class="bg-gray-100 px-1 rounded text-sm">nome</code> e <code class="bg-gray-100 px-1 rounded text-sm">fotoPerfil</code> e recebe apenas esses dois campos.</p>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">tRPC: uma terceira opção para TypeScript</h2>
+                    <p>Para projetos full-stack em TypeScript, o <strong>tRPC</strong> é uma alternativa interessante que combina o melhor dos dois mundos: tipagem end-to-end automática (sem schema manual como no GraphQL) e simplicidade de REST. O cliente e o servidor compartilham os mesmos tipos TypeScript, eliminando completamente a necessidade de escrever schemas separados ou gerar código.</p>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">Adoção no mercado</h4>
                         <p class="text-text-muted text-base">GitHub, Shopify, Twitter e Facebook usam GraphQL em produção. Mas grandes APIs públicas como Stripe, Twilio e a maioria dos serviços de pagamento ainda usam REST. A tendência para novos projetos com frontends complexos é GraphQL, mas REST está longe de morrer — especialmente para integrações B2B e APIs públicas simples.</p>
