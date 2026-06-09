@@ -117,6 +117,47 @@
                     <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">Ainda precisamos de VMs?</h2>
                     <p>Sem dúvida. VMs e Contêineres não são inimigos mortais; na verdade, eles trabalham muito bem juntos nas provedoras cloud (AWS, Azure, GCP). É prática padrão o servidor "host" virtual do Docker ser em si uma Máquina Virtual da AWS, oferecendo redundância e segurança extra (Hard Isolation). E para hospedar aplicações de SO's brutalmente diferentes no mesmo hardware (como um sistema que exija Kernel Windows Server legados ao lado de pacotes Linux modernos), a máquina virtual continua insubstituível.</p>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Quando usar Docker vs VM?</h2>
+                    <p>Use <strong>Docker/contêineres</strong> quando você precisa empacotar e rodar aplicações de forma isolada, reproduzível e leve. É a escolha certa para microsserviços, APIs, ambientes de desenvolvimento padronizados e pipelines de CI/CD.</p>
+                    <p>Use <strong>VMs</strong> quando você precisa de isolamento completo de sistema operacional, quer rodar um OS diferente do host (ex: Windows dentro de Linux), ou precisa de requisitos de segurança que exigem separação total de kernel.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Docker na prática: seu primeiro container</h2>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                        <span class="text-gray-400"># Baixar e rodar uma aplicação Node.js com Docker</span><br>
+                        <span class="text-green-400"># Criar Dockerfile na raiz do projeto</span><br><br>
+                        FROM node:20-alpine<br>
+                        WORKDIR /app<br>
+                        COPY package*.json ./<br>
+                        RUN npm install<br>
+                        COPY . .<br>
+                        EXPOSE 3000<br>
+                        CMD ["node", "server.js"]<br><br>
+                        <span class="text-gray-400"># Build e execução</span><br>
+                        docker build -t meu-app .<br>
+                        docker run -p 3000:3000 meu-app
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Docker Compose: múltiplos serviços juntos</h2>
+                    <p>O Docker Compose permite orquestrar múltiplos containers com um único arquivo. É perfeito para subir sua aplicação + banco de dados + Redis em um só comando:</p>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                        <span class="text-gray-400"># docker-compose.yml</span><br>
+                        services:<br>
+                        &nbsp;&nbsp;app:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;build: .<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;ports: ["3000:3000"]<br>
+                        &nbsp;&nbsp;db:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;image: postgres:15<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;environment:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;POSTGRES_PASSWORD: senha123<br><br>
+                        <span class="text-gray-400"># Subir tudo com um comando</span><br>
+                        docker compose up
+                    </div>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Conclusão</h4>
+                        <p class="text-text-muted text-base">Docker democratizou o deploy de aplicações. Com contêineres, o clássico problema "funciona na minha máquina" deixa de existir — o ambiente é exatamente o mesmo do desenvolvimento até a produção. Dominar Docker é uma das habilidades mais valorizadas no mercado de desenvolvimento atualmente.</p>
+                    </div>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">O Próximo Passo</h4>
                         <p class="text-text-muted text-base">Uma vez que dezenas (ou centenas) de contêineres passam a rodar juntos e interconectados num cluster de empresas grandes, gerenciar esse ecossistema à mão torna-se exaustivo. É aí que entra a "orquestração", território dominado pelo gigantesco Kubernetes da Google Cloud.</p>
