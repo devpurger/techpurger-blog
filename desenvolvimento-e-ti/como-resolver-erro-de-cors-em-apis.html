@@ -153,6 +153,16 @@ app.use(cors({{
   </div>
   </aside>
 </div>
+  <div class="max-w-container-max mx-auto px-6 pb-8">
+    <div class="max-w-3xl">
+      <h2 class="text-2xl font-bold text-text-main mb-4">CORS em APIs serverless</h2>
+      <p class="text-text-muted text-base mb-4">Em Vercel Functions e Firebase Functions não há Express rodando. Configure CORS diretamente nos headers da resposta: <code class="bg-gray-100 px-1 rounded text-sm">res.setHeader('Access-Control-Allow-Origin', 'https://seusite.com')</code>. Sempre trate o método OPTIONS separadamente para o preflight funcionar corretamente.</p>
+      <h2 class="text-2xl font-bold text-text-main mt-8 mb-4">CORS com credenciais (cookies/sessão)</h2>
+      <p class="text-text-muted text-base mb-4">Se sua API usa cookies, retorne também <code class="bg-gray-100 px-1 rounded text-sm">Access-Control-Allow-Credentials: true</code> e a origem não pode ser <code class="bg-gray-100 px-1 rounded text-sm">*</code> — deve ser um domínio específico. No Express: <code class="bg-gray-100 px-1 rounded text-sm">cors({{'{'}} origin: 'https://seusite.com', credentials: true {{'}'}})</code>.</p>
+      <h2 class="text-2xl font-bold text-text-main mt-8 mb-4">CORS só existe no navegador</h2>
+      <p class="text-text-muted text-base">A política CORS é implementada pelo navegador, não pelo servidor. Se testar com curl, Postman ou Thunder Client, CORS não é bloqueado — pois essas ferramentas não são navegadores. O bloqueio acontece apenas quando JavaScript de um site tenta acessar outro domínio. Isso também significa que CORS não protege sua API de ataques diretos — é uma proteção para o usuário, não para o servidor.</p>
+    </div>
+  </div>
 
 <footer class="bg-surface border-t border-border-subtle py-8 mt-12">
   <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
