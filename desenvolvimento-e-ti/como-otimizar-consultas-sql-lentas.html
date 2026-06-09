@@ -153,6 +153,16 @@ SELECT id, nome, email FROM usuarios WHERE ativo = 1;</code></pre>
   </div>
   </aside>
 </div>
+  <div class="max-w-container-max mx-auto px-6 pb-8">
+    <div class="max-w-3xl">
+      <h2 class="text-2xl font-bold text-text-main mb-4">8. Evite N+1 Queries no ORM</h2>
+      <p class="text-text-muted text-base mb-4">O problema N+1 acontece ao usar ORMs: você busca uma lista de pedidos e o ORM faz uma query separada para cada pedido buscar o cliente. Com 100 pedidos, são 101 queries. A solução é usar eager loading — no Sequelize use <code class="bg-gray-100 px-1 rounded text-sm">include</code>, no Prisma use <code class="bg-gray-100 px-1 rounded text-sm">include</code> também, no Rails use <code class="bg-gray-100 px-1 rounded text-sm">eager_load</code>.</p>
+      <h2 class="text-2xl font-bold text-text-main mt-8 mb-4">9. Particionamento de tabelas grandes</h2>
+      <p class="text-text-muted text-base mb-4">Para tabelas com dezenas de milhões de registros, o particionamento divide a tabela em partes menores por critério de data ou ID. Queries que filtram por data só escaneiam a partição relevante. No PostgreSQL 10+: <code class="bg-gray-100 px-1 rounded text-sm">CREATE TABLE pedidos PARTITION BY RANGE (created_at)</code>.</p>
+      <h2 class="text-2xl font-bold text-text-main mt-8 mb-4">10. Ative o slow query log</h2>
+      <p class="text-text-muted text-base">No PostgreSQL, configure <code class="bg-gray-100 px-1 rounded text-sm">log_min_duration_statement = 500</code> no postgresql.conf para logar todas as queries acima de 500ms. Em MySQL use <code class="bg-gray-100 px-1 rounded text-sm">slow_query_log = ON</code> com <code class="bg-gray-100 px-1 rounded text-sm">long_query_time = 0.5</code>. Analise esses logs semanalmente para identificar e resolver gargalos antes que virem problemas graves em produção.</p>
+    </div>
+  </div>
 
 <footer class="bg-surface border-t border-border-subtle py-8 mt-12">
   <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
