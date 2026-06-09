@@ -115,6 +115,36 @@
                         <li><strong>OpenDNS (208.67.222.222):</strong> Muito focado em segurança, com opções para bloqueio parental embutido na rede.</li>
                     </ul>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Como mudar o DNS no Windows</h2>
+                    <ol class="list-decimal pl-6 space-y-2 my-4">
+                        <li>Clique com botão direito no ícone de rede na barra de tarefas → <strong>Configurações de rede e Internet</strong></li>
+                        <li>Clique em <strong>Alterar opções do adaptador</strong></li>
+                        <li>Botão direito na sua conexão → <strong>Propriedades</strong></li>
+                        <li>Selecione <strong>Protocolo IP Versão 4 (TCP/IPv4)</strong> → Propriedades</li>
+                        <li>Marque "Usar os seguintes endereços de servidor DNS" e digite os IPs desejados</li>
+                    </ol>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Principais servidores DNS públicos</h2>
+                    <div class="overflow-x-auto my-4">
+                        <table class="w-full text-sm border border-border-subtle rounded">
+                            <thead class="bg-surface"><tr><th class="p-3 text-left">Provedor</th><th class="p-3 text-left">DNS Primário</th><th class="p-3 text-left">DNS Secundário</th><th class="p-3 text-left">Destaque</th></tr></thead>
+                            <tbody>
+                                <tr class="border-t"><td class="p-3 font-bold">Google</td><td class="p-3 font-mono">8.8.8.8</td><td class="p-3 font-mono">8.8.4.4</td><td class="p-3">Rápido, confiável</td></tr>
+                                <tr class="border-t bg-surface"><td class="p-3 font-bold">Cloudflare</td><td class="p-3 font-mono">1.1.1.1</td><td class="p-3 font-mono">1.0.0.1</td><td class="p-3">Mais rápido do mundo, privacidade</td></tr>
+                                <tr class="border-t"><td class="p-3 font-bold">OpenDNS</td><td class="p-3 font-mono">208.67.222.222</td><td class="p-3 font-mono">208.67.220.220</td><td class="p-3">Filtros de conteúdo</td></tr>
+                                <tr class="border-t bg-surface"><td class="p-3 font-bold">Quad9</td><td class="p-3 font-mono">9.9.9.9</td><td class="p-3 font-mono">149.112.112.112</td><td class="p-3">Bloqueia domínios maliciosos</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">DNS over HTTPS (DoH): privacidade total</h2>
+                    <p>O DNS tradicional é não criptografado — seu provedor de internet vê todos os domínios que você consulta. O <strong>DNS over HTTPS (DoH)</strong> criptografa as consultas DNS dentro de HTTPS, impedindo que o ISP monitore sua navegação. O Cloudflare (1.1.1.1) e o Google suportam DoH. No Windows 11, acesse Configurações → Rede → Propriedades do adaptador para ativá-lo.</p>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Conclusão</h4>
+                        <p class="text-text-muted text-base">Trocar o DNS é uma das mudanças mais simples e impactantes que você pode fazer na sua rede. Leva menos de 2 minutos, não tem custo e pode resultar em páginas carregando notavelmente mais rápido, especialmente em provedores com DNS lento ou instável.</p>
+                    </div>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">Como alterar no seu PC (Windows)</h4>
                         <ol class="list-decimal pl-6 space-y-2 mt-2 text-text-muted text-base">
