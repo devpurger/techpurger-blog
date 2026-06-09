@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termos de Uso | TechPurger</title>
+  <meta name="description" content="Termos de uso e condições gerais do TechPurger.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: { brand: '#0056b3', surface: '#f8f9fa', 'border-subtle': '#e9ecef', 'text-main': '#1a1a1a', 'text-muted': '#4a5568' },
+          maxWidth: { 'container-max': '1200px' }
+        }
+      }
+    }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754805344258519" crossorigin="anonymous"></script>
+  <meta name="google-site-verification" content="xZ4uPnJxQZNOPLXOg_l5MkSC-QR-mk5zY8nXJaYKpTQ" />
+</head>
+<body class="bg-white text-text-main font-sans antialiased flex flex-col min-h-screen">
+
+<!-- Banner de Cookies -->
+<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1a1a1a; color:#fff; padding:16px 24px; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; font-family:'Inter',sans-serif; font-size:14px; box-shadow:0 -2px 12px rgba(0,0,0,0.3);">
+  <p style="margin:0; flex:1; min-width:240px;">
+    🍪 Utilizamos <strong>cookies</strong> para melhorar sua experiência e exibir anúncios relevantes via Google AdSense. Ao continuar navegando, você concorda com nossa
+    <a href="politica-de-privacidade.html" style="color:#60a5fa; text-decoration:underline;">Política de Privacidade</a>.
+  </p>
+  <div style="display:flex; gap:10px; flex-shrink:0;">
+    <button onclick="aceitarCookies()" style="background:#0056b3; color:#fff; border:none; padding:10px 20px; border-radius:6px; font-weight:600; cursor:pointer; font-size:14px;">Aceitar</button>
+    <button onclick="recusarCookies()" style="background:transparent; color:#ccc; border:1px solid #555; padding:10px 16px; border-radius:6px; font-weight:600; cursor:pointer; font-size:14px;">Recusar</button>
+  </div>
+</div>
+<script>
+  (function() {
+    var consent = localStorage.getItem('cookieConsent');
+    var banner = document.getElementById('cookie-banner');
+    if (!consent && banner) { banner.style.display = 'flex'; }
+  })();
+  function aceitarCookies() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+  function recusarCookies() {
+    localStorage.setItem('cookieConsent', 'declined');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+</script>
+
+<header class="bg-brand text-white border-b border-border-subtle">
+  <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+    <nav class="hidden md:flex space-x-8">
+      <a href="infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
+      <a href="seguranca-e-acesso/index.html" class="text-white hover:opacity-80 transition font-medium">Segurança e Acesso</a>
+      <a href="desenvolvimento-e-ti/index.html" class="text-white hover:opacity-80 transition font-medium">Desenvolvimento e TI</a>
+      <a href="ferramentas/index.html" class="text-white hover:opacity-80 transition font-medium">Ferramentas</a>
+    </nav>
+    <button id="mobile-menu-btn" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white hover:text-blue-200 hover:border-blue-200 focus:outline-none">
+      <svg class="fill-current h-4 w-4" viewBox="0 0 20 20"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-brand border-t border-blue-800">
+    <div class="px-6 py-2 flex flex-col" id="mobile-nav-links"></div>
+  </div>
+</header>
+
+<main class="flex-grow max-w-container-max mx-auto px-6 py-12 w-full">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-text-main mb-4 tracking-tight">Termos de Uso</h1>
+    <p class="text-text-muted mb-8">Última atualização: 08 de Junho de 2026</p>
+    <article class="prose max-w-none text-base text-text-main space-y-6">
+
+      <p>Ao acessar e utilizar o site <strong>TechPurger</strong> (techpurger.com.br), você concorda com os presentes Termos de Uso. Caso não concorde com alguma condição, pedimos que não utilize o site.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4">1. Sobre o TechPurger</h2>
+      <p>O TechPurger é um portal de conteúdo educacional e informativo sobre tecnologia, desenvolvimento de software, infraestrutura e segurança da informação. Todo o conteúdo publicado tem fins exclusivamente informativos e educacionais.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4">2. Uso Permitido</h2>
+      <p>Você pode utilizar o conteúdo do TechPurger para fins pessoais, educacionais e não-comerciais. É permitido compartilhar links para os artigos publicados neste site, desde que a fonte seja devidamente creditada.</p>
+      <p>É expressamente proibido:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>Reproduzir, copiar ou redistribuir o conteúdo do site de forma integral sem autorização prévia por escrito;</li>
+        <li>Utilizar o conteúdo para fins comerciais sem permissão;</li>
+        <li>Praticar qualquer ato que possa prejudicar a reputação, o funcionamento ou a segurança do site.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4">3. Propriedade Intelectual</h2>
+      <p>Todo o conteúdo publicado no TechPurger — incluindo textos, imagens, logotipos e código — é de propriedade do TechPurger ou de seus respectivos autores, protegido pelas leis de direito autoral vigentes no Brasil (Lei nº 9.610/1998).</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4">4. Isenção de Responsabilidade</h2>
+      <p>O conteúdo publicado no TechPurger é fornecido "como está", sem garantias de qualquer natureza. Embora nos esforcemos para manter as informações atualizadas e precisas, não garantimos a exatidão, integridade ou adequação das informações para qualquer finalidade específica.</p>
+      <p>O TechPurger não se responsabiliza por quaisquer danos diretos ou indiretos decorrentes do uso das informações disponibilizadas no site.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4">5. Links Externos</h2>
+      <p>Nossos artigos podem conter links para sites de terceiros. Esses links são fornecidos para sua conveniência e não implicam endosso ou responsabilidade sobre o conteúdo desses sites.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4">6. Anúncios</h2>
+      <p>O TechPurger utiliza o Google AdSense para exibir anúncios. Esses anúncios podem ser personalizados com base em suas preferências e histórico de navegação. Para saber mais, consulte a <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">Política de Privacidade do Google</a>.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4">7. Modificações dos Termos</h2>
+      <p>O TechPurger reserva-se o direito de modificar estes Termos de Uso a qualquer momento. As alterações entram em vigor imediatamente após a publicação no site.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4">8. Lei Aplicável e Foro</h2>
+      <p>Estes Termos de Uso são regidos pela legislação brasileira. Quaisquer disputas decorrentes do uso deste site serão submetidas ao foro da Comarca de Niterói, Estado do Rio de Janeiro, Brasil.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4">9. Contato</h2>
+      <p>Em caso de dúvidas sobre estes Termos de Uso, entre em contato pelo e-mail:</p>
+      <p class="font-bold text-lg" style="color:#0056b3;">rinaldopurger@gmail.com</p>
+
+    </article>
+  </div>
+</main>
+
+<footer class="bg-surface border-t border-border-subtle py-8 mt-12">
+  <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+    <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+    <div class="flex space-x-6 mt-4 md:mt-0">
+      <a href="quem-somos.html" class="hover:text-brand transition font-medium">Quem Somos</a>
+      <a href="politica-de-privacidade.html" class="hover:text-brand transition font-medium">Política de Privacidade</a>
+      <a href="termos-de-uso.html" class="hover:text-brand transition font-medium">Termos de Uso</a>
+      <a href="contato.html" class="hover:text-brand transition font-medium">Contato</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const desktopNav = document.querySelector('header nav');
+    const mobileNavLinks = document.getElementById('mobile-nav-links');
+    if (btn && menu && desktopNav && mobileNavLinks) {
+      mobileNavLinks.innerHTML = desktopNav.innerHTML;
+      const links = mobileNavLinks.querySelectorAll('a');
+      links.forEach(l => { l.className = 'block text-white hover:text-blue-200 transition font-medium text-lg py-3 border-b border-blue-800'; });
+      btn.addEventListener('click', function() { menu.classList.toggle('hidden'); });
+    }
+  });
+</script>
+
+</body>
+</html>
