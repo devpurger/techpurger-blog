@@ -120,6 +120,39 @@
                         <p><span class="text-blue-400">git push</span> <span class="text-gray-500">// Envia as alterações da sua máquina para o servidor do GitHub</span></p>
                     </div>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Os comandos Git que você usa todo dia</h2>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                        <span class="text-gray-400"># Configuração inicial (só uma vez)</span><br>
+                        git config --global user.name "Seu Nome"<br>
+                        git config --global user.email "seu@email.com"<br><br>
+                        <span class="text-gray-400"># Fluxo básico do dia a dia</span><br>
+                        git status                    <span class="text-gray-400"># ver o que mudou</span><br>
+                        git add .                     <span class="text-gray-400"># adicionar todas as mudanças</span><br>
+                        git commit -m "mensagem"      <span class="text-gray-400"># salvar snapshot</span><br>
+                        git push origin main          <span class="text-gray-400"># enviar para o GitHub</span><br><br>
+                        <span class="text-gray-400"># Trabalhando com branches</span><br>
+                        git checkout -b nova-feature  <span class="text-gray-400"># criar e mudar de branch</span><br>
+                        git merge nova-feature        <span class="text-gray-400"># mesclar na main</span><br>
+                        git log --oneline             <span class="text-gray-400"># histórico resumido</span>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Git Flow: o padrão de equipes profissionais</h2>
+                    <p>Em projetos com múltiplos desenvolvedores, o <strong>Git Flow</strong> define um conjunto de convenções sobre como usar branches. O modelo básico tem: <code class="bg-gray-100 px-1 rounded text-sm">main</code> (código em produção), <code class="bg-gray-100 px-1 rounded text-sm">develop</code> (integração), <code class="bg-gray-100 px-1 rounded text-sm">feature/*</code> (novas funcionalidades) e <code class="bg-gray-100 px-1 rounded text-sm">hotfix/*</code> (correções urgentes em produção).</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Boas mensagens de commit</h2>
+                    <p>Uma mensagem de commit bem escrita conta uma história do projeto. O padrão <strong>Conventional Commits</strong> é amplamente adotado:</p>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                        <span class="text-green-400">feat:</span> adiciona autenticação com Google OAuth<br>
+                        <span class="text-yellow-400">fix:</span> corrige cálculo de desconto com cupom<br>
+                        <span class="text-blue-400">docs:</span> atualiza README com instruções de deploy<br>
+                        <span class="text-red-400">refactor:</span> extrai lógica de pagamento para serviço separado
+                    </div>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Conclusão</h4>
+                        <p class="text-text-muted text-base">Git não é opcional — é o mínimo esperado de qualquer desenvolvedor no mercado atual. Mesmo trabalhando sozinho, o histórico de versões já vale o investimento de aprender. Com uma equipe, é a diferença entre colaboração organizada e caos total. Comece hoje: instale o Git, crie uma conta no GitHub e faça seu primeiro repositório.</p>
+                    </div>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">Conclusão</h4>
                         <p class="text-text-muted text-base">Não espere ser contratado para aprender Git. Comece criando um repositório local nos seus projetos simples da faculdade. Um desenvolvedor moderno que não sabe as operações básicas do Git costuma ser duramente eliminado já na triagem técnica de currículos.</p>
