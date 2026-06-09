@@ -121,6 +121,11 @@
                     <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 tracking-tight">5. Evite "Números Mágicos"</h2>
                     <p>Números soltos no meio do código sem contexto criam confusão instantânea. Em vez de usar <code>if (status == 2)</code>, extraia isso para uma constante descritiva <code>const STATUS_APROVADO = 2;</code> e compare contra ela.</p>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">6. Testes como documentação viva</h2>
+                    <p>Testes unitários bem escritos descrevem o comportamento esperado do código de forma executável. Um teste como <code class="bg-gray-100 px-1 rounded text-sm">deve_retornar_zero_quando_carrinho_estiver_vazio()</code> comunica intenção melhor do que qualquer comentário. Frameworks como Jest (JavaScript), JUnit (Java) e pytest (Python) tornam essa prática acessível em qualquer stack.</p>
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">7. Princípio DRY: Don't Repeat Yourself</h2>
+                    <p>Cada pedaço de conhecimento deve ter uma representação única, inequívoca e autoritativa no sistema. Quando você copia e cola um bloco de código em três lugares diferentes, está criando três pontos de falha — quando precisar corrigir um bug, precisará lembrar de corrigir nos três lugares. Extraia o código repetido para uma função ou módulo reutilizável.</p>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">Resumindo...</h4>
                         <p class="text-text-muted text-base">A adoção das regras de Clean Code inicialmente parece tomar mais tempo de desenvolvimento e requerer mais disciplina. Mas na manutenção do software, que representa 80% do ciclo de vida, o código limpo salva semanas de investigação e noites de sono perdido.</p>
