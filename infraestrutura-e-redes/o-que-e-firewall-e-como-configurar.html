@@ -129,6 +129,32 @@
                         sudo ufw delete allow 80/tcp
                     </div>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Monitorando tentativas de invasão</h2>
+                    <p>Após ativar o UFW, você pode monitorar as tentativas bloqueadas em tempo real nos logs do sistema:</p>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                        <span class="text-gray-400"># Ver logs do UFW em tempo real</span><br>
+                        sudo tail -f /var/log/ufw.log<br><br>
+                        <span class="text-gray-400"># Contar tentativas bloqueadas por IP</span><br>
+                        sudo grep "BLOCK" /var/log/ufw.log | awk '{{'{'}}print $13{{'}'}}'  | sort | uniq -c | sort -rn | head -20
+                    </div>
+                    <p>Você vai se surpreender com a quantidade de tentativas de acesso que seu servidor recebe diariamente — centenas a milhares de bots escaneando portas comuns.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Fail2ban: bloqueio automático de IPs maliciosos</h2>
+                    <p>O <strong>Fail2ban</strong> complementa o firewall monitorando logs de autenticação e bloqueando automaticamente IPs que fazem muitas tentativas falhas de login:</p>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                        sudo apt install fail2ban<br><br>
+                        <span class="text-gray-400"># Configuração básica (/etc/fail2ban/jail.local)</span><br>
+                        [sshd]<br>
+                        enabled = true<br>
+                        maxretry = 5      <span class="text-gray-400"># bloqueia após 5 tentativas</span><br>
+                        bantime = 3600    <span class="text-gray-400"># bloqueio de 1 hora</span>
+                    </div>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Checklist de segurança para servidores Linux</h4>
+                        <p class="text-text-muted text-base">✅ UFW ativo com apenas portas necessárias abertas → ✅ Fail2ban configurado para SSH → ✅ SSH na porta padrão 22 trocada (opcional) → ✅ Autenticação por chave SSH em vez de senha → ✅ Atualizações automáticas de segurança ativadas (<code>unattended-upgrades</code>) → ✅ Logs monitorados regularmente</p>
+                    </div>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">Regra de ouro</h4>
                         <p class="text-text-muted text-base">Sempre libere a porta SSH (<code>22</code>) antes de ativar o UFW em um servidor remoto. Se você bloquear acesso SSH acidentalmente, perderá o acesso ao servidor completamente e precisará de acesso físico ou painel de controle do provedor para recuperar.</p>
