@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emuladores de Rede: o que são e como usar EVE-NG, GNS3 e Packet Tracer | TechPurger</title>
+    <meta name="description" content="Guia completo sobre emuladores de rede como EVE-NG, GNS3 e Cisco Packet Tracer. Aprenda o que são, as diferenças entre cada um e como montar seu laboratório virtual de redes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['monospace'] },
+                    colors: { brand: '#0056b3', surface: '#f8f9fa', 'border-subtle': '#e9ecef', 'text-main': '#1a1a1a', 'text-muted': '#4a5568', 'code-bg': '#1a202c' },
+                    maxWidth: { 'container-max': '1200px' }
+                }
+            }
+        }
+    </script>
+    <style>body { color: #1a1a1a; line-height: 1.7; }</style>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754805344258519" crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="xZ4uPnJxQZNOPLXOg_l5MkSC-QR-mk5zY8nXJaYKpTQ" />
+</head>
+<body class="bg-white text-text-main font-sans antialiased flex flex-col min-h-screen">
+
+<!-- Banner de Cookies -->
+<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1a1a1a; color:#fff; padding:16px 24px; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; font-family:'Inter',sans-serif; font-size:14px; box-shadow:0 -2px 12px rgba(0,0,0,0.3);">
+  <p style="margin:0; flex:1; min-width:240px;">🍪 Utilizamos <strong>cookies</strong> para melhorar sua experiência. Ao continuar, você concorda com nossa <a href="../politica-de-privacidade.html" style="color:#60a5fa; text-decoration:underline;">Política de Privacidade</a>.</p>
+  <div style="display:flex; gap:10px; flex-shrink:0;">
+    <button onclick="aceitarCookies()" style="background:#0056b3; color:#fff; border:none; padding:10px 20px; border-radius:6px; font-weight:600; cursor:pointer;">Aceitar</button>
+    <button onclick="recusarCookies()" style="background:transparent; color:#ccc; border:1px solid #555; padding:10px 16px; border-radius:6px; font-weight:600; cursor:pointer;">Recusar</button>
+  </div>
+</div>
+<script>
+  (function(){var c=localStorage.getItem('cookieConsent'),b=document.getElementById('cookie-banner');if(!c&&b)b.style.display='flex';})();
+  function aceitarCookies(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookie-banner').style.display='none';}
+  function recusarCookies(){localStorage.setItem('cookieConsent','declined');document.getElementById('cookie-banner').style.display='none';}
+</script>
+
+<header class="bg-brand text-white border-b border-border-subtle">
+    <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+        <nav class="hidden md:flex space-x-8">
+            <a href="../infraestrutura-e-redes/index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Infraestrutura e Redes</a>
+            <a href="../seguranca-e-acesso/index.html" class="text-white hover:opacity-80 transition font-medium">Segurança e Acesso</a>
+            <a href="../desenvolvimento-e-ti/index.html" class="text-white hover:opacity-80 transition font-medium">Desenvolvimento e TI</a>
+            <a href="../ferramentas/index.html" class="text-white hover:opacity-80 transition font-medium">Ferramentas</a>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white">
+            <svg class="fill-current h-4 w-4" viewBox="0 0 20 20"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-brand border-t border-blue-800">
+        <div class="px-6 py-2 flex flex-col" id="mobile-nav-links"></div>
+    </div>
+</header>
+
+<!-- Ad top -->
+<div class="max-w-container-max mx-auto px-6 mt-8 flex justify-center">
+    <div class="border border-border-subtle bg-surface rounded" style="width:728px;height:90px;max-width:100%;">
+        <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4754805344258519" data-ad-slot="5872920570"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+</div>
+
+<div class="max-w-container-max mx-auto px-6 py-8 flex flex-col lg:flex-row gap-6 flex-grow">
+    <main class="w-full lg:w-3/4">
+        <article class="bg-white rounded-lg border border-border-subtle p-6 lg:p-8">
+
+            <!-- Breadcrumb -->
+            <nav class="text-sm font-medium text-text-muted mb-6">
+                <a href="../index.html" class="hover:text-brand transition">Home</a>
+                <span class="mx-2">/</span>
+                <a href="index.html" class="hover:text-brand transition">Infraestrutura e Redes</a>
+                <span class="mx-2">/</span>
+                <span class="text-text-main">Emuladores de Rede</span>
+            </nav>
+
+            <h1 class="text-3xl lg:text-4xl font-bold text-text-main mb-6 tracking-tight leading-tight">
+                Emuladores de Rede: o que são e como usar EVE-NG, GNS3 e Packet Tracer
+            </h1>
+            <div class="flex items-center text-text-muted text-sm font-medium mb-8 border-b border-border-subtle pb-4">
+                <span>Publicado em: 09 de Junho de 2026</span>
+                <span class="mx-3">•</span>
+                <span>Por: <strong>Rinaldo Purger</strong></span>
+                <span class="mx-3">•</span>
+                <span class="inline-block bg-surface border border-border-subtle px-2 py-0.5 rounded text-xs font-semibold">Infraestrutura e Redes</span>
+            </div>
+
+            <div class="prose max-w-none text-text-main text-lg space-y-6">
+
+                <p>Montar um laboratório físico de redes com roteadores Cisco, switches gerenciáveis e firewalls sempre foi um privilégio caro — o equipamento necessário para estudar para certificações como CCNA, CCNP ou CompTIA Network+ pode custar vários milhares de reais. Os <strong>emuladores de rede</strong> resolveram esse problema: hoje você consegue montar topologias complexas com dezenas de dispositivos virtuais no seu próprio computador, gratuitamente.</p>
+
+                <p>Neste guia você vai entender o que são emuladores de rede, a diferença entre <strong>emulação e simulação</strong>, e as características de cada uma das três principais ferramentas do mercado: <strong>EVE-NG</strong>, <strong>GNS3</strong> e <strong>Cisco Packet Tracer</strong>.</p>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Emulação vs Simulação: qual a diferença?</h2>
+
+                <p>Antes de falar das ferramentas, é importante entender essa distinção que faz toda a diferença na prática:</p>
+
+                <p><strong>Simulação</strong> imita o comportamento de um dispositivo por software — como o Cisco Packet Tracer faz. O programa simula como um roteador responderia a determinados comandos, mas não executa o sistema operacional real do equipamento. É uma abstração educacional.</p>
+
+                <p><strong>Emulação</strong> executa o sistema operacional real do dispositivo (como o Cisco IOS, Juniper JunOS ou Arista EOS) dentro de uma máquina virtual. O EVE-NG e o GNS3 são emuladores — eles rodam o IOS original da Cisco, então o comportamento é idêntico ao do hardware real.</p>
+
+                <p>Para estudos iniciais e certificações introdutórias, simulação é suficiente. Para ambientes que precisam de comportamento real — testes de configuração de produção, protocolos avançados, troubleshooting — a emulação é indispensável.</p>
+
+                <!-- Ad mid-article -->
+                <div class="flex justify-center my-8 lg:float-right lg:ml-8 lg:mb-4">
+                    <div class="border border-border-subtle bg-surface rounded" style="width:300px;height:250px;">
+                        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4754805344258519" data-ad-slot="7401624661"></ins>
+                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 clear-both">EVE-NG: o favorito dos profissionais</h2>
+
+                <p>O <strong>EVE-NG</strong> (Emulated Virtual Environment - Next Generation) é hoje a ferramenta mais usada por profissionais de redes e instrutores de certificações avançadas. Ele roda como uma appliance Linux (baseada em Ubuntu) e é acessado inteiramente pelo navegador — você não precisa instalar nenhum cliente pesado no seu computador.</p>
+
+                <h3 class="text-xl font-bold text-text-main mt-8 mb-3">Como o EVE-NG funciona</h3>
+                <p>O EVE-NG usa tecnologias de virtualização como <strong>QEMU</strong>, <strong>IOU</strong> (IOS on Unix) e <strong>Docker</strong> para rodar múltiplos sistemas operacionais de rede simultaneamente. Você importa as imagens dos dispositivos (IOS da Cisco, JunOS da Juniper, VyOS, pfSense, etc.) e o EVE-NG as executa como máquinas virtuais interconectadas por redes virtuais.</p>
+
+                <p>A interface web permite arrastar e soltar dispositivos na topologia, conectar interfaces com um clique e acessar o console de cada dispositivo diretamente pelo navegador via telnet ou SSH. O resultado é uma experiência visual muito próxima do que você teria em uma ferramenta de diagramação como o Visio, mas totalmente funcional.</p>
+
+                <h3 class="text-xl font-bold text-text-main mt-8 mb-3">Versões do EVE-NG</h3>
+                <div class="overflow-x-auto my-4">
+                    <table class="w-full text-sm border border-border-subtle rounded">
+                        <thead class="bg-surface">
+                            <tr>
+                                <th class="p-3 text-left">Versão</th>
+                                <th class="p-3 text-left">Custo</th>
+                                <th class="p-3 text-left">Limite de nós</th>
+                                <th class="p-3 text-left">Ideal para</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t">
+                                <td class="p-3 font-bold">Community</td>
+                                <td class="p-3 text-green-600 font-semibold">Gratuita</td>
+                                <td class="p-3">Sem limite*</td>
+                                <td class="p-3">Estudos e certificações</td>
+                            </tr>
+                            <tr class="border-t bg-surface">
+                                <td class="p-3 font-bold">Professional</td>
+                                <td class="p-3">~US$130/ano</td>
+                                <td class="p-3">Sem limite</td>
+                                <td class="p-3">Labs corporativos, instrutores</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="p-3 font-bold">Learning Center</td>
+                                <td class="p-3">Sob consulta</td>
+                                <td class="p-3">Multi-usuário</td>
+                                <td class="p-3">Cursos e treinamentos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-text-muted">* A versão Community tem algumas limitações em recursos avançados como agendamento de labs e integração com Active Directory.</p>
+
+                <h3 class="text-xl font-bold text-text-main mt-8 mb-3">Requisitos de hardware para EVE-NG</h3>
+                <p>EVE-NG é exigente em hardware — afinal, você estará rodando múltiplos sistemas operacionais simultaneamente:</p>
+                <ul class="list-disc pl-6 space-y-2 my-4">
+                    <li><strong>CPU:</strong> Intel com suporte a VT-x ou AMD com AMD-V (virtualização habilitada na BIOS). Quanto mais núcleos, melhor — 4 núcleos físicos é o mínimo recomendado</li>
+                    <li><strong>RAM:</strong> mínimo 8GB, recomendado 16GB ou mais. Cada roteador virtual consome 512MB a 1GB de RAM</li>
+                    <li><strong>Armazenamento:</strong> SSD com pelo menos 100GB livres. As imagens de dispositivos ocupam bastante espaço</li>
+                    <li><strong>Instalação:</strong> como VM no VMware Workstation ou VirtualBox, ou bare-metal em um servidor dedicado</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">GNS3: o veterano open source</h2>
+
+                <p>O <strong>GNS3</strong> (Graphical Network Simulator-3) é o pioneiro dos emuladores de rede e existe desde 2008. Assim como o EVE-NG, ele executa imagens reais de sistemas operacionais de rede. A principal diferença é que o GNS3 tem um cliente desktop (Windows, Mac, Linux) e um servidor separado — o <strong>GNS3 VM</strong> — que roda as imagens dos dispositivos.</p>
+
+                <h3 class="text-xl font-bold text-text-main mt-8 mb-3">Arquitetura do GNS3</h3>
+                <p>Quando você instala o GNS3, na prática são dois componentes:</p>
+                <ol class="list-decimal pl-6 space-y-2 my-4">
+                    <li><strong>GNS3 GUI</strong> — o cliente visual que roda no seu Windows/Mac/Linux. Você usa para montar a topologia</li>
+                    <li><strong>GNS3 VM</strong> — uma máquina virtual Linux que executa os dispositivos de rede emulados. Recomendado para performance estável</li>
+                </ol>
+                <p>Você pode rodar os dispositivos localmente sem a VM, mas para topologias maiores com Cisco IOS, o GNS3 VM oferece muito mais estabilidade e desempenho.</p>
+
+                <h3 class="text-xl font-bold text-text-main mt-8 mb-3">Pontos fortes do GNS3</h3>
+                <ul class="list-disc pl-6 space-y-2 my-4">
+                    <li><strong>100% gratuito e open source</strong> — sem versão paga com recursos bloqueados</li>
+                    <li><strong>Comunidade enorme</strong> — tutoriais, topologias prontas e suporte nos fóruns</li>
+                    <li><strong>Integração com Wireshark</strong> — capture pacotes em qualquer link da topologia com um clique</li>
+                    <li><strong>Suporte a Docker</strong> — adicione containers Linux à topologia para simular servidores</li>
+                    <li><strong>Marketplace</strong> — repositório oficial com appliances prontas para importar</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Cisco Packet Tracer: o simulador do iniciante</h2>
+
+                <p>O <strong>Packet Tracer</strong> é desenvolvido pela própria Cisco e distribuído gratuitamente para estudantes do <strong>Cisco Networking Academy</strong> (NetAcad). Diferente dos dois anteriores, ele é um <strong>simulador</strong> — não executa o IOS real, mas simula o comportamento dos dispositivos Cisco de forma suficientemente fiel para aprender os fundamentos.</p>
+
+                <h3 class="text-xl font-bold text-text-main mt-8 mb-3">Quando usar o Packet Tracer</h3>
+                <p>O Packet Tracer é ideal para quem está começando do zero. Ele roda em qualquer computador (inclusive máquinas modestas), não requer imagens de dispositivos e tem uma interface extremamente intuitiva com atividades guiadas. Para quem está estudando para o <strong>CCNA</strong> pela primeira vez, é a ferramenta certa para os primeiros meses.</p>
+
+                <p>Suas limitações ficam evidentes quando você avança: ele não suporta todos os recursos do IOS real, não tem integração com o Wireshark e não permite emular dispositivos de outros fabricantes (Juniper, Arista, Fortinet).</p>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Comparação direta: qual usar?</h2>
+
+                <div class="overflow-x-auto my-6">
+                    <table class="w-full text-sm border border-border-subtle rounded">
+                        <thead class="bg-surface">
+                            <tr>
+                                <th class="p-3 text-left">Critério</th>
+                                <th class="p-3 text-center">Packet Tracer</th>
+                                <th class="p-3 text-center">GNS3</th>
+                                <th class="p-3 text-center">EVE-NG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t">
+                                <td class="p-3 font-semibold">Tipo</td>
+                                <td class="p-3 text-center">Simulador</td>
+                                <td class="p-3 text-center">Emulador</td>
+                                <td class="p-3 text-center">Emulador</td>
+                            </tr>
+                            <tr class="border-t bg-surface">
+                                <td class="p-3 font-semibold">Custo</td>
+                                <td class="p-3 text-center text-green-600">Gratuito</td>
+                                <td class="p-3 text-center text-green-600">Gratuito</td>
+                                <td class="p-3 text-center">Grátis / Pago</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="p-3 font-semibold">Hardware exigido</td>
+                                <td class="p-3 text-center text-green-600">Baixo</td>
+                                <td class="p-3 text-center text-yellow-600">Médio</td>
+                                <td class="p-3 text-center text-red-500">Alto</td>
+                            </tr>
+                            <tr class="border-t bg-surface">
+                                <td class="p-3 font-semibold">IOS real</td>
+                                <td class="p-3 text-center text-red-500">Não</td>
+                                <td class="p-3 text-center text-green-600">Sim</td>
+                                <td class="p-3 text-center text-green-600">Sim</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="p-3 font-semibold">Multi-fabricante</td>
+                                <td class="p-3 text-center text-red-500">Não</td>
+                                <td class="p-3 text-center text-green-600">Sim</td>
+                                <td class="p-3 text-center text-green-600">Sim</td>
+                            </tr>
+                            <tr class="border-t bg-surface">
+                                <td class="p-3 font-semibold">Interface</td>
+                                <td class="p-3 text-center">Desktop</td>
+                                <td class="p-3 text-center">Desktop</td>
+                                <td class="p-3 text-center text-green-600">Web (browser)</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="p-3 font-semibold">Captura de pacotes</td>
+                                <td class="p-3 text-center text-yellow-600">Limitado</td>
+                                <td class="p-3 text-center text-green-600">Wireshark nativo</td>
+                                <td class="p-3 text-center text-green-600">Sim</td>
+                            </tr>
+                            <tr class="border-t bg-surface">
+                                <td class="p-3 font-semibold">Ideal para</td>
+                                <td class="p-3 text-center">CCNA iniciante</td>
+                                <td class="p-3 text-center">CCNA/CCNP</td>
+                                <td class="p-3 text-center">CCNP/CCIE/Labs pro</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Instalando o EVE-NG Community no VMware</h2>
+
+                <p>O método mais simples para começar com o EVE-NG é instalar a appliance OVA dentro do VMware Workstation Player (gratuito). Veja o passo a passo:</p>
+
+                <ol class="list-decimal pl-6 space-y-3 my-4">
+                    <li>Baixe o <strong>VMware Workstation Player</strong> em vmware.com (gratuito para uso não-comercial)</li>
+                    <li>Acesse <strong>eve-ng.net</strong> e baixe a OVA da versão Community</li>
+                    <li>No VMware, clique em <strong>Open a Virtual Machine</strong> e selecione o arquivo OVA</li>
+                    <li>Defina pelo menos 4GB de RAM e 2 CPUs para a VM — mais é melhor</li>
+                    <li>Nas configurações da VM, em <strong>Processors</strong>, marque <strong>Virtualize Intel VT-x/EPT</strong> — essencial para nested virtualization</li>
+                    <li>Inicie a VM e aguarde o boot. Anote o IP que aparecer na tela</li>
+                    <li>Acesse esse IP no navegador — a interface web do EVE-NG estará disponível</li>
+                    <li>Login padrão: usuário <code class="bg-gray-100 px-1 rounded text-sm font-mono">admin</code>, senha <code class="bg-gray-100 px-1 rounded text-sm font-mono">eve</code></li>
+                </ol>
+
+                <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                    <span class="text-gray-400"># Após o primeiro login, configure a senha root via SSH</span><br>
+                    ssh root@IP_DO_EVE  <span class="text-gray-400"># senha padrão: eve</span><br>
+                    passwd              <span class="text-gray-400"># troque a senha imediatamente</span>
+                </div>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Adicionando imagens de dispositivos ao EVE-NG</h2>
+
+                <p>O EVE-NG não vem com imagens de dispositivos por questões de licença — você precisa obtê-las separadamente. Para imagens Cisco, você pode extraí-las de equipamentos que já possui licença ou encontrá-las em repositórios da comunidade. As imagens mais usadas são:</p>
+
+                <ul class="list-disc pl-6 space-y-2 my-4">
+                    <li><strong>Cisco IOSv</strong> — roteador virtual, leve e estável, ideal para CCNA/CCNP</li>
+                    <li><strong>Cisco IOSvL2</strong> — switch virtual Layer 2/3</li>
+                    <li><strong>Cisco CSR1000v</strong> — roteador cloud, suporta recursos mais avançados</li>
+                    <li><strong>Cisco ASAv</strong> — firewall ASA virtual</li>
+                    <li><strong>VyOS</strong> — roteador open source totalmente gratuito e legal para usar</li>
+                    <li><strong>pfSense</strong> — firewall open source, imagem disponível oficialmente</li>
+                    <li><strong>MikroTik RouterOS</strong> — imagem CHR gratuita para laboratório</li>
+                </ul>
+
+                <p>Para carregar uma imagem no EVE-NG, faça upload via SCP ou SFTP para a pasta correta dentro da appliance:</p>
+
+                <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                    <span class="text-gray-400"># Copiando imagem IOSv para o EVE-NG via SCP</span><br>
+                    scp vios-adventerprisek9-m.vmdk.SPA.157-3.M3.zip root@IP_EVE:/opt/unetlab/addons/qemu/<br><br>
+                    <span class="text-gray-400"># Após o upload, corrigir permissões</span><br>
+                    ssh root@IP_EVE<br>
+                    /opt/unetlab/wrappers/unl_wrapper -a fixpermissions
+                </div>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Sua primeira topologia no EVE-NG</h2>
+
+                <p>Com o EVE-NG instalado e as imagens carregadas, criar uma topologia é intuitivo:</p>
+
+                <ol class="list-decimal pl-6 space-y-2 my-4">
+                    <li>Na interface web, clique em <strong>Add new lab</strong></li>
+                    <li>Dê um nome ao laboratório (ex: "OSPF Lab 1")</li>
+                    <li>Clique com o botão direito na área em branco → <strong>Add node</strong></li>
+                    <li>Selecione o tipo de dispositivo (ex: Cisco IOSv) e configure nome e RAM</li>
+                    <li>Repita para quantos dispositivos precisar</li>
+                    <li>Para conectar: clique no ícone de cabo no menu → clique no dispositivo de origem → selecione a interface → clique no destino</li>
+                    <li>Clique em <strong>Start all nodes</strong> no menu</li>
+                    <li>Clique em qualquer dispositivo para abrir o console no navegador</li>
+                </ol>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Alternativas baseadas em nuvem</h2>
+
+                <p>Se seu hardware não suporta rodar um emulador local, existem opções baseadas em nuvem onde você acessa labs de rede pelo navegador sem instalar nada:</p>
+
+                <ul class="list-disc pl-6 space-y-3 my-4">
+                    <li><strong>Cisco DevNet Sandbox</strong> — ambientes Cisco gratuitos para desenvolvimento e testes, com reserva por horas em <a href="https://devnetsandbox.cisco.com" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">devnetsandbox.cisco.com</a></li>
+                    <li><strong>Cisco Modeling Labs (CML)</strong> — versão paga e online do emulador oficial da Cisco, com planos a partir de US$199/ano</li>
+                    <li><strong>Juniper vLabs</strong> — acesso gratuito a equipamentos Juniper virtuais para estudo do JunOS</li>
+                    <li><strong>NetDevOps Labs</strong> — laboratórios focados em automação de redes com Ansible e Python</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">EVE-NG ou GNS3: qual escolher em 2026?</h2>
+
+                <p>Para a maioria dos profissionais que estão estudando para certificações Cisco ou construindo labs de redes corporativas, a recomendação atual é o <strong>EVE-NG Community</strong>. Os motivos:</p>
+
+                <ul class="list-disc pl-6 space-y-2 my-4">
+                    <li>Interface web moderna — acesse de qualquer dispositivo sem instalar cliente</li>
+                    <li>Suporte nativo a mais tipos de imagem (QEMU, IOU, Dynamips, Docker)</li>
+                    <li>Topologias colaborativas — compartilhe o acesso ao lab com colegas</li>
+                    <li>Mais estável com muitos nós simultâneos comparado ao GNS3</li>
+                    <li>Adotado pela maioria dos cursos de CCNP e CCIE no Brasil</li>
+                </ul>
+
+                <p>O <strong>GNS3</strong> ainda é excelente escolha se você prefere open source puro, usa Mac ou Linux como sistema principal, ou precisa da integração nativa com Wireshark para análise profunda de protocolos.</p>
+
+                <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                    <h4 class="font-bold text-text-main mb-2">Recomendação por nível</h4>
+                    <p class="text-text-muted text-base"><strong>Iniciante (zero experiência):</strong> comece com Cisco Packet Tracer — é gratuito, roda em qualquer PC e os recursos do NetAcad são excelentes para fundamentos. <strong>Intermediário (CCNA/CCNP):</strong> migre para EVE-NG Community com imagens IOSv. <strong>Avançado (CCIE/labs de produção):</strong> EVE-NG Professional ou CML com imagens de alta fidelidade e topologias complexas de múltiplos fabricantes.</p>
+                </div>
+
+            </div>
+        </article>
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="w-full lg:w-1/4 flex flex-col gap-6">
+        <div class="flex justify-center">
+            <div class="border border-border-subtle bg-surface rounded" style="width:300px;height:250px;">
+                <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4754805344258519" data-ad-slot="7401624661"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg p-6 border border-border-subtle">
+            <h3 class="text-lg font-bold text-text-main mb-4 border-b border-border-subtle pb-2">Artigos Relacionados</h3>
+            <ul class="space-y-3">
+                <li><a href="o-que-e-vlan-e-como-usar.html" class="text-brand hover:underline text-sm font-medium leading-snug">O que é VLAN e por que segmentar sua rede</a></li>
+                <li><a href="o-que-e-firewall-e-como-configurar.html" class="text-brand hover:underline text-sm font-medium leading-snug">O que é Firewall e como configurar no Linux</a></li>
+                <li><a href="entenda-a-diferenca-entre-ip-fixo-dinamico-e-cgnat.html" class="text-brand hover:underline text-sm font-medium leading-snug">IP Fixo, Dinâmico e CGNAT</a></li>
+                <li><a href="o-que-e-servidor-dns-e-como-mudar.html" class="text-brand hover:underline text-sm font-medium leading-snug">O que é um servidor DNS</a></li>
+                <li><a href="diferencas-entre-categorias-de-cabos-de-rede.html" class="text-brand hover:underline text-sm font-medium leading-snug">Diferenças entre categorias de cabos de rede</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+<footer class="bg-surface border-t border-border-subtle py-8 mt-12">
+    <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+        <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="../quem-somos.html" class="hover:text-brand transition font-medium">Quem Somos</a>
+            <a href="../politica-de-privacidade.html" class="hover:text-brand transition font-medium">Política de Privacidade</a>
+            <a href="../termos-de-uso.html" class="hover:text-brand transition font-medium">Termos de Uso</a>
+            <a href="../contato.html" class="hover:text-brand transition font-medium">Contato</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const btn=document.getElementById('mobile-menu-btn'),menu=document.getElementById('mobile-menu'),nav=document.querySelector('header nav'),links=document.getElementById('mobile-nav-links');
+        if(btn&&menu&&nav&&links){links.innerHTML=nav.innerHTML;links.querySelectorAll('a').forEach(l=>l.className='block text-white hover:text-blue-200 transition font-medium text-lg py-3 border-b border-blue-800');btn.addEventListener('click',()=>menu.classList.toggle('hidden'));}
+    });
+</script>
+</body>
+</html>
