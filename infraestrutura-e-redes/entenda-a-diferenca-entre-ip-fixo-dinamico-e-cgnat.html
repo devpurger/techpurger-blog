@@ -120,6 +120,30 @@
                         <li>Se o IP WAN do roteador for <strong>diferente</strong> do IP mostrado no site (ou se o roteador mostrar um IP começando com 100.64 até 100.127), você está em CGNAT.</li>
                     </ol>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Como descobrir se você está atrás de CGNAT</h2>
+                    <p>A forma mais simples é comparar dois IPs:</p>
+                    <ol class="list-decimal pl-6 space-y-2 my-4">
+                        <li>Acesse <a href="https://whatismyip.com" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">whatismyip.com</a> e anote o IP público que aparece</li>
+                        <li>Acesse o painel do seu roteador (geralmente 192.168.1.1 ou 192.168.0.1) e veja o IP WAN nas configurações</li>
+                        <li>Se os dois IPs forem <strong>diferentes</strong>, você está atrás de CGNAT</li>
+                    </ol>
+                    <p>Outra pista: se o IP WAN do seu roteador começar com <code class="bg-gray-100 px-1 rounded text-sm">100.64.x.x</code> a <code class="bg-gray-100 px-1 rounded text-sm">100.127.x.x</code>, você definitivamente está em CGNAT (faixa reservada pela IANA para esse fim).</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Como sair do CGNAT</h2>
+                    <p>Ligue para a operadora e solicite um IP público. Muitas operadoras de fibra oferecem IP público dinâmico gratuitamente apenas mediante solicitação — basta pedir ao suporte técnico. IP fixo geralmente tem custo extra (R$30-80/mês dependendo da operadora).</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Alternativa ao IP fixo: DDNS + Tunnel</h2>
+                    <p>Se sua operadora não oferece IP fixo ou cobra caro demais, existem alternativas:</p>
+                    <ul class="list-disc pl-6 space-y-2 my-4">
+                        <li><strong>DDNS (DNS Dinâmico):</strong> serviços como DuckDNS e No-IP atualizam automaticamente um domínio apontando para seu IP dinâmico. Funciona mesmo sem IP fixo, desde que você não esteja em CGNAT.</li>
+                        <li><strong>Cloudflare Tunnel:</strong> cria um túnel seguro do seu servidor para a Cloudflare sem precisar abrir portas. Funciona mesmo atrás de CGNAT e é gratuito.</li>
+                    </ul>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Resumo prático</h4>
+                        <p class="text-text-muted text-base">Navegação casual → qualquer IP funciona. Servidor em casa, DVR, câmeras remotas, jogos com portfowarding → precisa sair do CGNAT. Servidor de alta disponibilidade → IP fixo ou VPS dedicado na nuvem.</p>
+                    </div>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">A Solução</h4>
                         <p class="text-text-muted text-base">Para fugir do CGNAT, suas únicas opções viáveis são: solicitar a retirada do seu perfil do CGNAT junto ao seu provedor (alguns retiram gratuitamente alegando necessidade de trabalho home-office), pagar por um IP Fixo, adotar totalmente o IPv6 (se a sua aplicação suportar), ou usar túneis virtuais como Cloudflare Tunnels (Zero Trust) ou Tailscale.</p>
