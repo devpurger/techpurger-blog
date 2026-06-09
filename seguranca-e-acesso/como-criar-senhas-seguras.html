@@ -121,6 +121,36 @@
                         <li><strong>KeePassXC</strong> — offline, armazena localmente, máxima privacidade</li>
                     </ul>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Como os hackers quebram senhas</h2>
+                    <p>Entender os métodos de ataque ajuda a criar defesas melhores:</p>
+                    <ul class="list-disc pl-6 space-y-3 my-4">
+                        <li><strong>Ataque de dicionário:</strong> testa automaticamente listas de palavras comuns, variações de nomes e senhas vazadas em outros sites</li>
+                        <li><strong>Força bruta:</strong> testa todas as combinações possíveis. Uma senha de 8 caracteres só com letras minúsculas é quebrada em segundos com hardware moderno</li>
+                        <li><strong>Credential stuffing:</strong> usa listas de e-mail/senha vazadas em um site para tentar logar em outros. Por isso senhas únicas são essenciais</li>
+                        <li><strong>Phishing:</strong> engana o usuário para que ele forneça a senha voluntariamente</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Verifique se seus dados foram vazados</h2>
+                    <p>O site <a href="https://haveibeenpwned.com" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">haveibeenpwned.com</a> (criado pelo pesquisador de segurança Troy Hunt) permite verificar se seu e-mail aparece em algum vazamento de dados conhecido. Basta digitar o e-mail e o site informa em quais brechas ele apareceu e quais dados foram expostos — tudo sem armazenar nenhuma informação sua.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Tempo para quebrar senhas por tamanho</h2>
+                    <div class="overflow-x-auto my-4">
+                        <table class="w-full text-sm border border-border-subtle rounded">
+                            <thead class="bg-surface"><tr><th class="p-3 text-left">Senha</th><th class="p-3 text-left">Tempo para quebrar</th></tr></thead>
+                            <tbody>
+                                <tr class="border-t"><td class="p-3 font-mono">senha123</td><td class="p-3 text-red-600 font-bold">Instantâneo</td></tr>
+                                <tr class="border-t bg-surface"><td class="p-3 font-mono">Senha@2024!</td><td class="p-3 text-yellow-600 font-bold">~3 horas</td></tr>
+                                <tr class="border-t"><td class="p-3 font-mono">G#mK9!xLpQ2@</td><td class="p-3 text-green-600 font-bold">~34 anos</td></tr>
+                                <tr class="border-t bg-surface"><td class="p-3 font-mono">Meu#Gato$Comeu7Pizzas</td><td class="p-3 text-green-600 font-bold">> 1 bilhão de anos</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Resumo de ação imediata</h4>
+                        <p class="text-text-muted text-base">1. Instale o Bitwarden hoje → 2. Troque as senhas das contas mais importantes por senhas geradas automaticamente → 3. Ative 2FA em banco, e-mail e redes sociais → 4. Verifique seus e-mails no haveibeenpwned.com. Esse processo leva menos de 1 hora e aumenta sua segurança digital exponencialmente.</p>
+                    </div>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">Checklist de segurança</h4>
                         <p class="text-text-muted text-base">✅ Senha mestra forte no gerenciador → ✅ Senha única para cada site → ✅ 2FA ativado nas contas críticas → ✅ Verificar e-mails vazados em <a href="https://haveibeenpwned.com" target="_blank" class="text-brand hover:underline">haveibeenpwned.com</a></p>
