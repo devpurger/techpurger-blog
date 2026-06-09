@@ -129,6 +129,33 @@
 
                     <p>A partir do painel (Web GUI), vá na aba <strong>Storage > File Systems</strong> para montar seus HDs. Depois vá em <strong>Services > SMB/CIFS</strong> para compartilhar as pastas, permitindo que elas apareçam nativamente no seu Windows Explorer (em "Rede") para salvar arquivos facilmente como se fosse um pendrive infinito.</p>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Requisitos mínimos de hardware</h2>
+                    <p>Para um NAS doméstico funcional com TrueNAS CORE ou OMV, você precisa de:</p>
+                    <ul class="list-disc pl-6 space-y-2 my-4">
+                        <li><strong>RAM:</strong> mínimo 8GB (TrueNAS recomenda 16GB para ZFS)</li>
+                        <li><strong>Boot drive:</strong> pendrive USB ou SSD de 16GB+ para o sistema operacional</li>
+                        <li><strong>Discos de dados:</strong> 2 ou mais HDs para configurar RAID</li>
+                        <li><strong>Rede:</strong> placa de rede Gigabit (1Gbps) — essencial para boas velocidades de transferência</li>
+                        <li><strong>CPU:</strong> qualquer processador x86 de dual-core funciona; Intel N100 ou Ryzen 5 2400G são ótimas opções econômicas</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">TrueNAS vs OpenMediaVault: qual escolher?</h2>
+                    <p><strong>TrueNAS CORE</strong> usa o sistema de arquivos ZFS, que é extremamente robusto contra corrupção de dados e tem snapshots instantâneos. Ideal para quem quer máxima confiabilidade. Requer mais RAM (mínimo 8-16GB).</p>
+                    <p><strong>OpenMediaVault (OMV)</strong> é baseado em Debian Linux, mais leve (funciona com 1GB de RAM), mais simples de configurar e com grande comunidade. Ideal para hardware mais modesto e iniciantes.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Serviços úteis para instalar no NAS</h2>
+                    <ul class="list-disc pl-6 space-y-2 my-4">
+                        <li><strong>Nextcloud:</strong> seu próprio Google Drive/OneDrive privado</li>
+                        <li><strong>Plex/Jellyfin:</strong> servidor de mídia para filmes e séries</li>
+                        <li><strong>Syncthing:</strong> sincronização de arquivos entre dispositivos</li>
+                        <li><strong>Pi-hole:</strong> bloqueador de anúncios em nível de rede DNS</li>
+                    </ul>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Consumo de energia</h4>
+                        <p class="text-text-muted text-base">Um NAS rodando 24/7 vai aparecer na conta de luz. Um mini PC com Intel N100 consome cerca de 10-15W, o que equivale a menos de R$10/mês na maioria das tarifas brasileiras. Compare com os planos de armazenamento em nuvem: 2TB no Google One custam R$34,99/mês. Em 3 meses, o NAS já se paga em termos de custo de armazenamento.</p>
+                    </div>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">Próximos Passos (Evoluindo seu NAS)</h4>
                         <p class="text-text-muted text-base">Além de puro armazenamento, um NAS pode hospedar aplicações completas em Docker. Nosso próximo passo seria instalar ferramentas como Plex ou Jellyfin para criar a sua própria Netflix caseira, e Nextcloud para sincronizar as fotos do seu smartphone automaticamente.</p>
