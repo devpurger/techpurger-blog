@@ -134,6 +134,45 @@
                         {{'}'}}
                     </div>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Generics: reutilizando código com segurança de tipos</h2>
+                    <p>Os <strong>Generics</strong> permitem criar funções e classes que funcionam com qualquer tipo, mantendo a tipagem. É como um molde que aceita qualquer tipo, mas garante consistência dentro do uso:</p>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                        <span class="text-gray-400">// Sem generic: perde tipagem</span><br>
+                        function primeiro(arr: any[]): any {{'{'}} return arr[0]; {{'}'}}<br><br>
+                        <span class="text-gray-400">// Com generic: mantém tipagem</span><br>
+                        function primeiro&lt;T&gt;(arr: T[]): T {{'{'}} return arr[0]; {{'}'}}<br><br>
+                        const num = primeiro([1, 2, 3]);    <span class="text-gray-400">// T = number</span><br>
+                        const str = primeiro(["a", "b"]);   <span class="text-gray-400">// T = string</span>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">TypeScript com React</h2>
+                    <p>TypeScript e React formam uma combinação poderosa. Ao tipar os <strong>props</strong> de um componente, você elimina toda uma classe de bugs e ganha autocomplete perfeito na IDE:</p>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                        interface CardProps {{'{'}} <br>
+                        &nbsp;&nbsp;titulo: string;<br>
+                        &nbsp;&nbsp;descricao: string;<br>
+                        &nbsp;&nbsp;onClick?: () =&gt; void; <span class="text-gray-400">// opcional</span><br>
+                        {{'}'}}<br><br>
+                        function Card({{'{'}} titulo, descricao, onClick {{'}'}}: CardProps) {{'{'}} <br>
+                        &nbsp;&nbsp;return &lt;div onClick={{'{'}}{{'}'}}onClick{{'}'}}&gt;{{'{'}}titulo{{'}'}}&lt;/div&gt;;<br>
+                        {{'}'}}
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Utility Types mais usados</h2>
+                    <p>TypeScript vem com tipos utilitários prontos que economizam muito trabalho:</p>
+                    <ul class="list-disc pl-6 space-y-2 my-4">
+                        <li><code class="bg-gray-100 px-1 rounded text-sm">Partial&lt;T&gt;</code> — todos os campos ficam opcionais (útil para updates)</li>
+                        <li><code class="bg-gray-100 px-1 rounded text-sm">Required&lt;T&gt;</code> — todos os campos ficam obrigatórios</li>
+                        <li><code class="bg-gray-100 px-1 rounded text-sm">Pick&lt;T, K&gt;</code> — seleciona apenas os campos K de T</li>
+                        <li><code class="bg-gray-100 px-1 rounded text-sm">Omit&lt;T, K&gt;</code> — remove os campos K de T</li>
+                        <li><code class="bg-gray-100 px-1 rounded text-sm">Record&lt;K, V&gt;</code> — cria um objeto com chaves K e valores V</li>
+                    </ul>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Vale a pena aprender?</h4>
+                        <p class="text-text-muted text-base">Absolutamente. Pesquisas do Stack Overflow consistentemente mostram TypeScript entre as linguagens mais amadas pelos desenvolvedores. Vagas que exigem TypeScript pagam em média 15-20% mais que as que pedem apenas JavaScript. O investimento de algumas semanas de aprendizado retorna rapidamente em produtividade e qualidade de código.</p>
+                    </div>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">Conclusão</h4>
                         <p class="text-text-muted text-base">TypeScript não é um substituto do JavaScript — é uma camada de segurança por cima dele. A curva de aprendizado é suave, especialmente se você já conhece JS. Para projetos com mais de um desenvolvedor ou que crescem ao longo do tempo, a tipagem estática se paga rapidamente em bugs evitados.</p>
