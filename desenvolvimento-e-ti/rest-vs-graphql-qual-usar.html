@@ -131,6 +131,29 @@
                     <p><strong>Use REST quando:</strong> sua API é pública e consumida por terceiros, a equipe é pequena e prefere simplicidade, ou você precisa de cache HTTP nativo.</p>
                     <p><strong>Use GraphQL quando:</strong> seu frontend tem muitas telas com necessidades de dados diferentes (ex: app mobile vs web), você quer evitar múltiplas chamadas, ou está construindo um BFF (Backend for Frontend).</p>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">GraphQL na prática: como montar um servidor</h2>
+                    <p>Com Node.js e a biblioteca <strong>Apollo Server</strong>, você pode ter um servidor GraphQL rodando em minutos:</p>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                        npm install @apollo/server graphql<br><br>
+                        <span class="text-gray-400">// Definição do schema (contrato da API)</span><br>
+                        const typeDefs = `#graphql<br>
+                        &nbsp;&nbsp;type Usuario {{'{'}} id: ID, nome: String, email: String {{'}'}}<br>
+                        &nbsp;&nbsp;type Query {{'{'}} usuario(id: ID!): Usuario {{'}'}}<br>
+                        `;<br><br>
+                        <span class="text-gray-400">// Resolvers (onde a lógica vive)</span><br>
+                        const resolvers = {{'{'}} Query: {{'{'}} usuario: (_, {{'{'}}id{{'}'}}) => buscarUsuario(id) {{'}'}}<br>
+                        {{'}'}};
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">O problema do over-fetching no REST</h2>
+                    <p>Imagine que você tem uma tela de perfil no app mobile que precisa apenas do nome e foto do usuário. Com REST, a chamada <code class="bg-gray-100 px-1 rounded text-sm">GET /usuarios/42</code> retorna todos os campos — CPF, endereço, histórico de compras, configurações. Isso é <strong>over-fetching</strong>: você recebe muito mais do que precisa, desperdiçando banda (crítico em mobile) e aumentando o tempo de parsing.</p>
+                    <p>Com GraphQL, você pede exatamente <code class="bg-gray-100 px-1 rounded text-sm">nome</code> e <code class="bg-gray-100 px-1 rounded text-sm">fotoPerfil</code> e recebe apenas esses dois campos.</p>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Adoção no mercado</h4>
+                        <p class="text-text-muted text-base">GitHub, Shopify, Twitter e Facebook usam GraphQL em produção. Mas grandes APIs públicas como Stripe, Twilio e a maioria dos serviços de pagamento ainda usam REST. A tendência para novos projetos com frontends complexos é GraphQL, mas REST está longe de morrer — especialmente para integrações B2B e APIs públicas simples.</p>
+                    </div>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">Conclusão</h4>
                         <p class="text-text-muted text-base">Não há resposta errada — há a resposta certa para o seu contexto. Para projetos novos com frontends complexos e mobile, GraphQL vale o investimento. Para APIs simples, REST ainda é a escolha mais pragmática e amplamente suportada.</p>
