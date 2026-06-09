@@ -115,6 +115,35 @@
                     <h3 class="text-xl font-bold text-brand mt-6 mb-2">2. Chaves Físicas (FIDO2 / WebAuthn)</h3>
                     <p>O padrão ouro de segurança atual. Dispositivos como as chaves <strong>YubiKey</strong>. Você precisa inserir a pequena chave no USB do computador (ou usar NFC no celular) e encostar o dedo nela para provar presença física. Nem mesmo ataques de Phishing perfeitos funcionam contra chaves de hardware.</p>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Alternativas seguras ao 2FA por SMS</h2>
+                    <p>Felizmente, existem métodos de segundo fator muito mais seguros:</p>
+
+                    <h3 class="text-xl font-bold text-text-main mt-6 mb-3">Apps autenticadores (TOTP)</h3>
+                    <p>Aplicativos como <strong>Google Authenticator</strong>, <strong>Authy</strong> e <strong>Microsoft Authenticator</strong> geram códigos de 6 dígitos que expiram a cada 30 segundos, offline, sem depender de operadora. O código é derivado de uma chave secreta compartilhada no momento do cadastro — nenhum SMS é enviado, tornando o SIM Swapping ineficaz.</p>
+
+                    <h3 class="text-xl font-bold text-text-main mt-6 mb-3">Chaves de segurança físicas (FIDO2/WebAuthn)</h3>
+                    <p>Dispositivos como <strong>YubiKey</strong> são o padrão ouro em autenticação. São resistentes a phishing (a chave verifica o domínio do site), não dependem de rede e são praticamente impossíveis de comprometer remotamente. Google, GitHub e principais bancos suportam FIDO2.</p>
+
+                    <h3 class="text-xl font-bold text-text-main mt-6 mb-3">Passkeys</h3>
+                    <p>A tecnologia mais recente, já suportada pelo Google, Apple e Microsoft. Usa criptografia de chave pública armazenada no dispositivo (protegida por biometria). Elimina senhas e segundo fator ao mesmo tempo, sendo imune a phishing por design.</p>
+
+                    <div class="overflow-x-auto my-4">
+                        <table class="w-full text-sm border border-border-subtle rounded">
+                            <thead class="bg-surface"><tr><th class="p-3 text-left">Método</th><th class="p-3 text-left">Segurança</th><th class="p-3 text-left">Facilidade</th></tr></thead>
+                            <tbody>
+                                <tr class="border-t"><td class="p-3">SMS</td><td class="p-3 text-red-600 font-bold">Baixa</td><td class="p-3 text-green-600">Alta</td></tr>
+                                <tr class="border-t bg-surface"><td class="p-3">App TOTP</td><td class="p-3 text-yellow-600 font-bold">Média-Alta</td><td class="p-3 text-yellow-600">Média</td></tr>
+                                <tr class="border-t"><td class="p-3">YubiKey (FIDO2)</td><td class="p-3 text-green-600 font-bold">Muito Alta</td><td class="p-3 text-yellow-600">Média</td></tr>
+                                <tr class="border-t bg-surface"><td class="p-3">Passkey</td><td class="p-3 text-green-600 font-bold">Muito Alta</td><td class="p-3 text-green-600">Alta</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Ação imediata recomendada</h4>
+                        <p class="text-text-muted text-base">Instale o Authy ou Google Authenticator agora e migre suas contas mais críticas (banco, e-mail, GitHub, conta Google) do 2FA por SMS para TOTP. Leva menos de 10 minutos por conta e aumenta sua segurança dramaticamente. Para contas corporativas de alta criticidade, invista em uma YubiKey.</p>
+                    </div>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">Passo a Passo Prático</h4>
                         <p class="text-text-muted text-base">Abra as configurações de segurança das suas contas mais cruciais (Gmail, banco, iCloud). Procure a seção 2FA e adicione o método de "Aplicativo de Autenticação". Escaneie o QR Code. Uma vez ativado, encontre e <strong>remova</strong> especificamente a opção de recuperação e código via SMS das suas configurações de segurança.</p>
