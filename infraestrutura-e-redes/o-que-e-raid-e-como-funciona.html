@@ -121,6 +121,34 @@
                         ❌ Desvantagem: custo alto — 50% do armazenamento é usado para redundância
                     </div>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Comparação resumida dos níveis RAID</h2>
+                    <div class="overflow-x-auto my-4">
+                        <table class="w-full text-sm border border-border-subtle rounded">
+                            <thead class="bg-surface"><tr><th class="p-3">RAID</th><th class="p-3">Mín. discos</th><th class="p-3">Espaço útil</th><th class="p-3">Tolera falha</th><th class="p-3">Velocidade</th></tr></thead>
+                            <tbody>
+                                <tr class="border-t text-center"><td class="p-3 font-bold">0</td><td class="p-3">2</td><td class="p-3">100%</td><td class="p-3 text-red-600">Nenhum</td><td class="p-3 text-green-600">Muito alta</td></tr>
+                                <tr class="border-t bg-surface text-center"><td class="p-3 font-bold">1</td><td class="p-3">2</td><td class="p-3">50%</td><td class="p-3 text-green-600">1 disco</td><td class="p-3">Normal</td></tr>
+                                <tr class="border-t text-center"><td class="p-3 font-bold">5</td><td class="p-3">3</td><td class="p-3">66-80%</td><td class="p-3 text-green-600">1 disco</td><td class="p-3">Alta leitura</td></tr>
+                                <tr class="border-t bg-surface text-center"><td class="p-3 font-bold">6</td><td class="p-3">4</td><td class="p-3">50-75%</td><td class="p-3 text-green-600">2 discos</td><td class="p-3">Alta leitura</td></tr>
+                                <tr class="border-t text-center"><td class="p-3 font-bold">10</td><td class="p-3">4</td><td class="p-3">50%</td><td class="p-3 text-green-600">Até 50%</td><td class="p-3 text-green-600">Muito alta</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Como configurar RAID no TrueNAS</h2>
+                    <p>O TrueNAS usa o sistema de arquivos <strong>ZFS</strong>, que implementa RAID de forma nativa (chamado de VDEV). Para configurar:</p>
+                    <ol class="list-decimal pl-6 space-y-2 my-4">
+                        <li>Acesse o painel web do TrueNAS (geralmente <code class="bg-gray-100 px-1 rounded text-sm">192.168.1.x</code>)</li>
+                        <li>Vá em <strong>Storage → Pools → Add</strong></li>
+                        <li>Selecione os discos e escolha o layout: Mirror (RAID1), RAIDZ1 (RAID5), RAIDZ2 (RAID6)</li>
+                        <li>Confirme — o pool é criado e já está pronto para uso</li>
+                    </ol>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">RAID 6 para NAS com 4+ discos</h4>
+                        <p class="text-text-muted text-base">Para NAS com 4 ou mais discos, considere o RAID 6 (RAIDZ2 no ZFS), que tolera a falha simultânea de 2 discos. Com HDs baratos e grandes, a probabilidade de um segundo disco falhar durante a reconstrução do primeiro é real — o RAID 6 protege contra esse cenário crítico.</p>
+                    </div>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">⚠️ RAID não é backup!</h4>
                         <p class="text-text-muted text-base">RAID protege contra falha de hardware, mas não contra exclusão acidental, ransomware ou incêndio. Sempre mantenha backups externos separados — de preferência em local físico diferente ou em nuvem.</p>
