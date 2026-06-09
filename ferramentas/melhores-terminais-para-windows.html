@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melhores Terminais para Windows em 2026: Windows Terminal, MobaXterm e PuTTY | TechPurger</title>
+    <meta name="description" content="Conheça os melhores terminais para Windows em 2026. Comparamos Windows Terminal, MobaXterm, PuTTY, Cmder e Git Bash para você escolher o ideal para seu perfil.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['monospace'] },
+                    colors: { brand: '#0056b3', surface: '#f8f9fa', 'border-subtle': '#e9ecef', 'text-main': '#1a1a1a', 'text-muted': '#4a5568', 'code-bg': '#1a202c' },
+                    maxWidth: { 'container-max': '1200px' }
+                }
+            }
+        }
+    </script>
+    <style>body { color: #1a1a1a; line-height: 1.7; }</style>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754805344258519" crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="xZ4uPnJxQZNOPLXOg_l5MkSC-QR-mk5zY8nXJaYKpTQ" />
+</head>
+<body class="bg-white text-text-main font-sans antialiased flex flex-col min-h-screen">
+
+<!-- Banner de Cookies -->
+<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1a1a1a; color:#fff; padding:16px 24px; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; font-family:'Inter',sans-serif; font-size:14px; box-shadow:0 -2px 12px rgba(0,0,0,0.3);">
+  <p style="margin:0; flex:1; min-width:240px;">🍪 Utilizamos <strong>cookies</strong> para melhorar sua experiência. Ao continuar, você concorda com nossa <a href="../politica-de-privacidade.html" style="color:#60a5fa; text-decoration:underline;">Política de Privacidade</a>.</p>
+  <div style="display:flex; gap:10px; flex-shrink:0;">
+    <button onclick="aceitarCookies()" style="background:#0056b3; color:#fff; border:none; padding:10px 20px; border-radius:6px; font-weight:600; cursor:pointer;">Aceitar</button>
+    <button onclick="recusarCookies()" style="background:transparent; color:#ccc; border:1px solid #555; padding:10px 16px; border-radius:6px; font-weight:600; cursor:pointer;">Recusar</button>
+  </div>
+</div>
+<script>
+  (function(){var c=localStorage.getItem('cookieConsent'),b=document.getElementById('cookie-banner');if(!c&&b)b.style.display='flex';})();
+  function aceitarCookies(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookie-banner').style.display='none';}
+  function recusarCookies(){localStorage.setItem('cookieConsent','declined');document.getElementById('cookie-banner').style.display='none';}
+</script>
+
+<header class="bg-brand text-white border-b border-border-subtle">
+    <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+        <nav class="hidden md:flex space-x-8">
+            <a href="../infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
+            <a href="../seguranca-e-acesso/index.html" class="text-white hover:opacity-80 transition font-medium">Segurança e Acesso</a>
+            <a href="../desenvolvimento-e-ti/index.html" class="text-white hover:opacity-80 transition font-medium">Desenvolvimento e TI</a>
+            <a href="../ferramentas/index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Ferramentas</a>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white">
+            <svg class="fill-current h-4 w-4" viewBox="0 0 20 20"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-brand border-t border-blue-800">
+        <div class="px-6 py-2 flex flex-col" id="mobile-nav-links"></div>
+    </div>
+</header>
+
+<div class="max-w-container-max mx-auto px-6 mt-8 flex justify-center">
+    <div class="border border-border-subtle bg-surface rounded" style="width:728px;height:90px;max-width:100%;">
+        <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4754805344258519" data-ad-slot="5872920570"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+</div>
+
+<div class="max-w-container-max mx-auto px-6 py-8 flex flex-col lg:flex-row gap-6 flex-grow">
+    <main class="w-full lg:w-3/4">
+        <article class="bg-white rounded-lg border border-border-subtle p-6 lg:p-8">
+
+            <nav class="text-sm font-medium text-text-muted mb-6">
+                <a href="../index.html" class="hover:text-brand transition">Home</a>
+                <span class="mx-2">/</span>
+                <a href="index.html" class="hover:text-brand transition">Ferramentas</a>
+                <span class="mx-2">/</span>
+                <span class="text-text-main">Melhores Terminais para Windows</span>
+            </nav>
+
+            <h1 class="text-3xl lg:text-4xl font-bold text-text-main mb-6 tracking-tight leading-tight">
+                Melhores Terminais para Windows em 2026: guia completo
+            </h1>
+            <div class="flex flex-wrap items-center gap-3 text-text-muted text-sm font-medium mb-8 border-b border-border-subtle pb-4">
+                <span>Publicado em: 09 de Junho de 2026</span>
+                <span>•</span>
+                <span>Por: <strong>Rinaldo Purger</strong></span>
+                <span>•</span>
+                <span class="inline-block bg-surface border border-border-subtle px-2 py-0.5 rounded text-xs font-semibold">Ferramentas</span>
+            </div>
+
+            <div class="prose max-w-none text-text-main text-lg space-y-6">
+
+                <p>O terminal é a ferramenta mais usada por desenvolvedores, administradores de sistemas e profissionais de TI. No Windows, o terminal padrão (cmd.exe) por décadas foi sinônimo de limitação: sem abas, sem cores, sem autocompletar e sem suporte decente a SSH. Isso mudou. Hoje existem opções excelentes — algumas nativas, outras de terceiros — que transformam completamente a experiência no Windows.</p>
+
+                <p>Neste guia comparamos os <strong>5 principais terminais para Windows</strong>: Windows Terminal, MobaXterm, PuTTY, Cmder e Git Bash. Vamos analisar os pontos fortes de cada um para você escolher o ideal para o seu perfil de uso.</p>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">1. Windows Terminal — o melhor para devs modernos</h2>
+
+                <p>O <strong>Windows Terminal</strong> é o terminal oficial da Microsoft, lançado em 2019 e disponível gratuitamente na Microsoft Store e no GitHub. É open source, ativamente mantido e se tornou rapidamente o favorito da comunidade de desenvolvimento.</p>
+
+                <h3 class="text-xl font-bold text-text-main mt-6 mb-3">O que torna o Windows Terminal especial</h3>
+                <p>Diferente do cmd.exe e do PowerShell antigo, o Windows Terminal é um <strong>host de terminal</strong> — ele não é um shell em si, mas uma interface que pode rodar qualquer shell instalado no sistema: PowerShell, CMD, WSL (Ubuntu, Debian, etc.), Git Bash, Azure Cloud Shell e outros. Você gerencia tudo em abas e painéis divididos dentro de uma única janela.</p>
+
+                <ul class="list-disc pl-6 space-y-2 my-4">
+                    <li><strong>Abas e painéis:</strong> abra múltiplos terminais lado a lado com <code class="bg-gray-100 px-1 rounded text-sm">Alt+Shift+D</code> (dividir horizontalmente) ou <code class="bg-gray-100 px-1 rounded text-sm">Alt+Shift+Plus</code> (vertical)</li>
+                    <li><strong>GPU rendering:</strong> usa aceleração gráfica para renderização de texto — extremamente fluido mesmo com muita saída de texto</li>
+                    <li><strong>Suporte a Unicode e emojis:</strong> exibe caracteres especiais, ícones de frameworks e emojis corretamente</li>
+                    <li><strong>Transparência e temas:</strong> fundo com acrílico, temas personalizáveis via JSON, suporte ao tema do sistema (claro/escuro automático)</li>
+                    <li><strong>Profiles por shell:</strong> cada shell tem seu próprio perfil com cores, fonte e diretório inicial independentes</li>
+                </ul>
+
+                <div class="flex justify-center my-8 lg:float-right lg:ml-8 lg:mb-4">
+                    <div class="border border-border-subtle bg-surface rounded" style="width:300px;height:250px;">
+                        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4754805344258519" data-ad-slot="7401624661"></ins>
+                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-bold text-text-main mt-6 mb-3 clear-both">Configuração básica recomendada</h3>
+                <p>O Windows Terminal é configurado por um arquivo JSON. Abra as configurações com <code class="bg-gray-100 px-1 rounded text-sm">Ctrl+,</code> e personalize:</p>
+                <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+<span class="text-gray-400">// settings.json — configurações recomendadas</span><br>
+{<br>
+&nbsp;&nbsp;<span class="text-yellow-300">"defaultProfile"</span>: <span class="text-green-300">"{guid-do-wsl}"</span>,<br>
+&nbsp;&nbsp;<span class="text-yellow-300">"copyOnSelect"</span>: <span class="text-blue-300">true</span>,<br>
+&nbsp;&nbsp;<span class="text-yellow-300">"profiles"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-300">"defaults"</span>: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-300">"font"</span>: { <span class="text-yellow-300">"face"</span>: <span class="text-green-300">"CascadiaCode NF"</span>, <span class="text-yellow-300">"size"</span>: <span class="text-blue-300">13</span> },<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-300">"opacity"</span>: <span class="text-blue-300">90</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-300">"useAcrylic"</span>: <span class="text-blue-300">true</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-300">"cursorShape"</span>: <span class="text-green-300">"bar"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}<br>
+}
+                </div>
+
+                <p><strong>Dica essencial:</strong> instale a fonte <strong>Cascadia Code NF</strong> (Nerd Font) da Microsoft — ela inclui ícones de tecnologias que o Oh My Posh e outros prompt themes usam para deixar o terminal muito mais informativo e bonito.</p>
+
+                <p><strong>Ideal para:</strong> desenvolvedores que usam WSL, PowerShell e precisam de um terminal moderno e altamente configurável no Windows.</p>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">2. MobaXterm — o canivete suíço para sysadmins</h2>
+
+                <p>O <strong>MobaXterm</strong> é uma categoria à parte. Mais do que um terminal, é uma suíte completa de ferramentas para administração remota de sistemas. Se você gerencia servidores Linux, acessa equipamentos de rede via SSH ou precisa de SFTP integrado, o MobaXterm é provavelmente a melhor ferramenta que você pode ter no Windows.</p>
+
+                <h3 class="text-xl font-bold text-text-main mt-6 mb-3">Recursos que o diferenciam</h3>
+                <ul class="list-disc pl-6 space-y-2 my-4">
+                    <li><strong>SSH integrado com X11 forwarding:</strong> execute aplicações gráficas Linux diretamente no Windows sem configuração extra</li>
+                    <li><strong>SFTP lateral automático:</strong> ao conectar via SSH, abre automaticamente um painel lateral com o explorador de arquivos SFTP do servidor — arraste arquivos entre seu PC e o servidor</li>
+                    <li><strong>Gravação de sessões:</strong> salve conexões com nome, IP, usuário e chave — reconecte com um duplo clique</li>
+                    <li><strong>Múltiplos protocolos:</strong> SSH, Telnet, RDP, VNC, FTP, SFTP, Serial, Mosh — tudo em uma interface</li>
+                    <li><strong>Terminal Unix embutido:</strong> inclui bash, grep, sed, awk, ls e outros comandos Unix funcionando nativamente no Windows, sem instalar WSL</li>
+                    <li><strong>Macro e scripting:</strong> grave e reproduza sequências de comandos, útil para tarefas repetitivas de administração</li>
+                </ul>
+
+                <h3 class="text-xl font-bold text-text-main mt-6 mb-3">Versão gratuita vs Professional</h3>
+                <p>A versão <strong>Home (gratuita)</strong> é suficiente para a maioria dos usos: até 12 sessões salvas, todos os protocolos e todas as ferramentas integradas. A versão <strong>Professional</strong> (a partir de €49 por licença perpétua) remove o limite de sessões, adiciona personalização de interface e suporte prioritário.</p>
+
+                <p><strong>Ideal para:</strong> sysadmins, administradores de rede, DevOps e qualquer profissional que gerencia múltiplos servidores remotos diariamente.</p>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">3. PuTTY — o clássico que nunca morre</h2>
+
+                <p>O <strong>PuTTY</strong> existe desde 1999 e é provavelmente o cliente SSH mais instalado do mundo em ambientes Windows corporativos. Ele é simples, extremamente leve (o executável tem menos de 1MB), portátil (roda sem instalar) e faz exatamente o que promete: conectar via SSH, Telnet e Serial com confiabilidade total.</p>
+
+                <h3 class="text-xl font-bold text-text-main mt-6 mb-3">Por que ainda é usado</h3>
+                <p>Em ambientes corporativos com políticas rígidas de TI, instalar novos softwares pode ser burocrático. O PuTTY é simples de ser aprovado em auditorias de segurança por ser open source, amplamente auditado e sem dependências externas. Muitos técnicos carregam o executável em um pendrive para ter acesso SSH em qualquer máquina.</p>
+
+                <ul class="list-disc pl-6 space-y-2 my-4">
+                    <li><strong>PuTTYgen:</strong> ferramenta incluída para gerar pares de chaves RSA/ED25519 para autenticação SSH por chave</li>
+                    <li><strong>Pageant:</strong> agente SSH que mantém suas chaves carregadas em memória, evitando redigitar senha de chave a cada conexão</li>
+                    <li><strong>Sessões salvas:</strong> salve configurações de hosts com IP, usuário, porta e chave</li>
+                    <li><strong>Port forwarding:</strong> redirecione portas locais através de túneis SSH com facilidade</li>
+                </ul>
+
+                <h3 class="text-xl font-bold text-text-main mt-6 mb-3">Limitações do PuTTY</h3>
+                <p>O PuTTY não tem abas — cada conexão abre uma janela separada. A interface é datada e não suporta divisão de painéis. Para quem precisa de mais de 3-4 conexões simultâneas, o gerenciamento de janelas fica caótico. Nesses casos, o MobaXterm ou o Windows Terminal + SSH nativo são superiores.</p>
+
+                <p><strong>Ideal para:</strong> conexões SSH pontuais, ambientes corporativos conservadores, técnicos de campo que precisam de uma ferramenta portátil.</p>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">4. Cmder — o terminal bonito para quem não quer WSL</h2>
+
+                <p>O <strong>Cmder</strong> é um emulador de terminal para Windows baseado no ConEmu + Clink. Ele não é um shell, mas uma interface que embeleza e turbina o CMD e o PowerShell nativos com recursos que deveriam ter existido desde sempre.</p>
+
+                <h3 class="text-xl font-bold text-text-main mt-6 mb-3">O que o Cmder adiciona</h3>
+                <ul class="list-disc pl-6 space-y-2 my-4">
+                    <li><strong>Abas:</strong> múltiplas sessões em abas dentro de uma janela — CMD, PowerShell e Git Bash juntos</li>
+                    <li><strong>Prompt estilizado:</strong> exibe o branch Git atual, status de arquivos modificados e muito mais no prompt</li>
+                    <li><strong>Autocompletar melhorado:</strong> o Clink adiciona autocompletar inteligente para CMD com histórico e sugestões</li>
+                    <li><strong>Portátil:</strong> versão "mini" não requer instalação — perfeito para rodar de pendrive</li>
+                    <li><strong>Atalhos Unix no Windows:</strong> comandos básicos como <code class="bg-gray-100 px-1 rounded text-sm">ls</code>, <code class="bg-gray-100 px-1 rounded text-sm">grep</code>, <code class="bg-gray-100 px-1 rounded text-sm">cat</code> e <code class="bg-gray-100 px-1 rounded text-sm">curl</code> funcionam nativamente</li>
+                </ul>
+
+                <p><strong>Ideal para:</strong> usuários que trabalham muito com Git no Windows e querem um terminal bonito sem a complexidade do WSL.</p>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">5. Git Bash — o terminal do desenvolvedor Git</h2>
+
+                <p>O <strong>Git Bash</strong> vem incluído automaticamente ao instalar o <strong>Git for Windows</strong>. Ele fornece um ambiente bash completo no Windows com os utilitários Unix mais comuns (grep, awk, sed, curl, ssh, rsync) sem precisar instalar o WSL.</p>
+
+                <h3 class="text-xl font-bold text-text-main mt-6 mb-3">Quando o Git Bash é suficiente</h3>
+                <p>Para a maioria dos desenvolvedores que usam Git no dia a dia, o Git Bash resolve tudo: clone, commit, push, pull, gerenciamento de branches, SSH para GitHub/GitLab com chaves ED25519 e execução de scripts bash simples. O prompt já mostra o branch atual por padrão.</p>
+
+                <p>Sua principal limitação é que ele emula o bash em cima do Windows usando MSYS2 — não é um Linux real. Scripts bash complexos com dependências específicas do Linux podem não funcionar. Para isso, o WSL2 é a solução correta.</p>
+
+                <p><strong>Ideal para:</strong> desenvolvedores que só precisam de Git + SSH + scripts bash básicos sem overhead de instalação.</p>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Comparação direta</h2>
+
+                <div class="overflow-x-auto my-6">
+                    <table class="w-full text-sm border border-border-subtle rounded">
+                        <thead class="bg-surface">
+                            <tr>
+                                <th class="p-3 text-left">Terminal</th>
+                                <th class="p-3 text-center">Abas</th>
+                                <th class="p-3 text-center">SSH nativo</th>
+                                <th class="p-3 text-center">SFTP</th>
+                                <th class="p-3 text-center">Custo</th>
+                                <th class="p-3 text-left">Melhor para</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t">
+                                <td class="p-3 font-bold">Windows Terminal</td>
+                                <td class="p-3 text-center text-green-600">✅</td>
+                                <td class="p-3 text-center text-green-600">✅</td>
+                                <td class="p-3 text-center text-red-500">❌</td>
+                                <td class="p-3 text-center text-green-600">Grátis</td>
+                                <td class="p-3">Devs com WSL</td>
+                            </tr>
+                            <tr class="border-t bg-surface">
+                                <td class="p-3 font-bold">MobaXterm</td>
+                                <td class="p-3 text-center text-green-600">✅</td>
+                                <td class="p-3 text-center text-green-600">✅</td>
+                                <td class="p-3 text-center text-green-600">✅</td>
+                                <td class="p-3 text-center text-green-600">Grátis*</td>
+                                <td class="p-3">Sysadmins</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="p-3 font-bold">PuTTY</td>
+                                <td class="p-3 text-center text-red-500">❌</td>
+                                <td class="p-3 text-center text-green-600">✅</td>
+                                <td class="p-3 text-center text-yellow-500">Via WinSCP</td>
+                                <td class="p-3 text-center text-green-600">Grátis</td>
+                                <td class="p-3">SSH pontual</td>
+                            </tr>
+                            <tr class="border-t bg-surface">
+                                <td class="p-3 font-bold">Cmder</td>
+                                <td class="p-3 text-center text-green-600">✅</td>
+                                <td class="p-3 text-center text-yellow-500">Via SSH</td>
+                                <td class="p-3 text-center text-red-500">❌</td>
+                                <td class="p-3 text-center text-green-600">Grátis</td>
+                                <td class="p-3">Git + CMD bonito</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="p-3 font-bold">Git Bash</td>
+                                <td class="p-3 text-center text-red-500">❌</td>
+                                <td class="p-3 text-center text-green-600">✅</td>
+                                <td class="p-3 text-center text-red-500">❌</td>
+                                <td class="p-3 text-center text-green-600">Grátis</td>
+                                <td class="p-3">Git + bash básico</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-text-muted">* MobaXterm gratuito limita a 12 sessões salvas.</p>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Bônus: turbine qualquer terminal com Oh My Posh</h2>
+
+                <p>O <strong>Oh My Posh</strong> é um engine de temas de prompt que funciona com qualquer shell no Windows (PowerShell, CMD, bash). Ele exibe informações contextuais no prompt: branch Git atual, status de arquivos, versão do Node/Python/Go, tempo de execução do último comando e muito mais.</p>
+
+                <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+<span class="text-gray-400"># Instalar Oh My Posh via winget (Windows 10/11)</span><br>
+winget install JanDeDobbeleer.OhMyPosh<br><br>
+<span class="text-gray-400"># Instalar fonte Nerd Font (necessária para os ícones)</span><br>
+oh-my-posh font install CascadiaCode<br><br>
+<span class="text-gray-400"># Adicionar ao perfil do PowerShell</span><br>
+notepad $PROFILE<br>
+<span class="text-gray-400"># Cole esta linha no arquivo:</span><br>
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\paradox.omp.json" | Invoke-Expression
+                </div>
+
+                <p>Com a fonte CascadiaCode NF instalada no Windows Terminal e o Oh My Posh configurado, você tem um terminal visualmente informativo e profissional que rivaliza com qualquer setup no Linux ou macOS.</p>
+
+                <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Qual instalar agora?</h2>
+
+                <p>Se você quer uma resposta direta:</p>
+                <ul class="list-disc pl-6 space-y-2 my-4">
+                    <li><strong>Desenvolvedor web/software:</strong> Windows Terminal + WSL2 (Ubuntu) + Oh My Posh</li>
+                    <li><strong>Sysadmin / gerencia servidores:</strong> MobaXterm Home</li>
+                    <li><strong>Uso rápido / SSH pontual:</strong> PuTTY ou Windows Terminal</li>
+                    <li><strong>Trabalha muito com Git:</strong> Git Bash ou Cmder</li>
+                    <li><strong>Quer tudo em um:</strong> MobaXterm</li>
+                </ul>
+
+                <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                    <h4 class="font-bold text-text-main mb-2">Minha recomendação pessoal</h4>
+                    <p class="text-text-muted text-base">Para quem está começando a trabalhar com desenvolvimento ou infraestrutura no Windows em 2026, instale o <strong>Windows Terminal</strong> (já vem no Windows 11, disponível na Store para o Windows 10) combinado com o <strong>WSL2</strong> rodando Ubuntu. Você terá um ambiente Linux completo dentro do Windows, integrado ao sistema de arquivos do Windows, com performance excelente e acesso a todas as ferramentas Linux que o ecossistema de desenvolvimento exige. Adicione o Oh My Posh por cima e seu terminal estará tão bom quanto qualquer setup profissional no macOS.</p>
+                </div>
+
+            </div>
+        </article>
+    </main>
+
+    <aside class="w-full lg:w-1/4 flex flex-col gap-6">
+        <div class="flex justify-center">
+            <div class="border border-border-subtle bg-surface rounded" style="width:300px;height:250px;">
+                <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4754805344258519" data-ad-slot="7401624661"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg p-6 border border-border-subtle">
+            <h3 class="text-lg font-bold text-text-main mb-4 border-b border-border-subtle pb-2">Artigos Relacionados</h3>
+            <ul class="space-y-3">
+                <li><a href="extensoes-vscode-essenciais.html" class="text-brand hover:underline text-sm font-medium leading-snug">10 Extensões do VS Code essenciais</a></li>
+                <li><a href="../desenvolvimento-e-ti/como-fazer-deploy-gratuito-nodejs-react.html" class="text-brand hover:underline text-sm font-medium leading-snug">Deploy gratuito de Node.js e React</a></li>
+                <li><a href="../desenvolvimento-e-ti/por-que-usar-git-guia-rapido.html" class="text-brand hover:underline text-sm font-medium leading-snug">Por que o Git é obrigatório?</a></li>
+                <li><a href="../infraestrutura-e-redes/o-que-e-firewall-e-como-configurar.html" class="text-brand hover:underline text-sm font-medium leading-snug">Firewall no Linux com UFW</a></li>
+                <li><a href="../seguranca-e-acesso/como-criar-senhas-seguras.html" class="text-brand hover:underline text-sm font-medium leading-snug">Como criar senhas seguras</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+<footer class="bg-surface border-t border-border-subtle py-8 mt-12">
+    <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+        <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="../quem-somos.html" class="hover:text-brand transition font-medium">Quem Somos</a>
+            <a href="../politica-de-privacidade.html" class="hover:text-brand transition font-medium">Política de Privacidade</a>
+            <a href="../termos-de-uso.html" class="hover:text-brand transition font-medium">Termos de Uso</a>
+            <a href="../contato.html" class="hover:text-brand transition font-medium">Contato</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const btn=document.getElementById('mobile-menu-btn'),menu=document.getElementById('mobile-menu'),nav=document.querySelector('header nav'),links=document.getElementById('mobile-nav-links');
+        if(btn&&menu&&nav&&links){links.innerHTML=nav.innerHTML;links.querySelectorAll('a').forEach(l=>l.className='block text-white hover:text-blue-200 transition font-medium text-lg py-3 border-b border-blue-800');btn.addEventListener('click',()=>menu.classList.toggle('hidden'));}
+    });
+</script>
+</body>
+</html>
