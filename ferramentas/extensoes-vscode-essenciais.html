@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Extensões do VS Code que todo desenvolvedor precisa instalar | TechPurger</title>
+    <meta name="description" content="Conheça as extensões essenciais do Visual Studio Code para aumentar sua produtividade, qualidade de código e conforto no dia a dia.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['monospace'] },
+                    colors: { brand: '#0056b3', surface: '#f8f9fa', 'border-subtle': '#e9ecef', 'text-main': '#1a1a1a', 'text-muted': '#4a5568', 'code-bg': '#1a202c' },
+                    maxWidth: { 'container-max': '1200px' }
+                }
+            }
+        }
+    </script>
+    <style> body { color: #1a1a1a; line-height: 1.6; } </style>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754805344258519" crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="xZ4uPnJxQZNOPLXOg_l5MkSC-QR-mk5zY8nXJaYKpTQ" />
+</head>
+<body class="bg-white text-text-main font-sans antialiased flex flex-col min-h-screen">
+
+<!-- Banner de Cookies -->
+<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1a1a1a; color:#fff; padding:16px 24px; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; font-family:'Inter',sans-serif; font-size:14px; box-shadow:0 -2px 12px rgba(0,0,0,0.3);">
+  <p style="margin:0; flex:1; min-width:240px;">🍪 Utilizamos <strong>cookies</strong> para melhorar sua experiência e exibir anúncios relevantes via Google AdSense. Ao continuar navegando, você concorda com nossa <a href="../politica-de-privacidade.html" style="color:#60a5fa; text-decoration:underline;">Política de Privacidade</a>.</p>
+  <div style="display:flex; gap:10px; flex-shrink:0;">
+    <button onclick="aceitarCookies()" style="background:#0056b3; color:#fff; border:none; padding:10px 20px; border-radius:6px; font-weight:600; cursor:pointer; font-size:14px;">Aceitar</button>
+    <button onclick="recusarCookies()" style="background:transparent; color:#ccc; border:1px solid #555; padding:10px 16px; border-radius:6px; font-weight:600; cursor:pointer; font-size:14px;">Recusar</button>
+  </div>
+</div>
+<script>
+  (function() { var c=localStorage.getItem('cookieConsent'),b=document.getElementById('cookie-banner'); if(!c&&b)b.style.display='flex'; })();
+  function aceitarCookies(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookie-banner').style.display='none';}
+  function recusarCookies(){localStorage.setItem('cookieConsent','declined');document.getElementById('cookie-banner').style.display='none';}
+</script>
+
+<header class="bg-brand text-white border-b border-border-subtle">
+    <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+        <nav class="hidden md:flex space-x-8">
+            <a href="../infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
+            <a href="../seguranca-e-acesso/index.html" class="text-white hover:opacity-80 transition font-medium">Segurança e Acesso</a>
+            <a href="../desenvolvimento-e-ti/index.html" class="text-white hover:opacity-80 transition font-medium">Desenvolvimento e TI</a>
+            <a href="../ferramentas/index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Ferramentas</a>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white hover:text-blue-200 hover:border-blue-200 focus:outline-none">
+            <svg class="fill-current h-4 w-4" viewBox="0 0 20 20"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-brand border-t border-blue-800">
+        <div class="px-6 py-2 flex flex-col" id="mobile-nav-links"></div>
+    </div>
+</header>
+
+<div class="max-w-container-max mx-auto px-6 mt-8 flex justify-center">
+    <div class="border border-border-subtle bg-surface rounded" style="width:728px;height:90px;max-width:100%;">
+        <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4754805344258519" data-ad-slot="5872920570"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+</div>
+
+<div class="max-w-container-max mx-auto px-6 py-8 flex flex-col lg:flex-row gap-6 flex-grow">
+    <main class="w-full lg:w-3/4">
+        <article class="bg-white rounded-lg border border-border-subtle p-6 lg:p-8">
+            <nav class="text-sm font-medium text-text-muted mb-6">
+                <a href="../index.html" class="hover:text-brand transition">Home</a>
+                <span class="mx-2">/</span>
+                <a href="index.html" class="hover:text-brand transition">Ferramentas</a>
+                <span class="mx-2">/</span>
+                <span class="text-text-main">Extensões VS Code</span>
+            </nav>
+            <h1 class="text-3xl lg:text-4xl font-bold text-text-main mb-6 tracking-tight leading-tight">10 Extensões do VS Code que todo desenvolvedor precisa instalar</h1>
+            <div class="flex items-center text-text-muted text-sm font-medium mb-8 border-b border-border-subtle pb-4">
+                <span>Publicado em: 09 de Junho de 2026</span>
+                <span class="mx-3">•</span>
+                <span>Por: <strong>Rinaldo Purger</strong></span>
+            </div>
+            <div class="prose max-w-none text-text-main text-lg space-y-6">
+
+                    <p>O Visual Studio Code se tornou o editor de código mais popular do mundo por um motivo: seu ecossistema de extensões é imbatível. Com as extensões certas, o VS Code vira uma IDE completa e poderosa. Aqui estão as 10 que não podem faltar na sua instalação.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">1. Prettier — Code Formatter</h2>
+                    <p>Formata seu código automaticamente ao salvar. Elimina discussões sobre estilo de código em equipe. Suporta JS, TS, CSS, JSON, HTML e muito mais. Configure o <code class="bg-gray-100 px-1 rounded text-sm">"editor.formatOnSave": true</code> nas configurações e esqueça a formatação manual.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">2. ESLint</h2>
+                    <p>Analisa seu JavaScript/TypeScript em tempo real e aponta erros de lógica, variáveis não usadas, padrões problemáticos e violações de estilo antes de você rodar o código.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">3. GitLens</h2>
+                    <p>Turbina o Git integrado do VS Code. Mostra quem escreveu cada linha de código (blame), histórico de arquivos, comparações de branches e muito mais diretamente no editor.</p>
+
+                    <div class="flex justify-center my-8 lg:float-right lg:ml-8 lg:mb-4">
+                        <div class="border border-border-subtle bg-surface rounded" style="width:300px;height:250px;">
+                            <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4754805344258519" data-ad-slot="7401624661"></ins>
+                            <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+                        </div>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 clear-both">4. Thunder Client</h2>
+                    <p>Cliente HTTP leve integrado ao VS Code — uma alternativa ao Postman para testar APIs REST sem sair do editor. Suporta variáveis de ambiente, coleções e histórico de requisições.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">5. Auto Rename Tag</h2>
+                    <p>Ao renomear uma tag HTML de abertura, a de fechamento é renomeada automaticamente. Simples, mas poupa centenas de erros no dia a dia de quem trabalha com HTML/JSX.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">6. Path Intellisense</h2>
+                    <p>Autocompleta caminhos de arquivos nos seus imports. Essencial para projetos grandes onde navegar pela estrutura de pastas manualmente consome tempo.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">7. Docker</h2>
+                    <p>Gerencia containers, imagens e compose files diretamente do VS Code. Visualize containers rodando, acesse logs e execute comandos sem precisar do terminal.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">8. Error Lens</h2>
+                    <p>Exibe erros e avisos inline no código, ao lado da linha problemática — sem precisar passar o mouse sobre o sublinhado vermelho para ler a mensagem.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">9. GitHub Copilot</h2>
+                    <p>IA que sugere completações de código, funções inteiras e até testes unitários enquanto você digita. Pago, mas com trial gratuito. Aumenta produtividade significativamente em tarefas repetitivas.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">10. Material Icon Theme</h2>
+                    <p>Troca os ícones padrão de arquivos e pastas por ícones bonitos e intuitivos. Facilita a navegação visual no explorer — você reconhece o tipo de arquivo instantaneamente pela cor e ícone.</p>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Dica bônus</h4>
+                        <p class="text-text-muted text-base">Exporte seu perfil de extensões com <strong>Settings Sync</strong> (nativo no VS Code) vinculado à sua conta GitHub. Assim, em qualquer computador novo, sua configuração completa é restaurada em segundos.</p>
+                    </div>
+            </div>
+        </article>
+    </main>
+    <aside class="w-full lg:w-1/4 flex flex-col gap-6">
+        <div class="flex justify-center">
+            <div class="border border-border-subtle bg-surface rounded" style="width:300px;height:250px;">
+                <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4754805344258519" data-ad-slot="7401624661"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg p-6 border border-border-subtle">
+            <h3 class="text-lg font-bold text-text-main mb-4 border-b border-border-subtle pb-2">Artigos Relacionados</h3>
+            <ul class="space-y-3"><li><a href="../desenvolvimento-e-ti/clean-code-5-boas-praticas-essenciais.html" class="text-brand hover:underline text-sm font-medium leading-snug line-clamp-2">Clean Code: 5 boas práticas</a></li>
+<li><a href="../desenvolvimento-e-ti/typescript-para-iniciantes.html" class="text-brand hover:underline text-sm font-medium leading-snug line-clamp-2">TypeScript para Iniciantes</a></li></ul>
+        </div>
+    </aside>
+</div>
+
+<footer class="bg-surface border-t border-border-subtle py-8 mt-12">
+    <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+        <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="../quem-somos.html" class="hover:text-brand transition font-medium">Quem Somos</a>
+            <a href="../politica-de-privacidade.html" class="hover:text-brand transition font-medium">Política de Privacidade</a>
+            <a href="../termos-de-uso.html" class="hover:text-brand transition font-medium">Termos de Uso</a>
+            <a href="../contato.html" class="hover:text-brand transition font-medium">Contato</a>
+        </div>
+    </div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const btn=document.getElementById('mobile-menu-btn'),menu=document.getElementById('mobile-menu'),nav=document.querySelector('header nav'),links=document.getElementById('mobile-nav-links');
+        if(btn&&menu&&nav&&links){links.innerHTML=nav.innerHTML;links.querySelectorAll('a').forEach(l=>l.className='block text-white hover:text-blue-200 transition font-medium text-lg py-3 border-b border-blue-800');btn.addEventListener('click',()=>menu.classList.toggle('hidden'));}
+    });
+</script>
+</body>
+</html>
