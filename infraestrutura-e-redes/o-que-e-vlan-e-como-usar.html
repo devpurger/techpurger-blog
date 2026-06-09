@@ -135,6 +135,9 @@
                     <p><strong>Untagged (Access port):</strong> porta conectada a dispositivos finais (PC, câmera, impressora). O dispositivo não sabe que está em uma VLAN — o switch adiciona e remove a tag automaticamente.</p>
                     <p><strong>Tagged (Trunk port):</strong> porta que transporta tráfego de múltiplas VLANs simultaneamente. Usada na conexão entre switches ou entre switch e roteador. O equipamento na outra ponta precisa entender as tags 802.1Q.</p>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Inter-VLAN Routing: comunicação controlada entre VLANs</h2>
+                    <p>Por padrão, dispositivos em VLANs diferentes não se comunicam. Para permitir comunicação controlada (ex: computadores do escritório acessando o servidor NAS, mas não as câmeras), você configura regras de firewall no roteador que permitam tráfego específico entre determinadas VLANs. Isso é chamado de inter-VLAN routing e é onde um roteador com firewall como pfSense ou OPNsense brilha — você define regras granulares: "VLAN 10 pode acessar a porta 445 da VLAN 40, mas nada mais".</p>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">VLANs sem switch gerenciável?</h4>
                         <p class="text-text-muted text-base">Roteadores com firmware OpenWrt ou DD-WRT suportam VLANs por software, mesmo sem switch gerenciável externo. O pfSense e OPNsense (firewalls open source) também têm suporte nativo completo a VLANs e são excelentes opções para redes domésticas e de pequenas empresas.</p>
