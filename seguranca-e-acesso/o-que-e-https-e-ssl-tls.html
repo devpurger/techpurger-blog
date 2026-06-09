@@ -116,6 +116,26 @@
                         sudo certbot --nginx -d seudominio.com.br
                     </div>
 
+                    
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">O que acontece quando o certificado expira?</h2>
+                    <p>Certificados SSL/TLS têm validade — normalmente 90 dias (Let's Encrypt) ou 1 ano (certificados pagos). Quando expiram, o navegador exibe uma tela de aviso vermelha bloqueando o acesso. Para sites com AdSense, isso é catastrófico: o Google pode suspender os anúncios e o tráfego despenca.</p>
+                    <p>Com Let's Encrypt e Certbot, a renovação é automática via cron job. Verifique com <code class="bg-gray-100 px-1 rounded text-sm">sudo certbot renew --dry-run</code> se a renovação automática está funcionando.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Tipos de certificado SSL</h2>
+                    <ul class="list-disc pl-6 space-y-3 my-4">
+                        <li><strong>DV (Domain Validated):</strong> apenas valida que você controla o domínio. Gratuito via Let's Encrypt. Suficiente para a maioria dos sites.</li>
+                        <li><strong>OV (Organization Validated):</strong> valida a empresa por trás do domínio. Cadeado com nome da empresa. Usado por empresas médias.</li>
+                        <li><strong>EV (Extended Validation):</strong> validação rigorosa da empresa. Barra verde com nome da empresa. Bancos e grandes e-commerces.</li>
+                        <li><strong>Wildcard:</strong> cobre o domínio principal e todos os subdomínios (<code class="bg-gray-100 px-1 rounded text-sm">*.seusite.com</code>).</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Testando a segurança do seu HTTPS</h2>
+                    <p>Use o <a href="https://www.ssllabs.com/ssltest/" target="_blank" rel="noopener noreferrer" class="text-brand hover:underline">SSL Labs Server Test</a> (gratuito) para analisar a configuração TLS do seu site. Ele dá uma nota de A+ a F e identifica vulnerabilidades como suporte a protocolos obsoletos (SSLv3, TLS 1.0) ou cipher suites inseguras.</p>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">HTTPS no Firebase Hosting</h4>
+                        <p class="text-text-muted text-base">Se você usa Firebase Hosting como o TechPurger, o HTTPS é provisionado e renovado automaticamente pelo Google — sem nenhuma configuração necessária. O Firebase também suporta HTTP/2 por padrão, garantindo performance otimizada para todos os visitantes.</p>
+                    </div>
                     <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
                         <h4 class="font-bold text-text-main mb-2">Por que isso importa para o AdSense?</h4>
                         <p class="text-text-muted text-base">O Google exige HTTPS para aprovar sites no AdSense e também usa HTTPS como fator de rankeamento no SEO. Sites sem certificado são marcados como "Não seguro" no Chrome, o que aumenta drasticamente a taxa de rejeição dos visitantes.</p>
