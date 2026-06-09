@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript para Iniciantes: por que largar o JavaScript puro | TechPurger</title>
+    <meta name="description" content="Entenda o que é TypeScript, quais problemas ele resolve e como começar a usar tipagem estática nos seus projetos JavaScript.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['monospace'] },
+                    colors: { brand: '#0056b3', surface: '#f8f9fa', 'border-subtle': '#e9ecef', 'text-main': '#1a1a1a', 'text-muted': '#4a5568', 'code-bg': '#1a202c' },
+                    maxWidth: { 'container-max': '1200px' }
+                }
+            }
+        }
+    </script>
+    <style> body { color: #1a1a1a; line-height: 1.6; } </style>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4754805344258519" crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="xZ4uPnJxQZNOPLXOg_l5MkSC-QR-mk5zY8nXJaYKpTQ" />
+</head>
+<body class="bg-white text-text-main font-sans antialiased flex flex-col min-h-screen">
+
+<!-- Banner de Cookies -->
+<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1a1a1a; color:#fff; padding:16px 24px; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; font-family:'Inter',sans-serif; font-size:14px; box-shadow:0 -2px 12px rgba(0,0,0,0.3);">
+  <p style="margin:0; flex:1; min-width:240px;">🍪 Utilizamos <strong>cookies</strong> para melhorar sua experiência e exibir anúncios relevantes via Google AdSense. Ao continuar navegando, você concorda com nossa <a href="../politica-de-privacidade.html" style="color:#60a5fa; text-decoration:underline;">Política de Privacidade</a>.</p>
+  <div style="display:flex; gap:10px; flex-shrink:0;">
+    <button onclick="aceitarCookies()" style="background:#0056b3; color:#fff; border:none; padding:10px 20px; border-radius:6px; font-weight:600; cursor:pointer; font-size:14px;">Aceitar</button>
+    <button onclick="recusarCookies()" style="background:transparent; color:#ccc; border:1px solid #555; padding:10px 16px; border-radius:6px; font-weight:600; cursor:pointer; font-size:14px;">Recusar</button>
+  </div>
+</div>
+<script>
+  (function() { var c=localStorage.getItem('cookieConsent'),b=document.getElementById('cookie-banner'); if(!c&&b)b.style.display='flex'; })();
+  function aceitarCookies(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookie-banner').style.display='none';}
+  function recusarCookies(){localStorage.setItem('cookieConsent','declined');document.getElementById('cookie-banner').style.display='none';}
+</script>
+
+<header class="bg-brand text-white border-b border-border-subtle">
+    <div class="max-w-container-max mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html" class="text-2xl font-bold tracking-tight">TechPurger</a>
+        <nav class="hidden md:flex space-x-8">
+            <a href="../infraestrutura-e-redes/index.html" class="text-white hover:opacity-80 transition font-medium">Infraestrutura e Redes</a>
+            <a href="../seguranca-e-acesso/index.html" class="text-white hover:opacity-80 transition font-medium">Segurança e Acesso</a>
+            <a href="../desenvolvimento-e-ti/index.html" class="text-blue-100 font-bold border-b-2 border-white pb-1">Desenvolvimento e TI</a>
+            <a href="../ferramentas/index.html" class="text-white hover:opacity-80 transition font-medium">Ferramentas</a>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden flex items-center px-3 py-2 border rounded text-white border-white hover:text-blue-200 hover:border-blue-200 focus:outline-none">
+            <svg class="fill-current h-4 w-4" viewBox="0 0 20 20"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-brand border-t border-blue-800">
+        <div class="px-6 py-2 flex flex-col" id="mobile-nav-links"></div>
+    </div>
+</header>
+
+<div class="max-w-container-max mx-auto px-6 mt-8 flex justify-center">
+    <div class="border border-border-subtle bg-surface rounded" style="width:728px;height:90px;max-width:100%;">
+        <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-4754805344258519" data-ad-slot="5872920570"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+</div>
+
+<div class="max-w-container-max mx-auto px-6 py-8 flex flex-col lg:flex-row gap-6 flex-grow">
+    <main class="w-full lg:w-3/4">
+        <article class="bg-white rounded-lg border border-border-subtle p-6 lg:p-8">
+            <nav class="text-sm font-medium text-text-muted mb-6">
+                <a href="../index.html" class="hover:text-brand transition">Home</a>
+                <span class="mx-2">/</span>
+                <a href="index.html" class="hover:text-brand transition">Desenvolvimento e TI</a>
+                <span class="mx-2">/</span>
+                <span class="text-text-main">TypeScript para Iniciantes</span>
+            </nav>
+            <h1 class="text-3xl lg:text-4xl font-bold text-text-main mb-6 tracking-tight leading-tight">TypeScript para Iniciantes: por que largar o JavaScript puro</h1>
+            <div class="flex items-center text-text-muted text-sm font-medium mb-8 border-b border-border-subtle pb-4">
+                <span>Publicado em: 09 de Junho de 2026</span>
+                <span class="mx-3">•</span>
+                <span>Por: <strong>Rinaldo Purger</strong></span>
+            </div>
+            <div class="prose max-w-none text-text-main text-lg space-y-6">
+
+                    <p>Se você já trabalha com JavaScript há algum tempo, provavelmente já se deparou com o clássico erro <code class="bg-gray-100 px-1 rounded text-sm">Cannot read properties of undefined</code> em produção. Esse tipo de bug é exatamente o que o TypeScript foi criado para prevenir — antes que o código chegue ao usuário.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">O que é TypeScript?</h2>
+                    <p>TypeScript é um <strong>superset</strong> do JavaScript criado pela Microsoft. Isso significa que todo código JavaScript válido também é TypeScript válido. A grande adição é um sistema de <strong>tipagem estática opcional</strong>: você declara os tipos das suas variáveis, parâmetros e retornos de função, e o compilador verifica se tudo bate antes de gerar o JavaScript final.</p>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Por que usar TypeScript?</h2>
+                    <p>Considere esta função em JavaScript puro:</p>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                        <span class="text-green-400">// JavaScript — sem garantias</span><br>
+                        function calcularDesconto(preco, percentual) {{'{'}} <br>
+                        &nbsp;&nbsp;return preco - (preco * percentual / 100);<br>
+                        {{'}'}}
+                    </div>
+                    <p>Nada impede alguém de chamar <code class="bg-gray-100 px-1 rounded text-sm">calcularDesconto("barato", null)</code>. Com TypeScript:</p>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                        <span class="text-green-400">// TypeScript — erros detectados na compilação</span><br>
+                        function calcularDesconto(preco: number, percentual: number): number {{'{'}} <br>
+                        &nbsp;&nbsp;return preco - (preco * percentual / 100);<br>
+                        {{'}'}}
+                    </div>
+                    <p>Agora, se alguém passar uma string, o compilador avisa <strong>antes</strong> do código rodar.</p>
+
+                    <div class="flex justify-center my-8 lg:float-right lg:ml-8 lg:mb-4">
+                        <div class="border border-border-subtle bg-surface rounded" style="width:300px;height:250px;">
+                            <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4754805344258519" data-ad-slot="7401624661"></ins>
+                            <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+                        </div>
+                    </div>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4 clear-both">Como começar em 3 passos</h2>
+                    <ol class="list-decimal pl-6 space-y-3">
+                        <li>Instale o TypeScript globalmente: <code class="bg-gray-100 px-1 rounded text-sm">npm install -g typescript</code></li>
+                        <li>Crie um arquivo <code class="bg-gray-100 px-1 rounded text-sm">tsconfig.json</code> na raiz do projeto com <code class="bg-gray-100 px-1 rounded text-sm">tsc --init</code></li>
+                        <li>Renomeie seus arquivos <code class="bg-gray-100 px-1 rounded text-sm">.js</code> para <code class="bg-gray-100 px-1 rounded text-sm">.ts</code> e comece a adicionar tipos gradualmente</li>
+                    </ol>
+
+                    <h2 class="text-2xl font-bold text-text-main mt-10 mb-4">Tipos mais usados no dia a dia</h2>
+                    <div class="bg-code-bg text-white p-4 rounded text-sm font-mono overflow-x-auto my-4">
+                        <span class="text-blue-300">let</span> nome: <span class="text-yellow-300">string</span> = <span class="text-green-300">"Rinaldo"</span>;<br>
+                        <span class="text-blue-300">let</span> idade: <span class="text-yellow-300">number</span> = 25;<br>
+                        <span class="text-blue-300">let</span> ativo: <span class="text-yellow-300">boolean</span> = true;<br>
+                        <span class="text-blue-300">let</span> tags: <span class="text-yellow-300">string[]</span> = [<span class="text-green-300">"ts"</span>, <span class="text-green-300">"js"</span>];<br><br>
+                        <span class="text-gray-400">// Interface para objetos</span><br>
+                        <span class="text-blue-300">interface</span> <span class="text-yellow-300">Usuario</span> {{'{'}} <br>
+                        &nbsp;&nbsp;id: <span class="text-yellow-300">number</span>;<br>
+                        &nbsp;&nbsp;nome: <span class="text-yellow-300">string</span>;<br>
+                        &nbsp;&nbsp;email?: <span class="text-yellow-300">string</span>; <span class="text-gray-400">// opcional</span><br>
+                        {{'}'}}
+                    </div>
+
+                    <div class="bg-surface border-l-4 border-brand p-6 mt-10 rounded-r-lg">
+                        <h4 class="font-bold text-text-main mb-2">Conclusão</h4>
+                        <p class="text-text-muted text-base">TypeScript não é um substituto do JavaScript — é uma camada de segurança por cima dele. A curva de aprendizado é suave, especialmente se você já conhece JS. Para projetos com mais de um desenvolvedor ou que crescem ao longo do tempo, a tipagem estática se paga rapidamente em bugs evitados.</p>
+                    </div>
+            </div>
+        </article>
+    </main>
+    <aside class="w-full lg:w-1/4 flex flex-col gap-6">
+        <div class="flex justify-center">
+            <div class="border border-border-subtle bg-surface rounded" style="width:300px;height:250px;">
+                <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4754805344258519" data-ad-slot="7401624661"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg p-6 border border-border-subtle">
+            <h3 class="text-lg font-bold text-text-main mb-4 border-b border-border-subtle pb-2">Artigos Relacionados</h3>
+            <ul class="space-y-3"><li><a href="por-que-usar-git-guia-rapido.html" class="text-brand hover:underline text-sm font-medium leading-snug line-clamp-2">Por que o Git é obrigatório?</a></li>
+<li><a href="clean-code-5-boas-praticas-essenciais.html" class="text-brand hover:underline text-sm font-medium leading-snug line-clamp-2">Clean Code: 5 boas práticas</a></li></ul>
+        </div>
+    </aside>
+</div>
+
+<footer class="bg-surface border-t border-border-subtle py-8 mt-12">
+    <div class="max-w-container-max mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+        <p>&copy; 2026 TechPurger. Todos os direitos reservados.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="../quem-somos.html" class="hover:text-brand transition font-medium">Quem Somos</a>
+            <a href="../politica-de-privacidade.html" class="hover:text-brand transition font-medium">Política de Privacidade</a>
+            <a href="../termos-de-uso.html" class="hover:text-brand transition font-medium">Termos de Uso</a>
+            <a href="../contato.html" class="hover:text-brand transition font-medium">Contato</a>
+        </div>
+    </div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const btn=document.getElementById('mobile-menu-btn'),menu=document.getElementById('mobile-menu'),nav=document.querySelector('header nav'),links=document.getElementById('mobile-nav-links');
+        if(btn&&menu&&nav&&links){links.innerHTML=nav.innerHTML;links.querySelectorAll('a').forEach(l=>l.className='block text-white hover:text-blue-200 transition font-medium text-lg py-3 border-b border-blue-800');btn.addEventListener('click',()=>menu.classList.toggle('hidden'));}
+    });
+</script>
+</body>
+</html>
